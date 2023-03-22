@@ -10,6 +10,61 @@ if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 }
 
+date_default_timezone_set("Asia/Jakarta");
+
+// LOAD SETTING
+$QloadConfig    = $db->query("SELECT * FROM tb_setting WHERE status='Active'");
+$loadConfig     = mysqli_fetch_array($QloadConfig);
+
+if ($loadConfig == NULL) {
+    $id = 'aa';
+    $icon = 'icon.svg';
+    $logoOne = 'aa';
+    $logoTwo = 'aa';
+    $loader = 'aa';
+    $title = 'aa';
+    $app_name = 'aa';
+    $company = 'aa';
+    $telp = 'aa';
+    $email = 'aa';
+    $seodesc = 'aa';
+    $address = 'aa';
+    $facebook = 'aa';
+    $twitter = 'aa';
+    $instagram = 'aa';
+    $youtube = 'aa';
+    $url = 'aa';
+    $created_by = 'aa';
+    $created_date = 'aa';
+    $status = 'aa';
+    $btnColor = '#050D28';
+    $btnColorHover = '#213475';
+} else {
+    $id = $loadConfig['id'];
+    $icon = $loadConfig['icon'];
+    $logoOne = $loadConfig['logoOne'];
+    $logoTwo = $loadConfig['logoTwo'];
+    $loader = $loadConfig['loader'];
+    $title = $loadConfig['title'];
+    $app_name = $loadConfig['app_name'];
+    $company = $loadConfig['company'];
+    $telp = $loadConfig['telp'];
+    $email = $loadConfig['email'];
+    $seodesc = $loadConfig['seodesc'];
+    $address = $loadConfig['address'];
+    $facebook = $loadConfig['facebook'];
+    $twitter = $loadConfig['twitter'];
+    $instagram = $loadConfig['instagram'];
+    $youtube = $loadConfig['youtube'];
+    $url = $loadConfig['url'];
+    $created_by = $loadConfig['created_by'];
+    $created_date = $loadConfig['created_date'];
+    $status = $loadConfig['status'];
+    $btnColor = $loadConfig['btnColor'];
+    $btnColorHover = $loadConfig['btnColorHover'];
+}
+// END LOAD SETTING
+
 class helpers
 {
     function dateIndonesia($date)
