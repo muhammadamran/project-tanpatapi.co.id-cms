@@ -10,8 +10,8 @@ if ($get_api[1] == 'api') {
 } else {
   if (!empty($_SESSION['role'])) {
     include "include/head.php";
+    include "include/top-header.php";
     include "include/sidebar.php";
-    include "include/header.php";
 
     if (empty($_GET['m']) and empty($_GET['s'])) {
       include "pages/dashboard/index.php";
@@ -23,6 +23,7 @@ if ($get_api[1] == 'api') {
       }
     }
 
+    include "include/panel.php";
     include "include/footer.php";
   } else {
     include "login.php";

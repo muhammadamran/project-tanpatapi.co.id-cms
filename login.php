@@ -122,10 +122,10 @@ if ($result == NULL) {
                 <div class="login-content">
                     <form action="execute.php" method="POST" class="margin-bottom-0">
                         <div class="form-group m-b-15">
-                            <input type="text" class="form-control form-control-lg" name="email" id="email" placeholder="Email Address" required />
+                            <input type="text" class="form-control form-control-lg" name="username" id="username" placeholder="Email Address" required />
                         </div>
                         <div class="form-group m-b-15">
-                            <input type="password" class="form-control form-control-lg" name="passsword" id="password" placeholder="Password" required />
+                            <input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="Password" required />
                         </div>
                         <div class="checkbox checkbox-css">
                             <input type="checkbox" id="show_password" value="" onclick="myFunction()" />
@@ -140,11 +140,16 @@ if ($result == NULL) {
                             </label>
                         </div>
                         <div class="login-buttons">
-                            <button type="submit" name="login" class="btn btn-default btn-block btn-lg">Login</button>
+                            <button type="submit" name="login" class="btn btn-default btn-block btn-lg">Log In</button>
                         </div>
                         <hr />
                         <p class="text-center text-grey-darker mb-0">
-                            &copy; Color Admin All Right Reserved 2019
+                            &copy; Powered by <b>HELLOS<sup>ID</sup></b>
+                            <?php if (date('Y') == '2023') { ?>
+                                <?= date('Y'); ?>
+                            <?php } else { ?>
+                                2023 - <?= date('Y'); ?>
+                            <?php } ?>
                         </p>
                     </form>
                 </div>
