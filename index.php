@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "db/db.php";
+include "config/conf.php";
 
 $url = $_SERVER['REQUEST_URI'];
 $get_api = explode('/', $url);
@@ -14,12 +14,12 @@ if ($get_api[1] == 'api') {
     include "include/header.php";
 
     if (empty($_GET['m']) and empty($_GET['s'])) {
-      include "pages/home/home.php";
+      include "pages/dashboard/index.php";
     } else if ($_GET['m'] != "" and $_GET['s'] != "") {
       if (file_exists("pages/" . $_GET['m'] . "/" . $_GET['s'] . ".php")) {
         include "pages/" . $_GET['m'] . "/" . $_GET['s'] . ".php";
       } else {
-        include "notfound.php";
+        include "404.php";
       }
     }
 
