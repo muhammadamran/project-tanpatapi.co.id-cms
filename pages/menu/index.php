@@ -1,4 +1,7 @@
 <title>Menu <?= $title; ?></title>
+<?php
+include "include/cssDataTables.php";
+?>
 <!-- begin #content -->
 <div id="content" class="content">
     <!-- begin breadcrumb -->
@@ -32,56 +35,23 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-valign-middle table-panel mb-0">
+                    <table class="table hover multiple-select-row data-table-export nowrap">
                         <thead>
                             <tr>
-                                <th>Source</th>
-                                <th>Total</th>
-                                <th>Trend</th>
+                                <th>#</th>
+                                <th>Kode Menu</th>
+                                <th>Name Menu</th>
+                                <th>Desc Menu</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><label class="label label-danger">Unique Visitor</label></td>
-                                <td>13,203 <span class="text-success"><i class="fa fa-arrow-up"></i></span></td>
-                                <td>
-                                    <div id="sparkline-unique-visitor"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label class="label label-warning">Bounce Rate</label></td>
-                                <td>28.2%</td>
-                                <td>
-                                    <div id="sparkline-bounce-rate"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label class="label label-success">Total Page Views</label></td>
-                                <td>1,230,030</td>
-                                <td>
-                                    <div id="sparkline-total-page-views"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label class="label label-primary">Avg Time On Site</label></td>
-                                <td>00:03:45</td>
-                                <td>
-                                    <div id="sparkline-avg-time-on-site"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label class="label label-default">% New Visits</label></td>
-                                <td>40.5%</td>
-                                <td>
-                                    <div id="sparkline-new-visits"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label class="label label-inverse">Return Visitors</label></td>
-                                <td>73.4%</td>
-                                <td>
-                                    <div id="sparkline-return-visitors"></div>
-                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -91,3 +61,6 @@
     </div>
 </div>
 <!-- end #content -->
+<?php
+include "include/jsTable.php";
+?>

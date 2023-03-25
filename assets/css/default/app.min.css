@@ -26354,7 +26354,7 @@ body .introjs-bullets ul li a.active {
     right: 0;
     bottom: 0;
     /* background: url(images/cover-sidebar-user.jpg); */
-    background: url(assets/apps/login/bg2.jpg);
+    background: url(../../../assets/apps/login/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover
 }
