@@ -94,8 +94,16 @@
         </li> -->
         <li class="dropdown navbar-user">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="../assets/img/user/user-13.jpg" alt="" />
-                <span class="d-none d-md-inline">Adam Schwartz</span> <b class="caret"></b>
+                <?php if ($_SESSION['photo'] == NULL) { ?>
+                    <?php if ($_SESSION['jk'] == NULL) { ?>
+                        <img src="assets/apps/user/male.jpg" alt="" />
+                    <?php } else { ?>
+                        <img src="assets/apps/user/female.jpg" alt="" />
+                    <?php } ?>
+                <?php } else { ?>
+                    <img src="assets/apps/user/<?= $_SESSION['photo'] ?>" alt="" />
+                <?php } ?>
+                <b class="caret"></b>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="javascript:;" class="dropdown-item">Edit Profile</a>

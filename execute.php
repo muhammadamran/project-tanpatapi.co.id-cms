@@ -22,6 +22,8 @@ function login($data)
         $_SESSION['nik'] = $data['nik'];
         $_SESSION['job'] = $data['job'];
         $_SESSION['status'] = $data['status'];
+        $_SESSION['photo'] = $data['photo'];
+        $_SESSION['jk'] = $data['jk'];
         return 2;
     } else return 1;
 }
@@ -56,6 +58,8 @@ $last = $result['last'];
 $nik = $result['nik'];
 $job = $result['job'];
 $status = $result['status'];
+$photo = $result['photo'];
+$jk = $result['jk'];
 
 if ($role == 'admin') {
     $data = [
@@ -77,6 +81,8 @@ if ($role == 'admin') {
         'nik' => $nik,
         'job' => $job,
         'status' => $status,
+        'photo' => $photo,
+        'jk' => $jk,
     ];
 
     $loginArea = login($data);
