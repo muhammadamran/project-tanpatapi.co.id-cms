@@ -52,16 +52,24 @@
                     <span>Menu</span>
                 </a>
             </li>
-            <li class="has-sub">
+            <li class="has-sub <?= !empty($_GET['m']) && $_GET['m'] == 'content' ? 'active' : '' ?>">
                 <a href="javascript:;">
                     <b class="caret"></b>
                     <i class="fa-solid fa-folder-tree"></i>
                     <span>Content</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="index.html">Dashboard v1</a></li>
-                    <li><a href="index_v2.html">Dashboard v2</a></li>
-                    <li><a href="index_v3.html">Dashboard v3</a></li>
+                    <?php
+                    $QueryMenu = $db->query("SELECT * FROM tb_menu ORDER BY id ASC");
+                    foreach ($QueryMenu as $rowMenu) :
+                        $R = $rowMenu['id'];
+                    ?>
+                        <li class="<?= $_GET['m'] == 'content' && !empty($_GET['s']) && $_GET['s'] == $R ? 'active' : '' ?>">
+                            <a href="index.php?m=content&s=<?= $R; ?>">
+                                <?= $rowMenu['menu']; ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
             </li>
             <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'setting' ? 'active' : '' ?>">
@@ -72,14 +80,14 @@
                 </a>
             </li>
             <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'users' ? 'active' : '' ?>">
-                <a href="index.php">
+                <a href="index.php?m=users&s=index">
                     <i class="fa-solid fa-users-gear"></i>
                     <span>Users</span>
                 </a>
             </li>
             <li class="nav-header">Point of Sale</li>
             <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'ch' ? 'active' : '' ?>">
-                <a href="index.php">
+                <a href="index.php?m=pos&s=index">
                     <i class="fa-solid fa-cash-register"></i>
                     <span>Pos</span>
                 </a>

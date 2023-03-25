@@ -1,6 +1,10 @@
 <!-- begin theme-panel -->
 <div class="theme-panel theme-panel-lg">
-    <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+    <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn">
+        <div style="margin-top: 6px;">
+            <i class="fa fa-cog"></i>
+        </div>
+    </a>
     <div class="theme-panel-content">
         <h5>App Settings</h5>
         <ul class="theme-list clearfix">
