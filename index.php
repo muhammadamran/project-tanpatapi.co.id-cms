@@ -23,6 +23,7 @@ if ($get_api[1] == 'api') {
       }
     }
 
+    include "include/activity.php";
     include "include/panel.php";
     include "include/footer.php";
   } else {

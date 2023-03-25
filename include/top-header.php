@@ -92,6 +92,19 @@
                 </div>
             </div>
         </li> -->
+        <li>
+            <div style="margin-top: 8px;margin-left:10px">
+                <button type="button" onClick="showHideRA('divRA')" class="btn btn-dark-custom" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Activity">
+                    <i class="far fa-clock"></i>
+                    Time:
+                </button>
+            </div>
+        </li>
+        <li>
+            <div style="margin-top: 8px;margin-left:10px">
+                <button type="button" onClick="showHideRA('divRA')" class="btn btn-dark-custom" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Activity"><i class="far fa-question-circle"></i></button>
+            </div>
+        </li>
         <li class="dropdown navbar-user">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <?php if ($_SESSION['photo'] == NULL) { ?>

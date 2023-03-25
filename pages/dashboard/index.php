@@ -3,13 +3,20 @@
 <div id="content" class="content">
     <!-- begin breadcrumb -->
     <ol class="breadcrumb float-xl-right">
-        <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-        <li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
-        <li class="breadcrumb-item active">Dashboard v3</li>
+        <li class="breadcrumb-item active">Dashboard</li>
     </ol>
     <!-- end breadcrumb -->
     <!-- begin page-header -->
-    <h1 class="page-header mb-3">Dashboard v3</h1>
+    <h1 class="page-header mb-3">
+        <div class="page-header-c">
+            <div class="page-header-icon">
+                <i class="fa-solid fa-cubes-stacked"></i>
+            </div>
+            <div class="page-header-text">
+                Dashboard
+            </div>
+        </div>
+    </h1>
     <!-- end page-header -->
     <!-- begin daterange-filter -->
     <div class="d-sm-flex align-items-center mb-3">

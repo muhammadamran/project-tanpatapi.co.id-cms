@@ -27,13 +27,12 @@
             </li>
             <li>
                 <ul class="nav nav-profile">
-                    <li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
-                    <li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Send Feedback</a></li>
-                    <li><a href="javascript:;"><i class="fa fa-question-circle"></i> Helps</a></li>
+                    <li><a href="javascript:;"><i class="fa-solid fa-user-gear"></i> Profile</a></li>
                 </ul>
             </li>
         </ul>
         <ul class="nav">
+            <li class="nav-header">Main</li>
             <li>
                 <a href="" target="_blank">
                     <i class="fa-solid fa-globe"></i>
@@ -48,7 +47,7 @@
                 </a>
             </li>
             <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'menu' ? 'active' : '' ?>">
-                <a href="index.php">
+                <a href="index.php?m=menu&s=index">
                     <i class="fa-solid fa-folder-plus"></i>
                     <span>Menu</span>
                 </a>
@@ -70,6 +69,19 @@
                     <!-- <i class="fa-solid fa-gears fa-beat-fade"></i> -->
                     <i class="fa-solid fa-gears"></i>
                     <span>Setting</span>
+                </a>
+            </li>
+            <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'users' ? 'active' : '' ?>">
+                <a href="index.php">
+                    <i class="fa-solid fa-users-gear"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li class="nav-header">Point of Sale</li>
+            <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'ch' ? 'active' : '' ?>">
+                <a href="index.php">
+                    <i class="fa-solid fa-cash-register"></i>
+                    <span>Pos</span>
                 </a>
             </li>
             <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
