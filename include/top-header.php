@@ -95,13 +95,15 @@
         <li class="dropdown navbar-user">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <?php if ($_SESSION['photo'] == NULL) { ?>
-                    <?php if ($_SESSION['jk'] == NULL) { ?>
-                        <img src="assets/apps/user/male.jpg" alt="" />
+                    <?php if ($_SESSION['jk'] == 'Pria') { ?>
+                        <img src="assets/apps/user/male.jpg" alt="Profile" />
+                    <?php } elseif ($_SESSION['jk'] == 'Wanita') { ?>
+                        <img src="assets/apps/user/female.jpg" alt="Profile" />
                     <?php } else { ?>
-                        <img src="assets/apps/user/female.jpg" alt="" />
+                        <img src="assets/apps/user/1.jpg" alt="Profile" />
                     <?php } ?>
                 <?php } else { ?>
-                    <img src="assets/apps/user/<?= $_SESSION['photo'] ?>" alt="" />
+                    <img src="assets/apps/user/<?= $_SESSION['photo'] ?>" alt="Profile" />
                 <?php } ?>
                 <b class="caret"></b>
             </a>

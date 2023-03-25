@@ -5,11 +5,21 @@
                 <a href="javascript:;" data-toggle="nav-profile">
                     <div class="cover with-shadow"></div>
                     <div class="image">
-                        <img src="../assets/img/user/user-13.jpg" alt="" />
+                        <?php if ($_SESSION['photo'] == NULL) { ?>
+                            <?php if ($_SESSION['jk'] == 'Pria') { ?>
+                                <img src="assets/apps/user/male.jpg" alt="Profile" />
+                            <?php } elseif ($_SESSION['jk'] == 'Wanita') { ?>
+                                <img src="assets/apps/user/female.jpg" alt="Profile" />
+                            <?php } else { ?>
+                                <img src="assets/apps/user/1.jpg" alt="Profile" />
+                            <?php } ?>
+                        <?php } else { ?>
+                            <img src="assets/apps/user/<?= $_SESSION['photo'] ?>" alt="Profile" />
+                        <?php } ?>
                     </div>
                     <div class="info">
                         <b class="caret pull-right"></b>
-                        Sean Ngu
+                        <font style="text-transform: capitalize;"><?= $_SESSION['first'] ?> <?= $_SESSION['last'] ?></font>
                         <small>Front end developer</small>
                     </div>
                 </a>
