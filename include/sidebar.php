@@ -34,17 +34,18 @@
         </ul>
         <ul class="nav">
             <li class="nav-header">Navigation</li>
-            <li class="has-sub active">
-                <a href="javascript:;">
-                    <b class="caret"></b>
-                    <i class="fa fa-th-large"></i>
+            <li class="<?= empty($_GET['m']) ? 'active' : '' ?>">
+                <a href="index.php">
+                    <i class="fa-solid fa-th-large"></i>
                     <span>Dashboard</span>
                 </a>
-                <ul class="sub-menu">
-                    <li><a href="index.html">Dashboard v1</a></li>
-                    <li><a href="index_v2.html">Dashboard v2</a></li>
-                    <li class="active"><a href="index_v3.html">Dashboard v3</a></li>
-                </ul>
+            </li>
+            <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'setting' ? 'active' : '' ?>">
+                <a href="index.php?m=setting&s=index">
+                    <!-- <i class="fa-solid fa-gears fa-beat-fade"></i> -->
+                    <i class="fa-solid fa-gears"></i>
+                    <span>Setting</span>
+                </a>
             </li>
             <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
         </ul>
