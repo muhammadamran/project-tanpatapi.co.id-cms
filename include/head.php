@@ -15,6 +15,7 @@
     <link href="assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
     <link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
     <!-- LOAD AMRAN -->
+    <link rel="stylesheet" href="assets/css/main.css">
     <!-- Font Poppins -->
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.gstatic.com">

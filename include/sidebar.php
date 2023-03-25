@@ -20,7 +20,8 @@
                     <div class="info">
                         <b class="caret pull-right"></b>
                         <font style="text-transform: capitalize;"><?= $_SESSION['first'] ?> <?= $_SESSION['last'] ?></font>
-                        <small>Front end developer</small>
+                        <small><?= $_SESSION['email'] ?></small>
+                        <small>Job<?= $_SESSION['job'] ?></small>
                     </div>
                 </a>
             </li>
@@ -33,12 +34,36 @@
             </li>
         </ul>
         <ul class="nav">
+            <li>
+                <a href="" target="_blank">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>Website</span>
+                </a>
+            </li>
             <li class="nav-header">Navigation</li>
             <li class="<?= empty($_GET['m']) ? 'active' : '' ?>">
                 <a href="index.php">
-                    <i class="fa-solid fa-th-large"></i>
+                    <i class="fa-solid fa-cubes-stacked"></i>
                     <span>Dashboard</span>
                 </a>
+            </li>
+            <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'menu' ? 'active' : '' ?>">
+                <a href="index.php">
+                    <i class="fa-solid fa-folder-plus"></i>
+                    <span>Menu</span>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa-solid fa-folder-tree"></i>
+                    <span>Content</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="index.html">Dashboard v1</a></li>
+                    <li><a href="index_v2.html">Dashboard v2</a></li>
+                    <li><a href="index_v3.html">Dashboard v3</a></li>
+                </ul>
             </li>
             <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'setting' ? 'active' : '' ?>">
                 <a href="index.php?m=setting&s=index">
