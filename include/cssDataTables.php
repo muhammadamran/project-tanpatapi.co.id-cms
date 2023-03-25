@@ -1,2 +1,0 @@
-<!-- <link rel="stylesheet" type="text/css" href="../assets/table/css/dataTables.bootstrap4.min.css"> -->
-<!-- <link rel="stylesheet" type="text/css" href="../assets/table/css/responsive.bootstrap4.min.css"> -->

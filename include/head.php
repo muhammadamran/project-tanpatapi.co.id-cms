@@ -67,6 +67,10 @@
         -webkit-border-radius: 4px;
         border-radius: 4px;
     }
+
+    table {
+        font-size: 12px;
+    }
 </style>
 
 <body>

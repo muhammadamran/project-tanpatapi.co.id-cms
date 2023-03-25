@@ -5,6 +5,8 @@ include "config/conf.php";
 $url = $_SERVER['REQUEST_URI'];
 $get_api = explode('/', $url);
 
+include "include/cssTable.php";
+
 if ($get_api[1] == 'api') {
   include $get_api[1] . '/' . $get_api[2] . '.php';
 } else {
@@ -30,3 +32,4 @@ if ($get_api[1] == 'api') {
     include "login.php";
   }
 }
+include "include/jsTable.php";
