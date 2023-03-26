@@ -14,3 +14,51 @@
 .page-header-text {
     margin-left: 5px;
 }
+
+.page-table-not-found {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.font-not-found {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.line-page {
+    height: 1.5px;
+    margin: 0px 0px 15px 0px;
+    background: #444e66;
+    box-shadow: 2px 3px 4px rgb(0 0 0 / 52%);
+}
+
+.f-action {
+    display: show;
+}
+
+@media (max-width: 1210.5px) {
+    .f-action {
+        display: none;
+    }
+}
+
+.action-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Color */
+/* Save */
+/* Update */
+.for-update {
+    background-color: #00acac;
+    color: #fff;
+}
+/* Delete */
+.for-delete {
+    background-color: #ff5b57;
+    color: #fff;
+}
+/* Info */

@@ -24,6 +24,7 @@ $R        = $RContent['id'];
         </div>
     </h1>
     <!-- end page-header -->
+    <div class="line-page"></div>
     <div class="row">
         <div class="col-sm-12">
             <div class="panel panel-inverse" data-sortable-id="index-6">

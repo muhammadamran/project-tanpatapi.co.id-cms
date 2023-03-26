@@ -18,6 +18,7 @@
         </div>
     </h1>
     <!-- end page-header -->
+    <div class="line-page"></div>
     <!-- begin daterange-filter -->
     <div class="d-sm-flex align-items-center mb-3">
         <a href="#" class="btn btn-inverse mr-2 text-truncate" id="daterange-filter">

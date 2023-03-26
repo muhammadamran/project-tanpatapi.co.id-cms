@@ -61,15 +61,26 @@
                 <ul class="sub-menu">
                     <?php
                     $QueryMenu = $db->query("SELECT * FROM tb_menu ORDER BY id ASC");
-                    foreach ($QueryMenu as $rowMenu) :
-                        $R = $rowMenu['id'];
+                    $Result    = mysqli_fetch_array($QueryMenu);
                     ?>
-                        <li class="<?= $_GET['m'] == 'content' && !empty($_GET['s']) && $_GET['s'] == $R ? 'active' : '' ?>">
-                            <a href="index.php?m=content&s=<?= $R; ?>">
-                                <?= $rowMenu['menu']; ?>
+                    <?php if ($Result['id'] != NULL) { ?>
+                        <?php
+                        foreach ($QueryMenu as $rowMenu) :
+                            $R = $rowMenu['id'];
+                        ?>
+                            <li class="<?= $_GET['m'] == 'content' && !empty($_GET['s']) && $_GET['s'] == $R ? 'active' : '' ?>">
+                                <a href="index.php?m=content&s=<?= $R; ?>">
+                                    <?= $rowMenu['menu']; ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php } else { ?>
+                        <li>
+                            <a href="#">
+                                No data available
                             </a>
                         </li>
-                    <?php endforeach; ?>
+                    <?php } ?>
                 </ul>
             </li>
             <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'setting' ? 'active' : '' ?>">

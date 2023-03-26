@@ -94,7 +94,7 @@
         </li> -->
         <li>
             <div style="margin-top: 8px;margin-left:10px">
-                <button type="button" onClick="showHideRA('divRA')" class="btn btn-dark-custom" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Activity">
+                <button type="button" onClick="showHideRA('divRA')" class="btn btn-dark-custom" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Local Time +07:00">
                     <i class="far fa-clock"></i>
                     <font id="todaysDate"></font>
                 </button>

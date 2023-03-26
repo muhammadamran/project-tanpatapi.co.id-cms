@@ -19102,8 +19102,8 @@ a.close.disabled {
     pointer-events: auto;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid rgba(0, 0, 0, .2);
-    border-radius: 6px;
+    /* border: 1px solid rgba(0, 0, 0, .2); */
+    border-radius: 10px;
     outline: 0
 }
 
@@ -19180,7 +19180,8 @@ a.close.disabled {
 @media (min-width:576px) {
     .modal-dialog {
         max-width: 500px;
-        margin: 1.75rem auto
+        /* margin: 1.75rem auto */
+        margin: 15.75rem auto;
     }
 
     .modal-dialog-scrollable {
@@ -37800,7 +37801,8 @@ body table.dataTable thead tr th.sorting_desc:after {
 }
 
 body table.dataTable thead tr th.sorting:after {
-    content: '\f0dc'
+    content: '\f0dc';
+    margin-left: 10px;
 }
 
 body table.dataTable thead tr th.sorting_asc:after {
