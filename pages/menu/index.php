@@ -32,6 +32,64 @@
                     </div>
                 </div>
                 <div class="panel-body">
+                    <!-- Alert -->
+                    <?php if (isset($_GET["UpdateSuccess"])) { ?>
+                        <!-- Update Success -->
+                        <div class="note note-success m-b-15">
+                            <div class="note-icon">
+                                <i class="fa-solid fa-circle-check fa-fade"></i>
+                            </div>
+                            <div class="note-content">
+                                <h4><b>Update Success!</b></h4>
+                                <p>
+                                    Data has been updated! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                </p>
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <?php if (isset($_GET["UpdateFailed"])) { ?>
+                        <!-- Update Failed -->
+                        <div class="note note-danger m-b-15">
+                            <div class="note-icon">
+                                <i class="fa-solid fa-circle-xmark fa-fade"></i>
+                            </div>
+                            <div class="note-content">
+                                <h4><b>Update Failed!</b></h4>
+                                <p>
+                                    Data can't update! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                </p>
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <?php if (isset($_GET["DeleteSuccess"])) { ?>
+                        <!-- Delete Success -->
+                        <div class="note note-success m-b-15">
+                            <div class="note-icon">
+                                <i class="fa-solid fa-circle-check fa-fade"></i>
+                            </div>
+                            <div class="note-content">
+                                <h4><b>Delete Success!</b></h4>
+                                <p>
+                                    Data has been deleted! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                </p>
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <?php if (isset($_GET["DeleteFailed"])) { ?>
+                        <!-- Delete Failed -->
+                        <div class="note note-danger m-b-15">
+                            <div class="note-icon">
+                                <i class="fa-solid fa-circle-xmark fa-fade"></i>
+                            </div>
+                            <div class="note-content">
+                                <h4><b>Delete Failed!</b></h4>
+                                <p>
+                                    Data can't delete! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                </p>
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <!-- End -->
                     <div class="table-responsive">
                         <table id="TableDefault_L" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
@@ -58,7 +116,7 @@
                                             <td><?= $row['kdmenu']; ?></td>
                                             <td style="text-align:center">
                                                 <button class="btn btn-dark-custom">
-                                                    <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['order']; ?>
+                                                    <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['sorder']; ?>
                                                 </button>
                                             </td>
                                             <td>
@@ -66,7 +124,7 @@
                                                     <i class="fa-solid fa-star"></i> <?= $row['menu']; ?>
                                                 </button>
                                             </td>
-                                            <td><?= $row['desc'] != NULL ? $row['desc'] : '<center><i style="color:red">NULL</i></center>' ?></td>
+                                            <td><?= $row['description'] != NULL ? $row['description'] : '<center><i style="color:red">NULL</i></center>' ?></td>
                                             <td style="text-align:center">
                                                 <div class="action-table">
                                                     <div style="margin-left: 5px;">
@@ -91,21 +149,21 @@
                                                         <h4 class="modal-title">Update Data</h4>
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                     </div>
-                                                    <form action="" method="POST">
+                                                    <form action="pages/menu/action.php" method="POST">
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="IdKodeMenu">Kode Menu</label>
-                                                                            <input type="text" class="form-control" name="KodeMenu" id="IdKodeMenu" placeholder="Kode Menu ..." value="<?= $row['kdmenu'] ?>" />
+                                                                            <input type="text" class="form-control" name="KodeMenu" id="IdKodeMenu" placeholder="Kode Menu ..." value="<?= $row['kdmenu'] ?>" readonly />
                                                                             <input type="hidden" name="IDUNIQ" value="<?= $row['id'] ?>">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-3">
                                                                         <div class="form-group">
                                                                             <label for="IdOrder">Order</label>
-                                                                            <input type="text" class="form-control" name="Order" id="IdOrder" placeholder="Order ..." value="<?= $row['order'] ?>" />
+                                                                            <input type="text" class="form-control" name="Order" id="IdOrder" placeholder="Order ..." value="<?= $row['sorder'] ?>" readonly />
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-9">
@@ -117,7 +175,7 @@
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="IdDescription">Description </label>
-                                                                            <textarea type="text" class="form-control" name="Description" id="IdDescription" placeholder="Description ..."><?= $row['desc'] ?></textarea>
+                                                                            <textarea type="text" class="form-control" name="Description" id="IdDescription" placeholder="Description ..."><?= $row['description'] ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -141,17 +199,42 @@
                                                         <h4 class="modal-title">Detele Data</h4>
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <h5 class="card-title">Are you sure you want to delete this data?</h5>
-                                                        <code>191204095453.BUP</code>
-                                                        <!-- Name -->
-                                                        <input type="hidden" name="ID" value="4">
-                                                        <!-- End Name -->
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
-                                                        <button type="submit" class="btn btn-danger" name="delete_"><i class="fas fa-check-circle"></i> Yes</button>
-                                                    </div>
+                                                    <form action="pages/menu/action.php" method="POST">
+                                                        <div class="modal-body">
+                                                            <h5 class="card-title">Are you sure you want to delete this data?</h5>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="IdKodeMenu">Kode Menu</label>
+                                                                        <input type="text" class="form-control" name="KodeMenu" id="IdKodeMenu" placeholder="Kode Menu ..." value="<?= $row['kdmenu'] ?>" />
+                                                                        <input type="hidden" name="IDUNIQ" value="<?= $row['id'] ?>">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="IdOrder">Order</label>
+                                                                        <input type="text" class="form-control" name="Order" id="IdOrder" placeholder="Order ..." value="<?= $row['sorder'] ?>" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <div class="form-group">
+                                                                        <label for="IdMenu">Menu</label>
+                                                                        <input type="text" class="form-control" name="Menu" id="IdMenu" placeholder="Menu ..." value="<?= $row['menu'] ?>" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+                                                                        <label for="IdDescription">Description </label>
+                                                                        <textarea type="text" class="form-control" name="Description" id="IdDescription" placeholder="Description ..."><?= $row['description'] ?></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
+                                                            <button type="submit" class="btn btn-danger" name="delete_"><i class="fas fa-check-circle"></i> Yes</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
