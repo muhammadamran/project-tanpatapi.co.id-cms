@@ -2,7 +2,8 @@
 <div id="header" class="header navbar-default">
     <!-- begin navbar-header -->
     <div class="navbar-header">
-        <a href="index.php" class="navbar-brand"><span class="navbar-logo" style="background: <?= $btnColor; ?>;"></span>
+        <!-- <a href="index.php" class="navbar-brand"><span class="navbar-logo" style="background: <?= $btnColor; ?>;"></span> -->
+        <a href="index.php" class="navbar-brand"><span class="navbar-logo"></span>
             <div>
                 <div style="margin-top: 5px;">
                     <b><?= $logoOne; ?></b>

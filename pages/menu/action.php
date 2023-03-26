@@ -32,7 +32,7 @@ if (isset($_POST["update_"])) {
         echo '<script>alert("Update Successfully");location.href = "../../index.php?m=menu&s=index&UpdateSuccess"</script>';
         // echo "<script>window.location.href='index.php?m=menu&s=index?UpdateSuccess=true';</script>";
     } else {
-        echo '<script>alert("Update Successfully");location.href = "../../index.php?m=menu&s=index&UpdateFailed"</script>';
+        echo '<script>alert("Update Unsuccessfully");location.href = "../../index.php?m=menu&s=index&UpdateFailed"</script>';
         // echo "<script>window.location.href='index.php?m=menu&s=index?UpdateFailed=true';</script>";
     }
 }
@@ -61,6 +61,6 @@ if (isset($_POST["delete_"])) {
     if ($query) {
         echo '<script>alert("Delete Successfully");location.href = "../../index.php?m=menu&s=index&DeleteSuccess"</script>';
     } else {
-        echo '<script>alert("Delete Successfully");location.href = "../../index.php?m=menu&s=index&DeleteFailed"</script>';
+        echo '<script>alert("Delete Unsuccessfully");location.href = "../../index.php?m=menu&s=index&DeleteFailed"</script>';
     }
 }

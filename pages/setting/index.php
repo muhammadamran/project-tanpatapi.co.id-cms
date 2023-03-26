@@ -242,7 +242,7 @@
                                     <?php } ?>
                                 <?php } else { ?>
                                     <tr>
-                                        <td colspan="6">
+                                        <td colspan="8">
                                             <div class="page-table-not-found">
                                                 <div>
                                                     <img src="assets/apps/svg/search-animate.svg" style="width:300px" alt="">
