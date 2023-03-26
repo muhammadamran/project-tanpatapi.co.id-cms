@@ -61,6 +61,12 @@
     align-items: center;
 }
 
+.td-table-field {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 /* Modal Color */
 /* Save */
 /* Update */

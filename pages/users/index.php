@@ -156,7 +156,8 @@
                                                             <div class="card-content">
                                                                 <div class="card-body">
                                                                     <!-- Auto resize image file uploader -->
-                                                                    <input type="file" name="photo" class="image-resize-filepond">
+                                                                    <!-- <input type="file" name="upload" class="image-resize-filepond"> -->
+                                                                    <input type="file" name="upload" class="form-control">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -178,20 +179,20 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="IdFirst Name">First Name <font style="color:red">*</font></label>
-                                                            <input type="text" class="form-control" name="First Name" id="IdFirst Name" placeholder="First Name ..." required />
+                                                            <label for="IdFirstName">First Name <font style="color:red">*</font></label>
+                                                            <input type="text" class="form-control" name="FirstName" id="IdFirstName" placeholder="First Name ..." required />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="IdMiddle Name">Middle Name</label>
-                                                            <input type="text" class="form-control" name="Middle Name" id="IdMiddle Name" placeholder="Middle Name ..." />
+                                                            <label for="IdMiddleName">Middle Name</label>
+                                                            <input type="text" class="form-control" name="MiddleName" id="IdMiddleName" placeholder="Middle Name ..." />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="IdLast Name">Last Name <font style="color:red">*</font></label>
-                                                            <input type="text" class="form-control" name="Last Name" id="IdLast Name" placeholder="Last Name ..." required />
+                                                            <label for="IdLastName">Last Name <font style="color:red">*</font></label>
+                                                            <input type="text" class="form-control" name="LastName" id="IdLastName" placeholder="Last Name ..." required />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -294,7 +295,7 @@
                                             <td><?= $row['first']; ?> <?= $row['middle']; ?> <?= $row['last']; ?></td>
                                             <td><?= $row['role']; ?></td>
                                             <td>
-                                                <div class="action-table">
+                                                <div class="td-table-field">
                                                     <div>
                                                         <i class="fa-solid fa-id-card-clip" id="icon-in-table"></i>
                                                     </div>
