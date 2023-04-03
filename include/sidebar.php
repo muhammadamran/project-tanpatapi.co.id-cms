@@ -97,7 +97,7 @@
                 </a>
             </li>
             <li class="nav-header">Point of Sale</li>
-            <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'ch' ? 'active' : '' ?>">
+            <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'pos' ? 'active' : '' ?>">
                 <a href="index.php?m=pos&s=index">
                     <i class="fa-solid fa-cash-register"></i>
                     <span>Pos</span>
