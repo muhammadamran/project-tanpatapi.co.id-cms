@@ -90,6 +90,128 @@
                         </div>
                     <?php } ?>
                     <!-- End -->
+                    <div style="margin-bottom: 15px;">
+                        <!-- Add -->
+                        <a href="#AddData" class="btn btn-secondary" data-toggle="modal" title="Add Data"><i class="fa-solid fa-circle-plus"></i>
+                            <font class="f-action">Add Data</font>
+                        </a>
+                        <div class="modal fade" id="AddData">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header for-secondary">
+                                        <h4 class="modal-title">Add Data</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    </div>
+                                    <form action="pages/users/action.php" method="POST" enctype="multipart/form-data">
+                                        <div class="modal-body">
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                <h5 class="card-title">Upload Photo</h5>
+                                                            </div>
+                                                            <div class="card-content">
+                                                                <div class="card-body">
+                                                                    <!-- Auto resize image file uploader -->
+                                                                    <!-- <input type="file" name="upload" class="image-resize-filepond"> -->
+                                                                    <input type="file" name="upload" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <hr>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="IdEmail">Email <font style="color:red">*</font></label>
+                                                            <input type="email" class="form-control" name="Email" id="IdEmail" placeholder="Email ..." required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="IdRole">Role</label>
+                                                            <input type="text" class="form-control" name="Role" id="IdRole" placeholder="Role ..." value="admin" readonly />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="IdFirstName">First Name <font style="color:red">*</font></label>
+                                                            <input type="text" class="form-control" name="FirstName" id="IdFirstName" placeholder="First Name ..." required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="IdMiddleName">Middle Name</label>
+                                                            <input type="text" class="form-control" name="MiddleName" id="IdMiddleName" placeholder="Middle Name ..." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="IdLastName">Last Name <font style="color:red">*</font></label>
+                                                            <input type="text" class="form-control" name="LastName" id="IdLastName" placeholder="Last Name ..." required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="IdGender">Gender <font style="color:red">*</font></label>
+                                                            <select class="form-control" name="Gender" id="IdGender" placeholder="Last Name ..." required>
+                                                                <option value="">Select Gender</option>
+                                                                <option value="Pria">Pria</option>
+                                                                <option value="Wanita">Wanita</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="IdTelepone">Telepone</label>
+                                                            <input type="text" class="form-control" name="Telepone" id="IdTelepone" placeholder="Telepone ..." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="IdDepartment">Department</label>
+                                                            <input type="text" class="form-control" name="Department" id="IdDepartment" placeholder="Department ..." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="IdJabatan">Jabatan</label>
+                                                            <input type="text" class="form-control" name="Jabatan" id="IdJabatan" placeholder="Jabatan ..." />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="IdJob">Job <font style="color:red">*</font></label>
+                                                            <input type="text" class="form-control" name="Job" id="IdJob" placeholder="Job ..." required />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="IdAddress">Address <font style="color:red">*</font> </label>
+                                                            <textarea type="text" class="form-control" name="Address" id="IdAddress" placeholder="Address ..." required></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <hr>
+                                                        <div class="form-group">
+                                                            <i> Note: <font style="color:red">(*) Required Column</font></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
+                                            <button type="submit" name="add_" class="btn btn-secondary"><i class="fas fa-save"></i> Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+                    </div>
                     <div class="table-responsive">
                         <table id="TableDefault_L" class="table table-striped table-bordered table-td-valign-middle">
                             <thead>
@@ -99,6 +221,7 @@
                                     <th class="text-nowrap">Kode Menu</th>
                                     <th class="text-nowrap">Order</th>
                                     <th class="text-nowrap">Menu</th>
+                                    <th class="text-nowrap">File</th>
                                     <th class="text-nowrap">Desc</th>
                                     <th class="text-nowrap">Action</th>
                                 </tr>
@@ -122,6 +245,11 @@
                                             <td>
                                                 <button class="btn btn-dark-custom">
                                                     <i class="fa-solid fa-star"></i> <?= $row['menu']; ?>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-dark-custom">
+                                                    <i class="fa-solid fa-file"></i> <?= $row['file']; ?>
                                                 </button>
                                             </td>
                                             <td><?= $row['description'] != NULL ? $row['description'] : '<center><i style="color:red">NULL</i></center>' ?></td>
