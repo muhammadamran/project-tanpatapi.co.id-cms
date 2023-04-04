@@ -200,7 +200,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="IdGender">Gender <font style="color:red">*</font></label>
-                                                            <select class="form-control" name="Gender" id="IdGender" placeholder="Last Name ..." required>
+                                                            <select class="form-control" name="Gender" id="IdGender" required>
                                                                 <option value="">Select Gender</option>
                                                                 <option value="Pria">Pria</option>
                                                                 <option value="Wanita">Wanita</option>
@@ -389,33 +389,80 @@
                                                         <h4 class="modal-title">Update Data</h4>
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                     </div>
-                                                    <form action="pages/menu/action.php" method="POST">
+                                                    <form action="pages/users/action.php" method="POST">
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IdEmail">Email </label>
+                                                                            <input type="email" class="form-control" name="Email" id="IdEmail" placeholder="Email ..." value="<?= $row['email']; ?>" readonly />
+                                                                            <input type="hidden" name="ID" id="ID" value="<?= $row['id']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IdRole">Role</label>
+                                                                            <input type="text" class="form-control" name="Role" id="IdRole" placeholder="Role ..." value="admin" readonly />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="IdFirstName">First Name </label>
+                                                                            <input type="text" class="form-control" name="FirstName" id="IdFirstName" placeholder="First Name ..." value="<?= $row['first']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="IdMiddleName">Middle Name</label>
+                                                                            <input type="text" class="form-control" name="MiddleName" id="IdMiddleName" placeholder="Middle Name ..." value="<?= $row['middle']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="IdLastName">Last Name </label>
+                                                                            <input type="text" class="form-control" name="LastName" id="IdLastName" placeholder="Last Name ..." value="<?= $row['last']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IdGender">Gender </label>
+                                                                            <select class="form-control" name="Gender" id="IdGender" required>
+                                                                                <option value="<?= $row['jk']; ?>"><?= $row['jk']; ?></option>
+                                                                                <option value="">Select Gender</option>
+                                                                                <option value="Pria">Pria</option>
+                                                                                <option value="Wanita">Wanita</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IdTelepone">Telepone</label>
+                                                                            <input type="text" class="form-control" name="Telepone" id="IdTelepone" placeholder="Telepone ..." value="<?= $row['telp']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="IdDepartment">Department</label>
+                                                                            <input type="text" class="form-control" name="Department" id="IdDepartment" placeholder="Department ..." value="<?= $row['department']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="IdJabatan">Jabatan</label>
+                                                                            <input type="text" class="form-control" name="Jabatan" id="IdJabatan" placeholder="Jabatan ..." value="<?= $row['jabatan']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="IdJob">Job </label>
+                                                                            <input type="text" class="form-control" name="Job" id="IdJob" placeholder="Job ..." value="<?= $row['job']; ?>" />
+                                                                        </div>
+                                                                    </div>
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
-                                                                            <label for="IdKodeMenu">Kode Menu</label>
-                                                                            <input type="text" class="form-control" name="KodeMenu" id="IdKodeMenu" placeholder="Kode Menu ..." value="<?= $row['kdmenu'] ?>" readonly />
-                                                                            <input type="hidden" name="IDUNIQ" value="<?= $row['id'] ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <div class="form-group">
-                                                                            <label for="IdOrder">Order</label>
-                                                                            <input type="text" class="form-control" name="Order" id="IdOrder" placeholder="Order ..." value="<?= $row['sorder'] ?>" readonly />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-9">
-                                                                        <div class="form-group">
-                                                                            <label for="IdMenu">Menu</label>
-                                                                            <input type="text" class="form-control" name="Menu" id="IdMenu" placeholder="Menu ..." value="<?= $row['menu'] ?>" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <label for="IdDescription">Description </label>
-                                                                            <textarea type="text" class="form-control" name="Description" id="IdDescription" placeholder="Description ..."><?= $row['description'] ?></textarea>
+                                                                            <label for="IdAddress">Address </label>
+                                                                            <textarea type="text" class="form-control" name="Address" id="IdAddress" placeholder="Address ..."><?= $row['address']; ?></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -439,36 +486,86 @@
                                                         <h4 class="modal-title">Detele Data</h4>
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                     </div>
-                                                    <form action="pages/menu/action.php" method="POST">
+                                                    <form action="pages/users/action.php" method="POST">
                                                         <div class="modal-body">
                                                             <h5 class="card-title">Are you sure you want to delete this data?</h5>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label for="IdKodeMenu">Kode Menu</label>
-                                                                        <input type="text" class="form-control" name="KodeMenu" id="IdKodeMenu" placeholder="Kode Menu ..." value="<?= $row['kdmenu'] ?>" />
-                                                                        <input type="hidden" name="IDUNIQ" value="<?= $row['id'] ?>">
+
+                                                            <fieldset>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IdEmail">Email </label>
+                                                                            <input type="email" class="form-control" name="Email" id="IdEmail" placeholder="Email ..." value="<?= $row['email']; ?>" readonly />
+                                                                            <input type="hidden" name="ID" id="ID" value="<?= $row['id']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IdRole">Role</label>
+                                                                            <input type="text" class="form-control" name="Role" id="IdRole" placeholder="Role ..." value="admin" readonly />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="IdFirstName">First Name </label>
+                                                                            <input type="text" class="form-control" name="FirstName" id="IdFirstName" placeholder="First Name ..." value="<?= $row['first']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="IdMiddleName">Middle Name</label>
+                                                                            <input type="text" class="form-control" name="MiddleName" id="IdMiddleName" placeholder="Middle Name ..." value="<?= $row['middle']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="IdLastName">Last Name </label>
+                                                                            <input type="text" class="form-control" name="LastName" id="IdLastName" placeholder="Last Name ..." value="<?= $row['last']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IdGender">Gender </label>
+                                                                            <select class="form-control" name="Gender" id="IdGender" required>
+                                                                                <option value="<?= $row['jk']; ?>"><?= $row['jk']; ?></option>
+                                                                                <option value="">Select Gender</option>
+                                                                                <option value="Pria">Pria</option>
+                                                                                <option value="Wanita">Wanita</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IdTelepone">Telepone</label>
+                                                                            <input type="text" class="form-control" name="Telepone" id="IdTelepone" placeholder="Telepone ..." value="<?= $row['telp']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="IdDepartment">Department</label>
+                                                                            <input type="text" class="form-control" name="Department" id="IdDepartment" placeholder="Department ..." value="<?= $row['department']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="IdJabatan">Jabatan</label>
+                                                                            <input type="text" class="form-control" name="Jabatan" id="IdJabatan" placeholder="Jabatan ..." value="<?= $row['jabatan']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="IdJob">Job </label>
+                                                                            <input type="text" class="form-control" name="Job" id="IdJob" placeholder="Job ..." value="<?= $row['job']; ?>" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label for="IdAddress">Address </label>
+                                                                            <textarea type="text" class="form-control" name="Address" id="IdAddress" placeholder="Address ..."><?= $row['address']; ?></textarea>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label for="IdOrder">Order</label>
-                                                                        <input type="text" class="form-control" name="Order" id="IdOrder" placeholder="Order ..." value="<?= $row['sorder'] ?>" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                    <div class="form-group">
-                                                                        <label for="IdMenu">Menu</label>
-                                                                        <input type="text" class="form-control" name="Menu" id="IdMenu" placeholder="Menu ..." value="<?= $row['menu'] ?>" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label for="IdDescription">Description </label>
-                                                                        <textarea type="text" class="form-control" name="Description" id="IdDescription" placeholder="Description ..."><?= $row['description'] ?></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            </fieldset>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>

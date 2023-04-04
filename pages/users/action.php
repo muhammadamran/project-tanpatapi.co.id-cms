@@ -94,57 +94,27 @@ if (isset($_POST["add_"])) {
     }
 }
 
-// RESET
-if (isset($_POST["reset_"])) {
-
-    $IDUNIQ             = $_POST['IDUNIQ'];
-    $NAME               = $_POST['NAME'];
-    $NewPassword        = $_POST['NewPassword'];
-    $ConfirmPassword    = $_POST['ConfirmPassword'];
-
-    // FOR LOG
-    $InputUsername        = $_SESSION['username'];
-    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
-    $InputModul           = 'Users';
-    $InputDescription     = $InputName . " Reset Password: " .  $NAME . ", Save Data as Log Users";
-    $InputAction          = 'Reset Password';
-    $InputDate            = date('Y-m-d h:m:i');
-
-    if ($NewPassword == $ConfirmPassword) {
-
-        $Generate = md5($NewPassword);
-
-        $query = $db->query("INSERT INTO tb_log
-                        (id,username,date_log,module,activity,crud)
-                        VALUES
-                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
-
-        $query .= $db->query("UPDATE tb_users SET password='$Generate'
-                                              WHERE id='$IDUNIQ'");
-        if ($query) {
-            echo '<script>alert("Reset Password Successfully");location.href = "../../index.php?m=users&s=index&ResetPasswordSuccess"</script>';
-        } else {
-            echo '<script>alert("Reset Password Unsuccessfully");location.href = "../../index.php?m=users&s=index&ResetPasswordFailed"</script>';
-        }
-    } else {
-        echo '<script>alert("Password Not Match!");location.href = "../../index.php?m=users&s=index&ResetPasswordNM"</script>';
-    }
-}
-
 // UPDATE
 if (isset($_POST["update_"])) {
 
-    $IDUNIQ         = $_POST['IDUNIQ'];
-    $KodeMenu       = $_POST['KodeMenu'];
-    $Order          = $_POST['Order'];
-    $Menu           = $_POST['Menu'];
-    $Description    = $_POST['Description'];
+    $ID         = $_POST['ID'];
+    $FirstName  = $_POST['FirstName'];
+    $MiddleName = $_POST['MiddleName'];
+    $LastName   = $_POST['LastName'];
+    $Gender     = $_POST['Gender'];
+    $Telepone   = $_POST['Telepone'];
+    $Department = $_POST['Department'];
+    $Jabatan    = $_POST['Jabatan'];
+    $Job        = $_POST['Job'];
+    $Address    = $_POST['Address'];
+
 
     // FOR LOG
+    $NAME                 = $_POST['FirstName'] . '' . $_POST['MiddleName'] . '' . $_POST['LastName'];
     $InputUsername        = $_SESSION['username'];
     $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
-    $InputModul           = 'Menu';
-    $InputDescription     = $InputName . " Update Data: " .  $Menu . ", Save Data as Log Menu";
+    $InputModul           = 'Users';
+    $InputDescription     = $InputName . " Update: " .  $NAME . ", Save Data as Log Users";
     $InputAction          = 'Update';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -153,31 +123,36 @@ if (isset($_POST["update_"])) {
                         VALUES
                         ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
 
-    $query .= $db->query("UPDATE tb_menu SET kdmenu='$KodeMenu',
-                                             sorder='$Order',
-                                             menu='$Menu',
-                                             description='$Description'
-                                             WHERE id='$IDUNIQ'");
+    $query .= $db->query("UPDATE tb_users SET first='$FirstName',
+                                              middle='$MiddleName',
+                                              last='$LastName',
+                                              telp='$Telepone',
+                                              address='$Address',
+                                              jk='$Gender',
+                                              department='$Department',
+                                              jabatan='$Jabatan',
+                                              job='$Job',
+                                              modified_by='$InputUsername',
+                                              modified_date='$InputDate'
+                                              WHERE id='$ID'");
     if ($query) {
-        echo '<script>alert("Update Successfully");location.href = "../../index.php?m=menu&s=index&UpdateSuccess"</script>';
-        // echo "<script>window.location.href='index.php?m=menu&s=index?UpdateSuccess=true';</script>";
+        echo '<script>alert("Add Successfully");location.href = "../../index.php?m=users&s=index&AddSuccess"</script>';
     } else {
-        echo '<script>alert("Update Unsuccessfully");location.href = "../../index.php?m=menu&s=index&UpdateFailed"</script>';
-        // echo "<script>window.location.href='index.php?m=menu&s=index?UpdateFailed=true';</script>";
+        echo '<script>alert("Add Unsuccessfully");location.href = "../../index.php?m=users&s=index&AddFailed"</script>';
     }
 }
 
 // DELETE
 if (isset($_POST["delete_"])) {
 
-    $IDUNIQ     = $_POST['IDUNIQ'];
-    $Menu       = $_POST['KodeMenu'] . '/' . $_POST['Order'] . '/' . $_POST['Menu'];
+    $ID         = $_POST['ID'];
+    $users      = $_POST['FirstName'] . ' ' . $_POST['MiddleName'] . ' ' . $_POST['LastName'];
 
     // FOR LOG
     $InputUsername        = $_SESSION['username'];
     $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
-    $InputModul           = 'Menu';
-    $InputDescription     = $InputName . " Delete Data: " .  $Menu . ", Save Data as Log Menu";
+    $InputModul           = 'Users';
+    $InputDescription     = $InputName . " Delete Data: " .  $users . ", Save Data as Log users";
     $InputAction          = 'Delete';
     $InputDate            = date('Y-m-d h:m:i');
 
@@ -186,11 +161,11 @@ if (isset($_POST["delete_"])) {
                         VALUES
                         ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
 
-    $query .= $db->query("DELETE FROM tb_menu WHERE id='$IDUNIQ'");
+    $query .= $db->query("DELETE FROM tb_users WHERE id='$ID'");
 
     if ($query) {
-        echo '<script>alert("Delete Successfully");location.href = "../../index.php?m=menu&s=index&DeleteSuccess"</script>';
+        echo '<script>alert("Delete Successfully");location.href = "../../index.php?m=users&s=index&DeleteSuccess"</script>';
     } else {
-        echo '<script>alert("Delete Unsuccessfully");location.href = "../../index.php?m=menu&s=index&DeleteFailed"</script>';
+        echo '<script>alert("Delete Unsuccessfully");location.href = "../../index.php?m=users&s=index&DeleteFailed"</script>';
     }
 }
