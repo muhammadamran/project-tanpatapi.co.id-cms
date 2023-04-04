@@ -312,7 +312,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td><?= $row['jk'] != NULL ? $row['jk'] : '<center><i style="color:red">NULL</i></center>' ?></td>
+                                            <td style="text-align:center"><?= $row['jk'] != NULL ? $row['jk'] : '<center><i style="color:red">NULL</i></center>' ?></td>
                                             <td style="text-align:center">
                                                 <?php if ($row['username'] != $_SESSION['username']) { ?>
                                                     <div class="action-table">

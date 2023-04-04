@@ -3,7 +3,6 @@ session_start();
 include '../../config/conf.php';
 // ADD
 if (isset($_POST["add_"])) {
-
     $Email      = $_POST['Email'];
     $md5        = 'changeme';
     $Password   = md5($md5);
@@ -17,17 +16,38 @@ if (isset($_POST["add_"])) {
     $Jabatan    = $_POST['Jabatan'];
     $Job        = $_POST['Job'];
     $Address    = $_POST['Address'];
+    $profile    = $_FILES['upload']['name'];
+
+    if ($profile == NULL) {
+        if ($Gender == 'Pria') {
+            $fileUpload = 'male.jpg';
+        } else if ($Gender == 'Wanita') {
+            $fileUpload = 'female.jpg';
+        }
+    } else {
+        $fileUpload    = $_FILES['upload']['name'];
+    }
 
     // Photo
-    $filename = date('d_F_Y') . '_' . date('H_i') . '_' . $FirstName . '_' . $_FILES['upload']['name'];
+    $filename = date('d_F_Y') . '_' . date('H_i') . '_' . $FirstName . '_' . $fileUpload;
 
     $tmpname = $_FILES['upload']['tmp_name'];
     $sizename = $_FILES['upload']['size'];
     $exp = explode('.', $filename);
     $ext = end($exp);
     $wdot = substr($filename, 0, -4);
-    $uniq_file =  $_FILES['upload']['name'];
-    $newname =  date('d_F_Y') . '_' . date('H_i') . '_' . $FirstName . '_' . $_FILES['upload']['name'];
+    $uniq_file =  $fileUpload;
+
+    if ($profile == NULL) {
+        if ($Gender == 'Pria') {
+            $newname = 'male.jpg';
+        } else if ($Gender == 'Wanita') {
+            $newname = 'female.jpg';
+        }
+    } else {
+        $newname =  date('d_F_Y') . '_' . date('H_i') . '_' . $FirstName . '_' . $fileUpload;
+    }
+
     $config['upload_path'] = '../../assets/apps/user/';
     $config['allowed_types'] = "PNG|JPG|JPEG";
     $config['max_size'] = '2000000';
