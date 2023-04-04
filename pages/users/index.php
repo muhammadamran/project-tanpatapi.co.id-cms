@@ -1,22 +1,24 @@
 <title>Users <?= $title; ?></title>
 <!-- begin #content -->
 <div id="content" class="content">
-    <!-- begin breadcrumb -->
-    <ol class="breadcrumb float-xl-right">
-        <li class="breadcrumb-item active">Users</li>
-    </ol>
-    <!-- end breadcrumb -->
-    <!-- begin page-header -->
-    <h1 class="page-header mb-3">
-        <div class="page-header-c">
-            <div class="page-header-icon">
-                <i class="fa-solid fa-users-gear"></i>
-            </div>
-            <div class="page-header-text">
-                Users
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h4>Users</h4>
+                </div>
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb">
+                        <div style="font-size: 12px;display: flex;">
+                            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Users</li>
+                        </div>
+                    </ol>
+                </nav>
             </div>
         </div>
-    </h1>
+    </div>
     <!-- end page-header -->
     <div class="line-page"></div>
     <div class="row">

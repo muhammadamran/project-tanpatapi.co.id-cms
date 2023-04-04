@@ -10,7 +10,7 @@
     /* padding: 10px 10px 10px 10px; */
     /* border-radius: 5px; */
     /* box-shadow: 2px 2px 1px #333333; */
-    color: #00acac;
+    color: #fff;
 
     margin-right: 5px;
     background: #2d353c;
@@ -31,6 +31,51 @@
     display: grid;
     justify-content: center;
     align-items: center;
+}
+
+/* PAGE HEADER CUSTOM */
+.page-header {
+    background-color: #fff;
+    border-radius: 3px;
+    /* -webkit-box-shadow: 0 0 28px rgba(0,0,0,.08); */
+    /* box-shadow: 0 0 28px rgba(0,0,0,.08); */
+    margin-bottom: 12px;
+    padding: 20px 20px 10px 20px;
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+
+.page-header .breadcrumb {
+    padding: 0;
+    margin: 0;
+}
+.breadcrumb {
+    background: 0 0;
+    padding: 0.75rem 0;
+}
+.breadcrumb {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+ol, ul {
+    margin: 0;
+    list-style: none;
+}
+ol, p, ul {
+    padding: 0;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
 .font-not-found {
