@@ -78,8 +78,17 @@ dl, ol, ul {
     margin-bottom: 1rem;
 }
 
+.alert.alert-update {
+    color: #ffffff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    border-radius: 2px;
+    font-size: 14px;
+}
+
 .icon-page-sidebar {
-    background: linear-gradient(45deg, #242b30, #242b30);
+    /* background: linear-gradient(45deg, #242b30, #242b30); */
+    background: linear-gradient(45deg, #353f46, #41464a);
     padding: 10px;
     border-radius: 5px;
     color: #fff;
