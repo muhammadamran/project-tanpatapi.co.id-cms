@@ -78,6 +78,14 @@ dl, ol, ul {
     margin-bottom: 1rem;
 }
 
+.icon-page-sidebar {
+    background: linear-gradient(45deg, #242b30, #242b30);
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    box-shadow: 0 5px 25px rgb(80 80 80 / 30%);
+}
+
 .font-not-found {
     font-size: 20px;
     font-weight: 700;

@@ -122,7 +122,7 @@
                 <?php } else { ?>
                     <img src="assets/apps/user/<?= $_SESSION['photo'] ?>" alt="Profile" />
                 <?php } ?>
-                <b class="caret"></b>
+                <b class="caret" style="margin-top: 7px;"></b>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="javascript:;" class="dropdown-item">Edit Profile</a>

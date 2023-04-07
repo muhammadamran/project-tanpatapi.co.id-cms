@@ -29,13 +29,13 @@
             <!-- begin nav-tabs -->
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=1" class="nav-link active">
+                    <a href="index.php?m=content&s=1" class="nav-link ">
                         <span class="d-sm-none">Tab 1</span>
                         <span class="d-sm-block d-none">Tanpatapi’s Signature</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=1-menu" class="nav-link">
+                    <a href="index.php?m=content&s=1-menu" class="nav-link active">
                         <span class="d-sm-none">Tab 2</span>
                         <span class="d-sm-block d-none">Manage Menu</span>
                     </a>
@@ -124,6 +124,25 @@
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="card">
+                                                                            <div class="card-header">
+                                                                                <h5 class="card-title">
+                                                                                    Upload Photo <font style="color:red">*</font>
+                                                                                </h5>
+                                                                            </div>
+                                                                            <div class="card-content">
+                                                                                <div class="card-body">
+                                                                                    <!-- Auto resize image file uploader -->
+                                                                                    <!-- <input type="file" name="upload" class="image-resize-filepond"> -->
+                                                                                    <input type="file" name="upload" class="form-control" required>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <hr>
+                                                                    </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
                                                                             <label for="IdTitle">Title <font style="color:red">*</font></label>
@@ -132,8 +151,8 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="IdSubtitle">Subtitle <font style="color:red">*</font></label>
-                                                                            <input type="text" class="form-control" name="Subtitle" id="IdSubtitle" placeholder="Subtitle ..." required />
+                                                                            <label for="IdHarga">Harga <font style="color:red">*</font></label>
+                                                                            <input type="number" class="form-control" name="Harga" id="IdHarga" placeholder="Harga ..." required />
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12">
@@ -153,7 +172,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                            <button type="submit" name="add_signature_" class="btn btn-secondary"><i class="fas fa-save"></i> Add</button>
+                                                            <button type="submit" name="add_signature_menu_" class="btn btn-secondary"><i class="fas fa-save"></i> Add</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -166,15 +185,16 @@
                                             <thead>
                                                 <tr style="text-transform: uppercase;text-align:center">
                                                     <th width="1%" data-orderable="false"></th>
+                                                    <th width="1%" data-orderable="false"></th>
                                                     <th class="text-nowrap">Title</th>
-                                                    <th class="text-nowrap">Subtitle</th>
                                                     <th class="text-nowrap">Description</th>
+                                                    <th class="text-nowrap">Harga</th>
                                                     <th class="text-nowrap">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $dataTable = $db->query("SELECT * FROM tb_signature ORDER BY id DESC");
+                                                $dataTable = $db->query("SELECT * FROM tb_signature_menu ORDER BY id DESC");
                                                 if (mysqli_num_rows($dataTable) > 0) {
                                                     $no = 0;
                                                     while ($row = mysqli_fetch_array($dataTable)) {
@@ -182,12 +202,20 @@
                                                 ?>
                                                         <tr class="odd gradeX">
                                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
+                                                            <td width="1%" class="with-img">
+                                                                <img src="assets/menu/signature/<?= $row['pictures'] ?>" class="img-rounded height-50" />
+                                                            </td>
                                                             <td><?= $row['title']; ?></td>
-                                                            <td><?= $row['subtitle']; ?></td>
                                                             <td><?= $row['description']; ?></td>
+                                                            <td><?= hargaRupiah($row['prices']); ?></td>
                                                             <!-- <td style="text-align:center"><?= $row['jk'] != NULL ? $row['jk'] : '<center><i style="color:red">NULL</i></center>' ?></td> -->
                                                             <td style="text-align:center">
                                                                 <div class="action-table">
+                                                                    <div style="margin-left: 5px;">
+                                                                        <a href="#changePhoto<?= $row['id'] ?>" class="btn btn-info" data-toggle="modal" title="Change Photo"><i class="fa-solid fa-image"></i>
+                                                                            <font class="f-action">Photo</font>
+                                                                        </a>
+                                                                    </div>
                                                                     <div style="margin-left: 5px;">
                                                                         <a href="#updateData<?= $row['id'] ?>" class="btn btn-success" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i>
                                                                             <font class="f-action">Update</font>
@@ -201,6 +229,54 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
+
+                                                        <!-- Change Photo -->
+                                                        <div class="modal fade" id="changePhoto<?= $row['id'] ?>">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header for-info">
+                                                                        <h4 class="modal-title">Change Photo</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                    </div>
+                                                                    <form action="pages/content/action.php" method="POST">
+                                                                        <div class="modal-body">
+                                                                            <fieldset>
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12">
+                                                                                        <div class="card">
+                                                                                            <div class="card-header">
+                                                                                                <div style="display: grid;justify-content:center">
+                                                                                                    <img src="assets/menu/signature/<?= $row['pictures'] ?>" class="img-rounded height-250" />
+                                                                                                </div>
+                                                                                                <hr>
+                                                                                                <h5 class="card-title">
+                                                                                                    Upload New Photo
+                                                                                                </h5>
+                                                                                            </div>
+                                                                                            <div class="card-content">
+                                                                                                <div class="card-body">
+                                                                                                    <!-- Auto resize image file uploader -->
+                                                                                                    <!-- <input type="file" name="upload" class="image-resize-filepond"> -->
+                                                                                                    <input type="file" name="upload" class="form-control" required>
+                                                                                                    <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
+                                                                                                    <input type="hidden" name="Harga" id="Harga" value="<?= $row['prices']; ?>" />
+                                                                                                    <input type="hidden" name="ID" id="ID" value="<?= $row['id']; ?>" />
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </fieldset>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
+                                                                            <button type="submit" name="upload_signature_menu_" class="btn btn-info"><i class="fas fa-edit"></i> Photo</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Update Data -->
 
                                                         <!-- Update Data -->
                                                         <div class="modal fade" id="updateData<?= $row['id'] ?>">
@@ -223,8 +299,8 @@
                                                                                     </div>
                                                                                     <div class="col-md-6">
                                                                                         <div class="form-group">
-                                                                                            <label for="IdSubtitle">Subtitle </label>
-                                                                                            <input type="text" class="form-control" name="Subtitle" id="IdSubtitle" placeholder="Subtitle ..." value="<?= $row['subtitle']; ?>" />
+                                                                                            <label for="IdHarga">Harga </label>
+                                                                                            <input type="number" class="form-control" name="Harga" id="IdHarga" placeholder="Harga ..." value="<?= $row['prices']; ?>" />
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-12">
@@ -238,7 +314,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                                            <button type="submit" name="update_signature_" class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
+                                                                            <button type="submit" name="update_signature_menu_" class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>

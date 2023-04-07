@@ -2,21 +2,23 @@
 <!-- begin #content -->
 <div id="content" class="content">
     <!-- begin breadcrumb -->
-    <ol class="breadcrumb float-xl-right">
-        <li class="breadcrumb-item active">Menu</li>
-    </ol>
-    <!-- end breadcrumb -->
-    <!-- begin page-header -->
-    <h1 class="page-header mb-3">
-        <div class="page-header-c">
-            <div class="page-header-icon">
-                <i class="fa-solid fa-folder-plus"></i>
-            </div>
-            <div class="page-header-text">
-                Menu
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h4>Menu</h4>
+                </div>
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb">
+                        <div style="font-size: 12px;display: flex;">
+                            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Menu</li>
+                        </div>
+                    </ol>
+                </nav>
             </div>
         </div>
-    </h1>
+    </div>
     <!-- end page-header -->
     <div class="line-page"></div>
     <div class="row">
@@ -90,11 +92,11 @@
                         </div>
                     <?php } ?>
                     <!-- End -->
-                    <div style="margin-bottom: 15px;">
+                    <div style="margin-bottom: 0px;">
                         <!-- Add -->
-                        <a href="#AddData" class="btn btn-secondary" data-toggle="modal" title="Add Data"><i class="fa-solid fa-circle-plus"></i>
+                        <!-- <a href="#AddData" class="btn btn-secondary" data-toggle="modal" title="Add Data"><i class="fa-solid fa-circle-plus"></i>
                             <font class="f-action">Add Data</font>
-                        </a>
+                        </a> -->
                         <div class="modal fade" id="AddData">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -102,95 +104,44 @@
                                         <h4 class="modal-title">Add Data</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                     </div>
-                                    <form action="pages/users/action.php" method="POST" enctype="multipart/form-data">
+                                    <form action="pages/menu/action.php" method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
                                             <fieldset>
                                                 <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="card">
-                                                            <div class="card-header">
-                                                                <h5 class="card-title">Upload Photo</h5>
-                                                            </div>
-                                                            <div class="card-content">
-                                                                <div class="card-body">
-                                                                    <!-- Auto resize image file uploader -->
-                                                                    <!-- <input type="file" name="upload" class="image-resize-filepond"> -->
-                                                                    <input type="file" name="upload" class="form-control">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <hr>
-                                                    </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="IdEmail">Email <font style="color:red">*</font></label>
-                                                            <input type="email" class="form-control" name="Email" id="IdEmail" placeholder="Email ..." required />
+                                                            <label for="IdKodeMenu">Kode Menu</label>
+                                                            <?php
+                                                            $dataMenu  = $db->query("SELECT sorder FROM tb_menu ORDER BY sorder DESC");
+                                                            $RdataMenu = mysqli_fetch_array($dataMenu);
+                                                            $CdataMenu = $RdataMenu['sorder'] + 1;
+                                                            ?>
+                                                            <input type="text" class="form-control" name="KodeMenu" id="IdKodeMenu" placeholder="Kode Menu ..." value="KDMENU<?= $CdataMenu; ?>" readonly />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="IdRole">Role</label>
-                                                            <input type="text" class="form-control" name="Role" id="IdRole" placeholder="Role ..." value="admin" readonly />
+                                                            <label for="IdOrder">Order</label>
+                                                            <input type="text" class="form-control" name="Order" id="IdOrder" placeholder="Order ..." value="<?= $CdataMenu ?>" readonly />
+                                                            <input type="hidden" name="FilePHP" id="IdFilePHP" value="<?= $CdataMenu ?>.php" readonly />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="IdFirstName">First Name <font style="color:red">*</font></label>
-                                                            <input type="text" class="form-control" name="FirstName" id="IdFirstName" placeholder="First Name ..." required />
+                                                            <label for="IdFile">File <font style="color:red">*</font></label>
+                                                            <input type="text" class="form-control" name="File" id="IdFile" placeholder="File ..." required />
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-8">
                                                         <div class="form-group">
-                                                            <label for="IdMiddleName">Middle Name</label>
-                                                            <input type="text" class="form-control" name="MiddleName" id="IdMiddleName" placeholder="Middle Name ..." />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="IdLastName">Last Name <font style="color:red">*</font></label>
-                                                            <input type="text" class="form-control" name="LastName" id="IdLastName" placeholder="Last Name ..." required />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="IdGender">Gender <font style="color:red">*</font></label>
-                                                            <select class="form-control" name="Gender" id="IdGender" placeholder="Last Name ..." required>
-                                                                <option value="">Select Gender</option>
-                                                                <option value="Pria">Pria</option>
-                                                                <option value="Wanita">Wanita</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="IdTelepone">Telepone</label>
-                                                            <input type="text" class="form-control" name="Telepone" id="IdTelepone" placeholder="Telepone ..." />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="IdDepartment">Department</label>
-                                                            <input type="text" class="form-control" name="Department" id="IdDepartment" placeholder="Department ..." />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="IdJabatan">Jabatan</label>
-                                                            <input type="text" class="form-control" name="Jabatan" id="IdJabatan" placeholder="Jabatan ..." />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="IdJob">Job <font style="color:red">*</font></label>
-                                                            <input type="text" class="form-control" name="Job" id="IdJob" placeholder="Job ..." required />
+                                                            <label for="IdMenu">Menu <font style="color:red">*</font></label>
+                                                            <input type="text" class="form-control" name="Menu" id="IdMenu" placeholder="Menu ..." required />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label for="IdAddress">Address <font style="color:red">*</font> </label>
-                                                            <textarea type="text" class="form-control" name="Address" id="IdAddress" placeholder="Address ..." required></textarea>
+                                                            <label for="IdDescription">Description </label>
+                                                            <textarea type="text" class="form-control" name="Description" id="IdDescription" placeholder="Description ..."></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">

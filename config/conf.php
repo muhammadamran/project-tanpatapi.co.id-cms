@@ -106,11 +106,13 @@ class helpers
 
         return $berita;
     }
-
-    function hargaRupiah($harga)
-    {
-        return "Rp. " . number_format($harga, 0, ',', '.');
-    }
 }
 
 $helpers = new helpers();
+
+
+
+function hargaRupiah($harga)
+{
+    return "Rp. " . number_format($harga, 0, ',', '.');
+}

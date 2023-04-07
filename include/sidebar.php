@@ -18,44 +18,39 @@
                         <?php } ?>
                     </div>
                     <div class="info">
-                        <b class="caret pull-right"></b>
+                        <!-- <b class="caret pull-right"></b> -->
                         <font style="text-transform: capitalize;"><?= $_SESSION['first'] ?> <?= $_SESSION['last'] ?></font>
-                        <small><?= $_SESSION['email'] ?></small>
+                        <!-- <small><?= $_SESSION['email'] ?></small> -->
                         <small>Job<?= $_SESSION['job'] ?></small>
                     </div>
                 </a>
-            </li>
-            <li>
-                <ul class="nav nav-profile">
-                    <li><a href="javascript:;"><i class="fa-solid fa-user-gear"></i> Profile</a></li>
-                </ul>
             </li>
         </ul>
         <ul class="nav">
             <li class="nav-header">Main</li>
             <li>
                 <a href="" target="_blank">
-                    <i class="fa-solid fa-globe"></i>
+                    <i class="fa-solid fa-globe icon-page-sidebar"></i>
                     <span>Website</span>
                 </a>
             </li>
             <li class="nav-header">Navigation</li>
             <li class="<?= empty($_GET['m']) ? 'active' : '' ?>">
                 <a href="index.php">
-                    <i class="fa-solid fa-cubes-stacked"></i>
+                    <i class="fa-solid fa-cubes-stacked icon-page-sidebar"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'menu' ? 'active' : '' ?>">
                 <a href="index.php?m=menu&s=index">
-                    <i class="fa-solid fa-folder-plus"></i>
+                    <i class="fa-solid fa-folder-plus icon-page-sidebar"></i>
                     <span>Menu</span>
                 </a>
             </li>
             <li class="has-sub <?= !empty($_GET['m']) && $_GET['m'] == 'content' ? 'active' : '' ?>">
                 <a href="javascript:;">
                     <b class="caret"></b>
-                    <i class="fa-solid fa-folder-tree"></i>
+                    <i class="fa-solid fa-folder-tree icon-page-sidebar"></i>
                     <span>Content</span>
                 </a>
                 <ul class="sub-menu">
@@ -68,7 +63,7 @@
                         foreach ($QueryMenu as $rowMenu) :
                             $R = $rowMenu['id'];
                         ?>
-                            <li class="<?= $_GET['m'] == 'content' && !empty($_GET['s']) && $_GET['s'] == $R ? 'active' : '' ?>">
+                            <li class="<?= $_GET['m'] == 'content' && !empty($_GET['s']) && $_GET['s'] == $R || $_GET['s'] == $R . '-' .  'menu' ? 'active' : '' ?>">
                                 <a href="index.php?m=content&s=<?= $R; ?>">
                                     <?= $rowMenu['menu']; ?>
                                 </a>
@@ -85,21 +80,21 @@
             </li>
             <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'setting' ? 'active' : '' ?>">
                 <a href="index.php?m=setting&s=index">
-                    <!-- <i class="fa-solid fa-gears fa-beat-fade"></i> -->
-                    <i class="fa-solid fa-gears"></i>
+                    <!-- <i class="fa-solid fa-gears fa-beat-fade icon-page-sidebar"></i> -->
+                    <i class="fa-solid fa-gears icon-page-sidebar"></i>
                     <span>Setting</span>
                 </a>
             </li>
             <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'users' ? 'active' : '' ?>">
                 <a href="index.php?m=users&s=index">
-                    <i class="fa-solid fa-users-gear"></i>
+                    <i class="fa-solid fa-users-gear icon-page-sidebar"></i>
                     <span>Users</span>
                 </a>
             </li>
             <li class="nav-header">Point of Sale</li>
             <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'pos' ? 'active' : '' ?>">
                 <a href="index.php?m=pos&s=index">
-                    <i class="fa-solid fa-cash-register"></i>
+                    <i class="fa-solid fa-cash-register icon-page-sidebar"></i>
                     <span>Pos</span>
                 </a>
             </li>

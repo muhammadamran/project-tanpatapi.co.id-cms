@@ -26148,7 +26148,8 @@ body .introjs-bullets ul li a.active {
 
 .sidebar .nav>li>a {
     /* padding: 7px 20px; */
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
+    padding: 10px 20px 5px 20px;
     line-height: 20px;
     color: rgba(255, 255, 255, .6);
     display: block;
@@ -26156,12 +26157,20 @@ body .introjs-bullets ul li a.active {
 }
 
 .sidebar .nav>li>a i {
-    float: left;
+    /* float: left;
     margin-right: 10px;
     width: 14px;
     text-align: center;
     line-height: 20px;
-    font-size: 14px
+    font-size: 14px */
+
+    float: left;
+    margin-top: -5px;
+    margin-right: 5px;
+    width: 35px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
 }
 
 .sidebar .nav>li>a i[class^=ion-] {
@@ -26220,6 +26229,15 @@ body .introjs-bullets ul li a.active {
 }
 
 .sidebar .nav>li>a>span {
+    /* display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap */
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -26228,22 +26246,53 @@ body .introjs-bullets ul li a.active {
     flex: 1;
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    margin-top: 5px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.sidebar .nav>li.active>a>span {
+    /* display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    font-weight: 500;
+    color: #242b30;
 }
 
 .sidebar .nav>li.nav-header a:focus,
 .sidebar .nav>li.nav-header a:hover,
 .sidebar .nav>li>a:focus,
 .sidebar .nav>li>a:hover {
-    background: 0 0;
-    color: #fff
+    /* background: 0 0; */
+    background: #d9e0e724;
+    color: #fff;
+    border-radius: 0px 65px 65px 0px;
 }
 
 .sidebar .nav>li.active>a {
     position: relative;
     z-index: 10;
     color: #fff;
-    background: #242b30
+    /* background: #242b30; */
+    background: #d9e0e7;
+    border-radius: 0px 65px 65px 0px;
 }
 
 .sidebar .nav>li.active>a i {
@@ -30178,6 +30227,7 @@ body .datetimepicker.dropdown-menu .datetimepicker-years table thead tr th.today
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
     margin-top: 7px;
+    /* margin-top: 0px; */
 }
 
 .carousel .carousel-control .fa {
