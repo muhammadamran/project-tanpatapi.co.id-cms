@@ -64,7 +64,7 @@
                             $R = $rowMenu['id'];
                         ?>
                             <li class="<?= $_GET['m'] == 'content' && !empty($_GET['s']) && $_GET['s'] == $R || $_GET['s'] == $R . '-' .  'menu' || $_GET['s'] == $R . '-' .  'menu-u' ? 'active' : '' ?>">
-                                <a href="index.php?m=content&s=<?= $R; ?>&n=<?= $Result['menu']; ?>">
+                                <a href="index.php?m=content&s=<?= $R; ?>&n=<?= $rowMenu['menu']; ?>">
                                     <?= $rowMenu['menu']; ?>
                                 </a>
                             </li>

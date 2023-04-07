@@ -1,4 +1,4 @@
-<title>Content - <?= $_GET['n']; ?> | <?= $title; ?></title>
+<title>Content - <?= $_GET['n']; ?> <?= $title; ?></title>
 <script src="assets/plugins/ckeditor/ckeditor.js"></script>
 <!-- begin #content -->
 <div id="content" class="content">
