@@ -85,6 +85,52 @@ dl, ol, ul {
     color: #fff;
     box-shadow: 0 5px 25px rgb(80 80 80 / 30%);
 }
+.oke-icon {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.elemen-bg {
+    background: #6c757d;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* ENABLED */
+.btn-enabled {
+    color: #fff;
+    background-color: #4cbd4c;
+    border-color: #4cbd4c;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+}
+
+.btn-enabled:hover {
+    color: #fff;
+    background-color: #61d861;
+    border-color: #61d861;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+}
+
+/* DISABLED */
+.btn-disabled {
+    color: #fff;
+    background-color: #e91f1f;
+    border-color: #e91f1f;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+}
+
+.btn-disabled:hover {
+    color: #fff;
+    background-color: #f33d3d;
+    border-color: #f33d3d;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+}
 
 .font-not-found {
     font-size: 20px;
@@ -140,6 +186,21 @@ dl, ol, ul {
 /* Secondary */
 .for-secondary {
     background-color: #6c757d;
+    color: #fff;
+}
+/* Lime */
+.for-lime {
+    background-color: #90ca4b;
+    color: #fff;
+}
+/* Enabled */
+.for-enabled {
+    background-color: #4cbd4c;
+    color: #fff;
+}
+/* Disabled */
+.for-disabled {
+    background-color: #e91f1f;
     color: #fff;
 }
 

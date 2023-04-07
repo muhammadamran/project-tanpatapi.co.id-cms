@@ -121,8 +121,8 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="IdOrder">Order</label>
-                                                            <input type="text" class="form-control" name="Order" id="IdOrder" placeholder="Order ..." value="<?= $CdataMenu ?>" readonly />
+                                                            <label for="IdSequence">Sequence</label>
+                                                            <input type="text" class="form-control" name="Order" id="IdSequence" placeholder="Sequence ..." value="<?= $CdataMenu ?>" readonly />
                                                             <input type="hidden" name="FilePHP" id="IdFilePHP" value="<?= $CdataMenu ?>.php" readonly />
                                                         </div>
                                                     </div>
@@ -170,7 +170,7 @@
                                     <th width="1%" data-orderable="false"></th>
                                     <!-- <th width="1%" data-orderable="false"></th> -->
                                     <th class="text-nowrap">Kode Menu</th>
-                                    <th class="text-nowrap">Order</th>
+                                    <th class="text-nowrap">Sequence</th>
                                     <th class="text-nowrap">Menu</th>
                                     <th class="text-nowrap">File</th>
                                     <th class="text-nowrap">Desc</th>
@@ -211,11 +211,11 @@
                                                             <font class="f-action">Update</font>
                                                         </a>
                                                     </div>
-                                                    <div style="margin-left: 5px;">
+                                                    <!-- <div style="margin-left: 5px;">
                                                         <a href="#deleteData<?= $row['id'] ?>" class="btn btn-danger" data-toggle="modal" title="Delete Data"><i class="fas fa-trash"></i>
                                                             <font class="f-action">Delete</font>
                                                         </a>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </td>
                                         </tr>
@@ -241,8 +241,8 @@
                                                                     </div>
                                                                     <div class="col-md-3">
                                                                         <div class="form-group">
-                                                                            <label for="IdOrder">Order</label>
-                                                                            <input type="text" class="form-control" name="Order" id="IdOrder" placeholder="Order ..." value="<?= $row['sorder'] ?>" readonly />
+                                                                            <label for="IdSequence">Sequence</label>
+                                                                            <input type="text" class="form-control" name="Order" id="IdSequence" placeholder="Sequence ..." value="<?= $row['sorder'] ?>" readonly />
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-9">

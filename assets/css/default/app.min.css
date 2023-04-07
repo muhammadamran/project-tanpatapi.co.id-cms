@@ -19181,7 +19181,8 @@ a.close.disabled {
     .modal-dialog {
         max-width: 500px;
         /* margin: 1.75rem auto */
-        margin: 15.75rem auto;
+        /* margin: 15.75rem auto; */
+        margin: 6.75rem auto;
     }
 
     .modal-dialog-scrollable {
@@ -30226,7 +30227,7 @@ body .datetimepicker.dropdown-menu .datetimepicker-years table thead tr th.today
     border-top: 4px solid\9;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
-    margin-top: 7px;
+    margin-top: 5px;
     /* margin-top: 0px; */
 }
 
@@ -32567,7 +32568,9 @@ body div.dt-autofill-list ul>li {
 .nav.nav-tabs .nav-item .nav-link.active,
 .nav.nav-tabs .nav-item .nav-link:focus,
 .nav.nav-tabs .nav-item .nav-link:hover {
-    color: #2d353c
+    /* color: #2d353c */
+    color: #ffffff;
+    background: #6c757d;
 }
 
 .nav.nav-tabs.nav-tabs-inverse {

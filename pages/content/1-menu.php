@@ -1,4 +1,4 @@
-<title>Content <?= $title; ?></title>
+<title>Content - <?= $_GET['n']; ?> | <?= $title; ?></title>
 <script src="assets/plugins/ckeditor/ckeditor.js"></script>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -7,13 +7,14 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="title">
-                    <h4>Users</h4>
+                    <h4>Content</h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                     <ol class="breadcrumb">
                         <div style="font-size: 12px;display: flex;">
                             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Users</li>
+                            <li class="breadcrumb-item"><a href="#">Content</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?= $_GET['n']; ?></li>
                         </div>
                     </ol>
                 </nav>
@@ -29,13 +30,13 @@
             <!-- begin nav-tabs -->
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=1" class="nav-link ">
+                    <a href="index.php?m=content&s=1&n=<?= $_GET['n']; ?>" class="nav-link">
                         <span class="d-sm-none">Tab 1</span>
-                        <span class="d-sm-block d-none">Tanpatapi’s Signature</span>
+                        <span class="d-sm-block d-none"><?= $_GET['n']; ?></span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=1-menu" class="nav-link active">
+                    <a href="index.php?m=content&s=1-menu&n=<?= $_GET['n']; ?>" class="nav-link active">
                         <span class="d-sm-none">Tab 2</span>
                         <span class="d-sm-block d-none">Manage Menu</span>
                     </a>
@@ -51,6 +52,34 @@
                             <div class="panel panel-inverse" data-sortable-id="index-6">
                                 <div class="panel-body">
                                     <!-- Alert -->
+                                    <?php if (isset($_GET["AddSuccess"])) { ?>
+                                        <!-- Add Success -->
+                                        <div class="note note-success m-b-15">
+                                            <div class="note-icon">
+                                                <i class="fa-solid fa-circle-check fa-fade"></i>
+                                            </div>
+                                            <div class="note-content">
+                                                <h4><b>Add Success!</b></h4>
+                                                <p>
+                                                    Data has been Added! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                    <?php if (isset($_GET["AddFailed"])) { ?>
+                                        <!-- Add Failed -->
+                                        <div class="note note-danger m-b-15">
+                                            <div class="note-icon">
+                                                <i class="fa-solid fa-circle-xmark fa-fade"></i>
+                                            </div>
+                                            <div class="note-content">
+                                                <h4><b>Add Failed!</b></h4>
+                                                <p>
+                                                    Data can't Add! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                     <?php if (isset($_GET["UpdateSuccess"])) { ?>
                                         <!-- Update Success -->
                                         <div class="note note-success m-b-15">
@@ -107,6 +136,116 @@
                                             </div>
                                         </div>
                                     <?php } ?>
+                                    <?php if (isset($_GET["EnabledSuccess"])) { ?>
+                                        <!-- Enabled Success -->
+                                        <div class="note note-success m-b-15">
+                                            <div class="note-icon">
+                                                <i class="fa-solid fa-circle-check fa-fade"></i>
+                                            </div>
+                                            <div class="note-content">
+                                                <h4><b>Enabled Success!</b></h4>
+                                                <p>
+                                                    Data has been enabled! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                    <?php if (isset($_GET["EnabledFailed"])) { ?>
+                                        <!-- Enabled Failed -->
+                                        <div class="note note-danger m-b-15">
+                                            <div class="note-icon">
+                                                <i class="fa-solid fa-circle-xmark fa-fade"></i>
+                                            </div>
+                                            <div class="note-content">
+                                                <h4><b>Enabled Failed!</b></h4>
+                                                <p>
+                                                    Data can't enabled! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                    <?php if (isset($_GET["DisabledSuccess"])) { ?>
+                                        <!-- Disabled Success -->
+                                        <div class="note note-success m-b-15">
+                                            <div class="note-icon">
+                                                <i class="fa-solid fa-circle-check fa-fade"></i>
+                                            </div>
+                                            <div class="note-content">
+                                                <h4><b>Disabled Success!</b></h4>
+                                                <p>
+                                                    Data has been disabled! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                    <?php if (isset($_GET["DisabledFailed"])) { ?>
+                                        <!-- Disabled Failed -->
+                                        <div class="note note-danger m-b-15">
+                                            <div class="note-icon">
+                                                <i class="fa-solid fa-circle-xmark fa-fade"></i>
+                                            </div>
+                                            <div class="note-content">
+                                                <h4><b>Disabled Failed!</b></h4>
+                                                <p>
+                                                    Data can't disabled! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                    <?php if (isset($_GET["UploadSuccess"])) { ?>
+                                        <!-- Upload Success -->
+                                        <div class="note note-success m-b-15">
+                                            <div class="note-icon">
+                                                <i class="fa-solid fa-circle-check fa-fade"></i>
+                                            </div>
+                                            <div class="note-content">
+                                                <h4><b>Upload Success!</b></h4>
+                                                <p>
+                                                    Data has been upload! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                    <?php if (isset($_GET["UploadFailed"])) { ?>
+                                        <!-- Upload Failed -->
+                                        <div class="note note-danger m-b-15">
+                                            <div class="note-icon">
+                                                <i class="fa-solid fa-circle-xmark fa-fade"></i>
+                                            </div>
+                                            <div class="note-content">
+                                                <h4><b>Upload Failed!</b></h4>
+                                                <p>
+                                                    Data can't upload! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+
+                                    <?php
+                                    $fDucplicate = $db->query("SELECT rorder, COUNT(*) duplikat FROM tb_signature_menu GROUP BY rorder HAVING COUNT(duplikat) > 1");
+                                    $rDucplicate = mysqli_fetch_array($fDucplicate);
+                                    ?>
+                                    <?php if ($rDucplicate['duplikat'] != NULL) { ?>
+                                        <!-- Disabled Failed -->
+                                        <div class="note note-warning m-b-15">
+                                            <div class="note-icon">
+                                                <i class="fa-solid fa-circle-exclamation"></i>
+                                            </div>
+                                            <div class="note-content">
+                                                <h4><b>Duplicate Sequence!</b></h4>
+                                                <p>
+                                                    You have some of the same order!, Please change it to improve the appearance on the website. Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        $checkSquence = '<i class="fa-solid fa-circle-xmark" style="color:#e91f1f"></i>';
+                                        ?>
+                                    <?php } else { ?>
+                                        <?php
+                                        $checkSquence = '<i class="fa-solid fa-circle-check" style="color:#90ca4b"></i>';
+                                        ?>
+                                    <?php } ?>
                                     <!-- End -->
                                     <div style="margin-bottom: 15px;">
                                         <!-- Add -->
@@ -133,8 +272,6 @@
                                                                             </div>
                                                                             <div class="card-content">
                                                                                 <div class="card-body">
-                                                                                    <!-- Auto resize image file uploader -->
-                                                                                    <!-- <input type="file" name="upload" class="image-resize-filepond"> -->
                                                                                     <input type="file" name="upload" class="form-control" required>
                                                                                 </div>
                                                                             </div>
@@ -143,16 +280,23 @@
                                                                     <div class="col-md-12">
                                                                         <hr>
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="IdTitle">Title <font style="color:red">*</font></label>
                                                                             <input type="text" class="form-control" name="Title" id="IdTitle" placeholder="Title ..." required />
+                                                                            <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label for="IdHarga">Harga <font style="color:red">*</font></label>
-                                                                            <input type="number" class="form-control" name="Harga" id="IdHarga" placeholder="Harga ..." required />
+                                                                            <label for="IdPrice">Price <font style="color:red">*</font></label>
+                                                                            <input type="number" class="form-control" name="Harga" id="IdPrice" placeholder="Price ..." required />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label for="IdSequence">Sequence <font style="color:red">*</font></label>
+                                                                            <input type="number" class="form-control" name="Sequence" id="IdSequence" placeholder="Sequence ..." required />
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-12">
@@ -186,9 +330,9 @@
                                                 <tr style="text-transform: uppercase;text-align:center">
                                                     <th width="1%" data-orderable="false"></th>
                                                     <th width="1%" data-orderable="false"></th>
-                                                    <th class="text-nowrap">Title</th>
+                                                    <th class="text-nowrap">Title & Price</th>
+                                                    <th class="text-nowrap">Sequence <?= $checkSquence; ?></th>
                                                     <th class="text-nowrap">Description</th>
-                                                    <th class="text-nowrap">Harga</th>
                                                     <th class="text-nowrap">Action</th>
                                                 </tr>
                                             </thead>
@@ -203,17 +347,42 @@
                                                         <tr class="odd gradeX">
                                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                                             <td width="1%" class="with-img">
-                                                                <img src="assets/menu/signature/<?= $row['pictures'] ?>" class="img-rounded height-50" />
+                                                                <img src="assets/menu/signature/<?= $row['pictures'] ?>" class="img-rounded height-50" style="width: 65px;" />
                                                             </td>
-                                                            <td><?= $row['title']; ?></td>
-                                                            <td><?= $row['description']; ?></td>
-                                                            <td><?= hargaRupiah($row['prices']); ?></td>
-                                                            <!-- <td style="text-align:center"><?= $row['jk'] != NULL ? $row['jk'] : '<center><i style="color:red">NULL</i></center>' ?></td> -->
+                                                            <td>
+                                                                <div class="oke-icon">
+                                                                    <!-- Icon -->
+                                                                    <div class="elemen-bg">
+                                                                        <i class="fa-solid fa-quote-left" style="font-size: 14px;"></i>
+                                                                    </div>
+                                                                    <!-- Text -->
+                                                                    <div style="margin-left: 10px;">
+                                                                        <div style="font-size: 14px;font-weight: 900;">
+                                                                            <?= $row['title']; ?>
+                                                                        </div>
+                                                                        <div>
+                                                                            <?= hargaRupiah($row['prices']); ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td style="text-align:center">
+                                                                <button class="btn btn-dark-custom">
+                                                                    <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?>
+                                                                </button>
+                                                            </td>
+                                                            <td style="text-align:center">
+                                                                <div class="action-table">
+                                                                    <a href="#descModal<?= $row['id'] ?>" class="btn btn-secondary" data-toggle="modal" title="Description"><i class="fas fa-comment"></i>
+                                                                        <font class="f-action"> Description</font>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
                                                             <td style="text-align:center">
                                                                 <div class="action-table">
                                                                     <div style="margin-left: 5px;">
-                                                                        <a href="#changePhoto<?= $row['id'] ?>" class="btn btn-info" data-toggle="modal" title="Change Photo"><i class="fa-solid fa-image"></i>
-                                                                            <font class="f-action">Photo</font>
+                                                                        <a href="#ChangePhoto<?= $row['id'] ?>" class="btn btn-lime" data-toggle="modal" title="Change Photo"><i class="fa-solid fa-image"></i>
+                                                                            <font class="f-action">Change Photo</font>
                                                                         </a>
                                                                     </div>
                                                                     <div style="margin-left: 5px;">
@@ -231,38 +400,66 @@
                                                         </tr>
 
                                                         <!-- Change Photo -->
-                                                        <div class="modal fade" id="changePhoto<?= $row['id'] ?>">
+                                                        <div class="modal fade" id="ChangePhoto<?= $row['id'] ?>">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
-                                                                    <div class="modal-header for-info">
+                                                                    <div class="modal-header for-lime">
                                                                         <h4 class="modal-title">Change Photo</h4>
                                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                     </div>
-                                                                    <form action="pages/content/action.php" method="POST">
+                                                                    <form action="pages/content/action.php" method="POST" enctype="multipart/form-data">
                                                                         <div class="modal-body">
                                                                             <fieldset>
                                                                                 <div class="row">
                                                                                     <div class="col-sm-12">
-                                                                                        <div class="card">
-                                                                                            <div class="card-header">
-                                                                                                <div style="display: grid;justify-content:center">
-                                                                                                    <img src="assets/menu/signature/<?= $row['pictures'] ?>" class="img-rounded height-250" />
-                                                                                                </div>
-                                                                                                <hr>
-                                                                                                <h5 class="card-title">
-                                                                                                    Upload New Photo
-                                                                                                </h5>
-                                                                                            </div>
-                                                                                            <div class="card-content">
-                                                                                                <div class="card-body">
-                                                                                                    <!-- Auto resize image file uploader -->
-                                                                                                    <!-- <input type="file" name="upload" class="image-resize-filepond"> -->
-                                                                                                    <input type="file" name="upload" class="form-control" required>
-                                                                                                    <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
-                                                                                                    <input type="hidden" name="Harga" id="Harga" value="<?= $row['prices']; ?>" />
-                                                                                                    <input type="hidden" name="ID" id="ID" value="<?= $row['id']; ?>" />
-                                                                                                </div>
-                                                                                            </div>
+                                                                                        <div>
+                                                                                            <ul class="media-list media-list-with-divider">
+                                                                                                <li class="media media-lg">
+                                                                                                    <div style="display: flex;justify-content: space-between;align-items: center;">
+                                                                                                        <div>
+                                                                                                            <a href="javascript:;" class="pull-left">
+                                                                                                                <img class="media-object rounded" src="assets/menu/signature/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
+                                                                                                            </a>
+                                                                                                        </div>
+                                                                                                        <div class="media-body">
+                                                                                                            <div class="oke-icon">
+                                                                                                                <div style="margin-left: 10px;">
+                                                                                                                    <div class="card">
+                                                                                                                        <div class="card-header">
+                                                                                                                            <h5 class="card-title">
+                                                                                                                                Upload New Photo
+                                                                                                                            </h5>
+                                                                                                                        </div>
+                                                                                                                        <div class="card-content">
+                                                                                                                            <div class="card-body">
+                                                                                                                                <input type="file" name="upload" class="form-control" required>
+                                                                                                                                <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
+                                                                                                                                <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
+                                                                                                                                <input type="hidden" name="Harga" id="Harga" value="<?= $row['prices']; ?>" />
+                                                                                                                                <input type="hidden" name="ID" id="ID" value="<?= $row['id']; ?>" />
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-12">
+                                                                                        <hr>
+                                                                                    </div>
+                                                                                    <div class="col-sm-12">
+                                                                                        <div style="font-size: 14px;font-weight: 900;">
+                                                                                            <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> | <?= $row['title']; ?>
+                                                                                        </div>
+                                                                                        <div>
+                                                                                            <?= hargaRupiah($row['prices']); ?>
+                                                                                        </div>
+                                                                                        <div style="text-align: justify;">
+                                                                                            <?= $row['description']; ?>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -270,13 +467,42 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                                            <button type="submit" name="upload_signature_menu_" class="btn btn-info"><i class="fas fa-edit"></i> Photo</button>
+                                                                            <button type="submit" name="upload_signature_menu_" class="btn btn-lime"><i class="fas fa-image"></i> Change Photo</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <!-- End Update Data -->
+
+                                                        <!-- Description -->
+                                                        <div class="modal fade" id="descModal<?= $row['id'] ?>">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header for-secondary">
+                                                                        <h4 class="modal-title">Description</h4>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <fieldset>
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <div class="note note-gray-500 mb-0">
+                                                                                        <div class="note-content" style="text-align: justify;">
+                                                                                            <?= $row['description']; ?>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Description -->
 
                                                         <!-- Update Data -->
                                                         <div class="modal fade" id="updateData<?= $row['id'] ?>">
