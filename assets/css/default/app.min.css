@@ -30217,6 +30217,10 @@ body .datetimepicker.dropdown-menu .datetimepicker-years table thead tr th.today
     border-radius: 0
 }
 
+.sidebar .nav>li.active>a .caret {
+    color:#242b30;
+}
+
 .caret {
     display: inline-block;
     width: 0;

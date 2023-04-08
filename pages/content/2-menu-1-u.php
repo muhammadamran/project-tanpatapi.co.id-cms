@@ -1,7 +1,7 @@
-<title>Content - <?= $_GET['n']; ?> <?= $title; ?></title>
+<title><?= $_GET['n']; ?> - Content <?= $title; ?></title>
 <script src="assets/plugins/ckeditor/ckeditor.js"></script>
 <?php
-$Qdata = $db->query("SELECT * FROM tb_signature_menu WHERE id='" . $_GET['id'] . "'");
+$Qdata = $db->query("SELECT * FROM tb_khas_menu WHERE type='1' AND id='" . $_GET['id'] . "'");
 $row   = mysqli_fetch_array($Qdata);
 ?>
 <!-- begin #content -->
@@ -11,7 +11,7 @@ $row   = mysqli_fetch_array($Qdata);
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="title">
-                    <h4>Content</h4>
+                    <h4><?= $_GET['n']; ?></h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                     <ol class="breadcrumb">
@@ -19,6 +19,7 @@ $row   = mysqli_fetch_array($Qdata);
                             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="#">Content</a></li>
                             <li class="breadcrumb-item" aria-current="page"><?= $_GET['n']; ?></li>
+                            <li class="breadcrumb-item" aria-current="page">Manage Menu with Photo</li>
                             <li class="breadcrumb-item active" aria-current="page">Update Data</li>
                         </div>
                     </ol>
@@ -35,15 +36,21 @@ $row   = mysqli_fetch_array($Qdata);
             <!-- begin nav-tabs -->
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=1&n=<?= $_GET['n']; ?>" class="nav-link">
+                    <a href="index.php?m=content&s=2&n=<?= $_GET['n']; ?>" class="nav-link ">
                         <span class="d-sm-none">Tab 1</span>
                         <span class="d-sm-block d-none"><?= $_GET['n']; ?></span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=1-menu&n=<?= $_GET['n']; ?>" class="nav-link active">
+                    <a href="index.php?m=content&s=2-menu-1&n=<?= $_GET['n']; ?>" class="nav-link active">
                         <span class="d-sm-none">Tab 2</span>
-                        <span class="d-sm-block d-none">Manage Menu</span>
+                        <span class="d-sm-block d-none">Manage Menu with Photo</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.php?m=content&s=2-menu-2&n=<?= $_GET['n']; ?>" class="nav-link">
+                        <span class="d-sm-none">Tab 2</span>
+                        <span class="d-sm-block d-none">Manage Menu without Photo</span>
                     </a>
                 </li>
             </ul>
@@ -85,7 +92,7 @@ $row   = mysqli_fetch_array($Qdata);
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="IdSequence">Sequence </label>
-                                                        <input type="number" class="form-control" name="Sequence" id="IdSequence" placeholder="Sequence ..." max="3" value="<?= $row['rorder']; ?>" />
+                                                        <input type="number" class="form-control" name="Sequence" id="IdSequence" placeholder="Sequence ..." value="<?= $row['rorder']; ?>" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
@@ -99,7 +106,7 @@ $row   = mysqli_fetch_array($Qdata);
                                     </div>
                                     <div class="modal-footer">
                                         <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                        <button type="submit" name="update_signature_menu_" class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
+                                        <button type="submit" name="update_khas_menu_" class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
                                     </div>
                                 </form>
                             </div>

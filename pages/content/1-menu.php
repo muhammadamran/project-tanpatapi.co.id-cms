@@ -1,4 +1,4 @@
-<title>Content - <?= $_GET['n']; ?> <?= $title; ?></title>
+<title><?= $_GET['n']; ?> - Content <?= $title; ?></title>
 <script src="assets/plugins/ckeditor/ckeditor.js"></script>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -7,14 +7,15 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="title">
-                    <h4>Content</h4>
+                    <h4><?= $_GET['n']; ?></h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                     <ol class="breadcrumb">
                         <div style="font-size: 12px;display: flex;">
                             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="#">Content</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><?= $_GET['n']; ?></li>
+                            <li class="breadcrumb-item" aria-current="page"><?= $_GET['n']; ?></li>
+                            <li class="breadcrumb-item active" aria-current="page">Manage Menu</li>
                         </div>
                     </ol>
                 </nav>
@@ -498,13 +499,22 @@
                                                                                     </div>
                                                                                     <div class="col-sm-12">
                                                                                         <div style="font-size: 14px;font-weight: 900;">
-                                                                                            <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> | <?= $row['title']; ?>
-                                                                                        </div>
-                                                                                        <div>
-                                                                                            <?= hargaRupiah($row['prices']); ?>
+                                                                                            <div style="display: flex;justify-content:space-between;">
+                                                                                                <div>
+                                                                                                    <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
+                                                                                                </div>
+                                                                                                <div>
+                                                                                                    <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                         <div style="text-align: justify;">
-                                                                                            <?= $row['description']; ?>
+                                                                                            <hr>
+                                                                                            <div class="note note-gray-500 mb-0">
+                                                                                                <div class="note-content" style="text-align: justify;">
+                                                                                                    <?= $row['description']; ?>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -551,10 +561,10 @@
                                                                                                             <div class="oke-icon">
                                                                                                                 <div style="margin-left: 10px;">
                                                                                                                     <div style="font-size: 14px;font-weight: 900;">
-                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> | <?= $row['title']; ?>
+                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
                                                                                                                     </div>
-                                                                                                                    <div>
-                                                                                                                        <?= hargaRupiah($row['prices']); ?>
+                                                                                                                    <div style="font-size: 14px;font-weight: 900;">
+                                                                                                                        <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -615,10 +625,10 @@
                                                                                                             <div class="oke-icon">
                                                                                                                 <div style="margin-left: 10px;">
                                                                                                                     <div style="font-size: 14px;font-weight: 900;">
-                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> | <?= $row['title']; ?>
+                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
                                                                                                                     </div>
-                                                                                                                    <div>
-                                                                                                                        <?= hargaRupiah($row['prices']); ?>
+                                                                                                                    <div style="font-size: 14px;font-weight: 900;">
+                                                                                                                        <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -678,10 +688,10 @@
                                                                                                             <div class="oke-icon">
                                                                                                                 <div style="margin-left: 10px;">
                                                                                                                     <div style="font-size: 14px;font-weight: 900;">
-                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> | <?= $row['title']; ?>
+                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
                                                                                                                     </div>
-                                                                                                                    <div>
-                                                                                                                        <?= hargaRupiah($row['prices']); ?>
+                                                                                                                    <div style="font-size: 14px;font-weight: 900;">
+                                                                                                                        <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -739,7 +749,7 @@
                                                                                     <div class="col-md-4">
                                                                                         <div class="form-group">
                                                                                             <label for="IdSequence">Sequence </label>
-                                                                                            <input type="number" class="form-control" name="Sequence" id="IdSequence" placeholder="Sequence ..." max="3" value="<?= $row['rorder']; ?>" readonly />
+                                                                                            <input type="number" class="form-control" name="Sequence" id="IdSequence" placeholder="Sequence ..." value="<?= $row['rorder']; ?>" readonly />
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-12">

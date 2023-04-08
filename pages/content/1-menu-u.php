@@ -1,4 +1,4 @@
-<title>Content - <?= $_GET['n']; ?> <?= $title; ?></title>
+<title><?= $_GET['n']; ?> - Content <?= $title; ?></title>
 <script src="assets/plugins/ckeditor/ckeditor.js"></script>
 <?php
 $Qdata = $db->query("SELECT * FROM tb_signature_menu WHERE id='" . $_GET['id'] . "'");
@@ -11,7 +11,7 @@ $row   = mysqli_fetch_array($Qdata);
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="title">
-                    <h4>Content</h4>
+                    <h4><?= $_GET['n']; ?></h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                     <ol class="breadcrumb">
@@ -19,6 +19,7 @@ $row   = mysqli_fetch_array($Qdata);
                             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="#">Content</a></li>
                             <li class="breadcrumb-item" aria-current="page"><?= $_GET['n']; ?></li>
+                            <li class="breadcrumb-item" aria-current="page">Manage Menu</li>
                             <li class="breadcrumb-item active" aria-current="page">Update Data</li>
                         </div>
                     </ol>
@@ -85,7 +86,7 @@ $row   = mysqli_fetch_array($Qdata);
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="IdSequence">Sequence </label>
-                                                        <input type="number" class="form-control" name="Sequence" id="IdSequence" placeholder="Sequence ..." max="3" value="<?= $row['rorder']; ?>" />
+                                                        <input type="number" class="form-control" name="Sequence" id="IdSequence" placeholder="Sequence ..." value="<?= $row['rorder']; ?>" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">

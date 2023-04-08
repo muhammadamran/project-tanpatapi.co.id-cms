@@ -1,4 +1,4 @@
-<title>Content - <?= $_GET['n']; ?> <?= $title; ?></title>
+<title><?= $_GET['n']; ?> - Content <?= $title; ?></title>
 <script src="assets/plugins/ckeditor/ckeditor.js"></script>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -7,14 +7,15 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="title">
-                    <h4>Content</h4>
+                    <h4><?= $_GET['n']; ?></h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                     <ol class="breadcrumb">
                         <div style="font-size: 12px;display: flex;">
                             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="#">Content</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><?= $_GET['n']; ?></li>
+                            <li class="breadcrumb-item" aria-current="page"><?= $_GET['n']; ?></li>
+                            <li class="breadcrumb-item active" aria-current="page">Manage Menu with Photo</li>
                         </div>
                     </ol>
                 </nav>
@@ -228,7 +229,7 @@
                                     <?php } ?>
 
                                     <?php
-                                    $fDucplicate = $db->query("SELECT rorder, COUNT(*) duplikat FROM tb_signature_menu GROUP BY rorder HAVING COUNT(duplikat) > 1");
+                                    $fDucplicate = $db->query("SELECT rorder, COUNT(*) duplikat FROM tb_khas_menu WHERE type='1' GROUP BY rorder HAVING COUNT(duplikat) > 1");
                                     $rDucplicate = mysqli_fetch_array($fDucplicate);
                                     ?>
                                     <?php if ($rDucplicate['duplikat'] != NULL) { ?>
@@ -322,7 +323,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                            <button type="submit" name="add_signature_menu_" class="btn btn-secondary"><i class="fas fa-save"></i> Add</button>
+                                                            <button type="submit" name="add_khas_menu_" class="btn btn-secondary"><i class="fas fa-save"></i> Add</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -344,7 +345,7 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $dataTable = $db->query("SELECT * FROM tb_signature_menu ORDER BY rorder ASC");
+                                                $dataTable = $db->query("SELECT * FROM tb_khas_menu WHERE type='1' ORDER BY rorder ASC");
                                                 if (mysqli_num_rows($dataTable) > 0) {
                                                     $no = 0;
                                                     while ($row = mysqli_fetch_array($dataTable)) {
@@ -353,7 +354,7 @@
                                                         <tr class="odd gradeX">
                                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                                             <td width="1%" class="with-img">
-                                                                <img src="assets/menu/signature/<?= $row['pictures'] ?>" class="img-rounded height-50" style="width: 65px;" />
+                                                                <img src="assets/menu/khas/<?= $row['pictures'] ?>" class="img-rounded height-50" style="width: 65px;" />
                                                             </td>
                                                             <td>
                                                                 <div class="oke-icon">
@@ -395,7 +396,7 @@
                                                                         <!-- <a href="#updateData<?= $row['id'] ?>" class="btn btn-success" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i>
                                                                             <font class="f-action">Update</font>
                                                                         </a> -->
-                                                                        <a href="index.php?m=content&s=1-menu-u&n=<?= $_GET['n']; ?>&id=<?= $row['id'] ?>" target="_blank" class="btn btn-success" title="Update Data"><i class="fas fa-edit"></i>
+                                                                        <a href="index.php?m=content&s=2-menu-1-u&n=<?= $_GET['n']; ?>&id=<?= $row['id'] ?>" target="_blank" class="btn btn-success" title="Update Data"><i class="fas fa-edit"></i>
                                                                             <font class="f-action">Update</font>
                                                                         </a>
                                                                     </div>
@@ -469,7 +470,7 @@
                                                                                                     <div style="display: flex;justify-content: space-between;align-items: center;">
                                                                                                         <div>
                                                                                                             <a href="javascript:;" class="pull-left">
-                                                                                                                <img class="media-object rounded" src="assets/menu/signature/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
+                                                                                                                <img class="media-object rounded" src="assets/menu/khas/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
                                                                                                             </a>
                                                                                                         </div>
                                                                                                         <div class="media-body">
@@ -504,13 +505,22 @@
                                                                                     </div>
                                                                                     <div class="col-sm-12">
                                                                                         <div style="font-size: 14px;font-weight: 900;">
-                                                                                            <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> | <?= $row['title']; ?>
-                                                                                        </div>
-                                                                                        <div>
-                                                                                            <?= hargaRupiah($row['prices']); ?>
+                                                                                            <div style="display: flex;justify-content:space-between;">
+                                                                                                <div>
+                                                                                                    <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
+                                                                                                </div>
+                                                                                                <div>
+                                                                                                    <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                         <div style="text-align: justify;">
-                                                                                            <?= $row['description']; ?>
+                                                                                            <hr>
+                                                                                            <div class="note note-gray-500 mb-0">
+                                                                                                <div class="note-content" style="text-align: justify;">
+                                                                                                    <?= $row['description']; ?>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -518,7 +528,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                                            <button type="submit" name="upload_signature_menu_" class="btn btn-lime"><i class="fas fa-image"></i> Change Photo</button>
+                                                                            <button type="submit" name="upload_khas_menu_" class="btn btn-lime"><i class="fas fa-image"></i> Change Photo</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -546,7 +556,7 @@
                                                                                                     <div style="display: flex;justify-content: space-between;align-items: center;">
                                                                                                         <div>
                                                                                                             <a href="javascript:;" class="pull-left">
-                                                                                                                <img class="media-object rounded" src="assets/menu/signature/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
+                                                                                                                <img class="media-object rounded" src="assets/menu/khas/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
                                                                                                                 <input type="hidden" name="Price" id="Price" value="<?= $row['prices']; ?>" />
@@ -557,10 +567,10 @@
                                                                                                             <div class="oke-icon">
                                                                                                                 <div style="margin-left: 10px;">
                                                                                                                     <div style="font-size: 14px;font-weight: 900;">
-                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> | <?= $row['title']; ?>
+                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
                                                                                                                     </div>
-                                                                                                                    <div>
-                                                                                                                        <?= hargaRupiah($row['prices']); ?>
+                                                                                                                    <div style="font-size: 14px;font-weight: 900;">
+                                                                                                                        <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -582,7 +592,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
-                                                                            <button type="submit" class="btn btn-danger" name="delete_signature_menu_"><i class="fas fa-check-circle"></i> Yes</button>
+                                                                            <button type="submit" class="btn btn-danger" name="delete_khas_menu_"><i class="fas fa-check-circle"></i> Yes</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -610,7 +620,7 @@
                                                                                                     <div style="display: flex;justify-content: space-between;align-items: center;">
                                                                                                         <div>
                                                                                                             <a href="javascript:;" class="pull-left">
-                                                                                                                <img class="media-object rounded" src="assets/menu/signature/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
+                                                                                                                <img class="media-object rounded" src="assets/menu/khas/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
                                                                                                                 <input type="hidden" name="Price" id="Price" value="<?= $row['prices']; ?>" />
@@ -621,10 +631,10 @@
                                                                                                             <div class="oke-icon">
                                                                                                                 <div style="margin-left: 10px;">
                                                                                                                     <div style="font-size: 14px;font-weight: 900;">
-                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> | <?= $row['title']; ?>
+                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
                                                                                                                     </div>
-                                                                                                                    <div>
-                                                                                                                        <?= hargaRupiah($row['prices']); ?>
+                                                                                                                    <div style="font-size: 14px;font-weight: 900;">
+                                                                                                                        <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -646,7 +656,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
-                                                                            <button type="submit" class="btn btn-enabled" name="enabled_signature_menu_"><i class="fas fa-check-circle"></i> Yes</button>
+                                                                            <button type="submit" class="btn btn-enabled" name="enabled_khas_menu_"><i class="fas fa-check-circle"></i> Yes</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -673,7 +683,7 @@
                                                                                                     <div style="display: flex;justify-content: space-between;align-items: center;">
                                                                                                         <div>
                                                                                                             <a href="javascript:;" class="pull-left">
-                                                                                                                <img class="media-object rounded" src="assets/menu/signature/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
+                                                                                                                <img class="media-object rounded" src="assets/menu/khas/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
                                                                                                                 <input type="hidden" name="Price" id="Price" value="<?= $row['prices']; ?>" />
@@ -684,10 +694,10 @@
                                                                                                             <div class="oke-icon">
                                                                                                                 <div style="margin-left: 10px;">
                                                                                                                     <div style="font-size: 14px;font-weight: 900;">
-                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> | <?= $row['title']; ?>
+                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
                                                                                                                     </div>
-                                                                                                                    <div>
-                                                                                                                        <?= hargaRupiah($row['prices']); ?>
+                                                                                                                    <div style="font-size: 14px;font-weight: 900;">
+                                                                                                                        <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -709,7 +719,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
-                                                                            <button type="submit" class="btn btn-disabled" name="disabled_signature_menu_"><i class="fas fa-check-circle"></i> Yes</button>
+                                                                            <button type="submit" class="btn btn-disabled" name="disabled_khas_menu_"><i class="fas fa-check-circle"></i> Yes</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -745,7 +755,7 @@
                                                                                     <div class="col-md-4">
                                                                                         <div class="form-group">
                                                                                             <label for="IdSequence">Sequence </label>
-                                                                                            <input type="number" class="form-control" name="Sequence" id="IdSequence" placeholder="Sequence ..." max="3" value="<?= $row['rorder']; ?>" readonly />
+                                                                                            <input type="number" class="form-control" name="Sequence" id="IdSequence" placeholder="Sequence ..." value="<?= $row['rorder']; ?>" readonly />
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-12">
@@ -759,7 +769,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                                            <button type="submit" name="update_signature_menu_" class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
+                                                                            <button type="submit" name="update_khas_menu_" class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>

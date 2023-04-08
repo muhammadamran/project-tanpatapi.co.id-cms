@@ -1,4 +1,4 @@
-<title>Content - <?= $_GET['n']; ?> <?= $title; ?></title>
+<title><?= $_GET['n']; ?> - Content <?= $title; ?></title>
 <script src="assets/plugins/ckeditor/ckeditor.js"></script>
 <!-- begin #content -->
 <div id="content" class="content">
@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="title">
-                    <h4>Content</h4>
+                    <h4><?= $_GET['n']; ?></h4>
                 </div>
                 <nav aria-label="breadcrumb" role="navigation">
                     <ol class="breadcrumb">
