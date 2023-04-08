@@ -63,7 +63,18 @@
                         foreach ($QueryMenu as $rowMenu) :
                             $R = $rowMenu['id'];
                         ?>
-                            <li class="<?= $_GET['m'] == 'content' && !empty($_GET['s']) && $_GET['s'] == $R || $_GET['s'] == $R . '-' .  'menu' || $_GET['s'] == $R . '-' .  'menu-u' ? 'active' : '' ?>">
+                            <li class="<?= $_GET['m'] == 'content' && !empty($_GET['s']) && $_GET['s'] == $R |
+                                            // 1
+                                            $_GET['s'] == $R . '-' .  'menu' ||
+                                            $_GET['s'] == $R . '-' .  'menu-u' ||
+                                            // 2
+                                            $_GET['s'] == $R . '-' .  'menu' ||
+                                            $_GET['s'] == $R . '-' .  'menu-1' ||
+                                            $_GET['s'] == $R . '-' .  'menu-1-u' ||
+                                            $_GET['s'] == $R . '-' .  'menu-2' ||
+                                            $_GET['s'] == $R . '-' .  'menu-2-u'
+                                            // 3
+                                            ? 'active' : '' ?>">
                                 <a href="index.php?m=content&s=<?= $R; ?>&n=<?= $rowMenu['menu']; ?>">
                                     <?= $rowMenu['menu']; ?>
                                 </a>

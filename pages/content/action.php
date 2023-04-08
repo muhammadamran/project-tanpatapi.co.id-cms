@@ -401,3 +401,166 @@ if (isset($_POST["disabled_signature_menu_"])) {
     }
 }
 // END SIGNATURE
+
+// KHAS
+// ADD
+if (isset($_POST["add_khas_"])) {
+
+    $Title          = $_POST['Title'];
+    $Page           = $_POST['Page'];
+    $Subtitle       = $_POST['Subtitle'];
+    $Description    = $_POST['Description'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Add Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Add';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("INSERT INTO tb_khas
+                        (id,title,subtitle,description,status)
+                        VALUES
+                        ('','$Title','$Subtitle','$Description','1')");
+
+    if ($query) {
+        echo "<script>alert('Add Successfully');location.href = '../../index.php?m=content&s=2&n=" . $Page . "&AddSuccess'</script>";
+    } else {
+        echo "<script>alert('Add Unsuccessfully');location.href = '../../index.php?m=content&s=2&n=" . $Page . "&AddFailed'</script>";
+    }
+}
+// UPDATE
+if (isset($_POST["update_khas_"])) {
+
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Subtitle       = $_POST['Subtitle'];
+    $Description    = $_POST['Description'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Update Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Update';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_khas SET title='$Title',
+                                                  subtitle='$Subtitle',
+                                                  description='$Description'
+                                                  WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Update Successfully');location.href = '../../index.php?m=content&s=2&n=" . $Page . "&UpdateSuccess'</script>";
+    } else {
+        echo "<script>alert('Update Unsuccessfully');location.href = '../../index.php?m=content&s=2&n=" . $Page . "&UpdateFailed'</script>";
+    }
+}
+// DELETE
+if (isset($_POST["delete_khas_"])) {
+
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Subtitle       = $_POST['Subtitle'];
+    $Description    = $_POST['Description'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Delete Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Delete';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("DELETE FROM tb_khas WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Delete Successfully');location.href = '../../index.php?m=content&s=2&n=" . $Page . "&DeleteSuccess'</script>";
+    } else {
+        echo "<script>alert('Delete Unsuccessfully');location.href = '../../index.php?m=content&s=2&n=" . $Page . "&DeleteFailed'</script>";
+    }
+}
+// ENABLED
+if (isset($_POST["enabled_khas_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Subtitle       = $_POST['Subtitle'];
+    $Description    = $_POST['Description'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Enabled Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Enabled';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_khas SET status='1'
+                                                  WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Enabled Successfully');location.href = '../../index.php?m=content&s=2&n=" . $Page . "&EnabledSuccess'</script>";
+    } else {
+        echo "<script>alert('Enabled Unsuccessfully');location.href = '../../index.php?m=content&s=2&n=" . $Page . "&EnabledFailed'</script>";
+    }
+}
+// DISABLED
+if (isset($_POST["disabled_khas_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Subtitle       = $_POST['Subtitle'];
+    $Description    = $_POST['Description'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Disabled Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Disabled';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_khas SET status='2'
+                                                  WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Disabled Successfully');location.href = '../../index.php?m=content&s=2&n=" . $Page . "&DisabledSuccess'</script>";
+    } else {
+        echo "<script>alert('Disabled Unsuccessfully');location.href = '../../index.php?m=content&s=2&n=" . $Page . "&DisabledFailed'</script>";
+    }
+}
+// END KHAS

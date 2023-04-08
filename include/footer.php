@@ -169,7 +169,6 @@
         });
     });
 
-
     var rupiah = document.getElementById('rupiah');
     rupiah.addEventListener('keyup', function(e) {
         // tambahkan 'Rp.' pada saat ketik nominal di form kolom input

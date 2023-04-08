@@ -30,15 +30,21 @@
             <!-- begin nav-tabs -->
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=1&n=<?= $_GET['n']; ?>" class="nav-link">
+                    <a href="index.php?m=content&s=2&n=<?= $_GET['n']; ?>" class="nav-link">
                         <span class="d-sm-none">Tab 1</span>
                         <span class="d-sm-block d-none"><?= $_GET['n']; ?></span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=1-menu&n=<?= $_GET['n']; ?>" class="nav-link active">
+                    <a href="index.php?m=content&s=2-menu-1&n=<?= $_GET['n']; ?>" class="nav-link">
                         <span class="d-sm-none">Tab 2</span>
-                        <span class="d-sm-block d-none">Manage Menu</span>
+                        <span class="d-sm-block d-none">Manage Menu with Photo</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.php?m=content&s=2-menu-2&n=<?= $_GET['n']; ?>" class="nav-link active">
+                        <span class="d-sm-none">Tab 2</span>
+                        <span class="d-sm-block d-none">Manage Menu without Photo</span>
                     </a>
                 </li>
             </ul>
