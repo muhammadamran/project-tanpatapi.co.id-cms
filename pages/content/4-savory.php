@@ -344,7 +344,7 @@
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header for-delete">
-                                                                        <h4 class="modal-title">Detele Data</h4>
+                                                                        <h4 class="modal-title">Delete Data</h4>
                                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                                     </div>
                                                                     <form action="pages/content/action.php" method="POST">
