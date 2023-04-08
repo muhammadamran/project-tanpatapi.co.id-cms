@@ -1,7 +1,7 @@
 <title><?= $_GET['n']; ?> - Content <?= $title; ?></title>
 <script src="assets/plugins/ckeditor/ckeditor.js"></script>
 <?php
-$Qdata = $db->query("SELECT * FROM tb_khas_menu WHERE type='1' AND id='" . $_GET['id'] . "'");
+$Qdata = $db->query("SELECT * FROM tb_khas_menu WHERE type='2' AND id='" . $_GET['id'] . "'");
 $row   = mysqli_fetch_array($Qdata);
 ?>
 <!-- begin #content -->
@@ -19,7 +19,7 @@ $row   = mysqli_fetch_array($Qdata);
                             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="#">Content</a></li>
                             <li class="breadcrumb-item" aria-current="page"><?= $_GET['n']; ?></li>
-                            <li class="breadcrumb-item" aria-current="page">Manage Menu with Photo</li>
+                            <li class="breadcrumb-item" aria-current="page">Manage Menu without Photo</li>
                             <li class="breadcrumb-item active" aria-current="page">Update Data</li>
                         </div>
                     </ol>
@@ -42,13 +42,13 @@ $row   = mysqli_fetch_array($Qdata);
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=2-menu-1&n=<?= $_GET['n']; ?>" class="nav-link active">
+                    <a href="index.php?m=content&s=2-menu-1&n=<?= $_GET['n']; ?>" class="nav-link">
                         <span class="d-sm-none">Tab 2</span>
                         <span class="d-sm-block d-none">Manage Menu with Photo</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=2-menu-2&n=<?= $_GET['n']; ?>" class="nav-link">
+                    <a href="index.php?m=content&s=2-menu-2&n=<?= $_GET['n']; ?>" class="nav-link active">
                         <span class="d-sm-none">Tab 2</span>
                         <span class="d-sm-block d-none">Manage Menu without Photo</span>
                     </a>
@@ -106,7 +106,7 @@ $row   = mysqli_fetch_array($Qdata);
                                     </div>
                                     <div class="modal-footer">
                                         <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                        <button type="submit" name="update_khas_menu_" class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
+                                        <button type="submit" name="update_khas_menu_flat_" class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
                                     </div>
                                 </form>
                             </div>

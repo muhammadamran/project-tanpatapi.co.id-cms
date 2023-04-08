@@ -15,7 +15,7 @@
                             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="#">Content</a></li>
                             <li class="breadcrumb-item" aria-current="page"><?= $_GET['n']; ?></li>
-                            <li class="breadcrumb-item active" aria-current="page">Manage Menu with Photo</li>
+                            <li class="breadcrumb-item active" aria-current="page">Manage Menu without Photo</li>
                         </div>
                     </ol>
                 </nav>
@@ -37,13 +37,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=2-menu-1&n=<?= $_GET['n']; ?>" class="nav-link active">
+                    <a href="index.php?m=content&s=2-menu-1&n=<?= $_GET['n']; ?>" class="nav-link">
                         <span class="d-sm-none">Tab 2</span>
                         <span class="d-sm-block d-none">Manage Menu with Photo</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=2-menu-2&n=<?= $_GET['n']; ?>" class="nav-link">
+                    <a href="index.php?m=content&s=2-menu-2&n=<?= $_GET['n']; ?>" class="nav-link active">
                         <span class="d-sm-none">Tab 2</span>
                         <span class="d-sm-block d-none">Manage Menu without Photo</span>
                     </a>
@@ -229,7 +229,7 @@
                                     <?php } ?>
 
                                     <?php
-                                    $fDucplicate = $db->query("SELECT rorder, COUNT(*) duplikat FROM tb_khas_menu WHERE type='1' GROUP BY rorder HAVING COUNT(duplikat) > 1");
+                                    $fDucplicate = $db->query("SELECT rorder, COUNT(*) duplikat FROM tb_khas_menu WHERE type='2' GROUP BY rorder HAVING COUNT(duplikat) > 1");
                                     $rDucplicate = mysqli_fetch_array($fDucplicate);
                                     ?>
                                     <?php if ($rDucplicate['duplikat'] != NULL) { ?>
@@ -270,23 +270,6 @@
                                                         <div class="modal-body">
                                                             <fieldset>
                                                                 <div class="row">
-                                                                    <div class="col-sm-12">
-                                                                        <div class="card">
-                                                                            <div class="card-header">
-                                                                                <h5 class="card-title">
-                                                                                    Upload Photo <font style="color:red">*</font>
-                                                                                </h5>
-                                                                            </div>
-                                                                            <div class="card-content">
-                                                                                <div class="card-body">
-                                                                                    <input type="file" name="upload" class="form-control" required>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-12">
-                                                                        <hr>
-                                                                    </div>
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="IdTitle">Title <font style="color:red">*</font></label>
@@ -323,7 +306,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                            <button type="submit" name="add_khas_menu_" class="btn btn-secondary"><i class="fas fa-save"></i> Add</button>
+                                                            <button type="submit" name="add_khas_menu_flat_" class="btn btn-secondary"><i class="fas fa-save"></i> Add</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -336,7 +319,6 @@
                                             <thead>
                                                 <tr style="text-transform: uppercase;text-align:center">
                                                     <th width="1%" data-orderable="false"></th>
-                                                    <th width="1%" data-orderable="false"></th>
                                                     <th class="text-nowrap">Title & Price</th>
                                                     <th class="text-nowrap">Sequence <?= $checkSquence; ?></th>
                                                     <th class="text-nowrap">Description</th>
@@ -345,7 +327,7 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $dataTable = $db->query("SELECT * FROM tb_khas_menu WHERE type='1' ORDER BY rorder ASC");
+                                                $dataTable = $db->query("SELECT * FROM tb_khas_menu WHERE type='2' ORDER BY rorder ASC");
                                                 if (mysqli_num_rows($dataTable) > 0) {
                                                     $no = 0;
                                                     while ($row = mysqli_fetch_array($dataTable)) {
@@ -353,9 +335,6 @@
                                                 ?>
                                                         <tr class="odd gradeX">
                                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                                            <td width="1%" class="with-img">
-                                                                <img src="assets/menu/khas/<?= $row['pictures'] ?>" class="img-rounded height-50" style="width: 65px;" />
-                                                            </td>
                                                             <td>
                                                                 <div class="oke-icon">
                                                                     <!-- Icon -->
@@ -388,15 +367,10 @@
                                                             <td style="text-align:center">
                                                                 <div class="action-table">
                                                                     <div style="margin-left: 5px;">
-                                                                        <a href="#ChangePhoto<?= $row['id'] ?>" class="btn btn-lime" data-toggle="modal" title="Change Photo"><i class="fa-solid fa-image"></i>
-                                                                            <font class="f-action">Change Photo</font>
-                                                                        </a>
-                                                                    </div>
-                                                                    <div style="margin-left: 5px;">
                                                                         <!-- <a href="#updateData<?= $row['id'] ?>" class="btn btn-success" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i>
                                                                             <font class="f-action">Update</font>
                                                                         </a> -->
-                                                                        <a href="index.php?m=content&s=2-menu-1-u&n=<?= $_GET['n']; ?>&id=<?= $row['id'] ?>" target="_blank" class="btn btn-success" title="Update Data"><i class="fas fa-edit"></i>
+                                                                        <a href="index.php?m=content&s=2-menu-2-u&n=<?= $_GET['n']; ?>&id=<?= $row['id'] ?>" target="_blank" class="btn btn-success" title="Update Data"><i class="fas fa-edit"></i>
                                                                             <font class="f-action">Update</font>
                                                                         </a>
                                                                     </div>
@@ -451,91 +425,6 @@
                                                         </div>
                                                         <!-- End Description -->
 
-                                                        <!-- Change Photo -->
-                                                        <div class="modal fade" id="ChangePhoto<?= $row['id'] ?>">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header for-lime">
-                                                                        <h4 class="modal-title">Change Photo</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                    </div>
-                                                                    <form action="pages/content/action.php" method="POST" enctype="multipart/form-data">
-                                                                        <div class="modal-body">
-                                                                            <fieldset>
-                                                                                <div class="row">
-                                                                                    <div class="col-sm-12">
-                                                                                        <div>
-                                                                                            <ul class="media-list media-list-with-divider">
-                                                                                                <li class="media media-lg">
-                                                                                                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                                                                                                        <div>
-                                                                                                            <a href="javascript:;" class="pull-left">
-                                                                                                                <img class="media-object rounded" src="assets/menu/khas/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
-                                                                                                            </a>
-                                                                                                        </div>
-                                                                                                        <div class="media-body">
-                                                                                                            <div class="oke-icon">
-                                                                                                                <div style="margin-left: 10px;">
-                                                                                                                    <div class="card">
-                                                                                                                        <div class="card-header">
-                                                                                                                            <h5 class="card-title">
-                                                                                                                                Upload New Photo
-                                                                                                                            </h5>
-                                                                                                                        </div>
-                                                                                                                        <div class="card-content">
-                                                                                                                            <div class="card-body">
-                                                                                                                                <input type="file" name="upload" class="form-control" required>
-                                                                                                                                <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
-                                                                                                                                <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
-                                                                                                                                <input type="hidden" name="Price" id="Price" value="<?= $row['prices']; ?>" />
-                                                                                                                                <input type="hidden" name="ID" id="ID" value="<?= $row['id']; ?>" />
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-sm-12">
-                                                                                        <hr>
-                                                                                    </div>
-                                                                                    <div class="col-sm-12">
-                                                                                        <div style="font-size: 14px;font-weight: 900;">
-                                                                                            <div style="display: flex;justify-content:space-between;">
-                                                                                                <div>
-                                                                                                    <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
-                                                                                                </div>
-                                                                                                <div>
-                                                                                                    <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div style="text-align: justify;">
-                                                                                            <hr>
-                                                                                            <div class="note note-gray-500 mb-0">
-                                                                                                <div class="note-content" style="text-align: justify;">
-                                                                                                    <?= $row['description']; ?>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </fieldset>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                                            <button type="submit" name="upload_khas_menu_" class="btn btn-lime"><i class="fas fa-image"></i> Change Photo</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- End Change Data -->
-
                                                         <!-- Delete Data -->
                                                         <div class="modal fade" id="deleteData<?= $row['id'] ?>">
                                                             <div class="modal-dialog">
@@ -556,7 +445,6 @@
                                                                                                     <div style="display: flex;justify-content: space-between;align-items: center;">
                                                                                                         <div>
                                                                                                             <a href="javascript:;" class="pull-left">
-                                                                                                                <img class="media-object rounded" src="assets/menu/khas/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
                                                                                                                 <input type="hidden" name="Price" id="Price" value="<?= $row['prices']; ?>" />
@@ -564,13 +452,26 @@
                                                                                                             </a>
                                                                                                         </div>
                                                                                                         <div class="media-body">
-                                                                                                            <div class="oke-icon">
-                                                                                                                <div style="margin-left: 10px;">
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-sm-12">
+                                                                                                                    <hr>
                                                                                                                     <div style="font-size: 14px;font-weight: 900;">
-                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
+                                                                                                                        <div style="display: flex;justify-content:space-between;">
+                                                                                                                            <div>
+                                                                                                                                <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
+                                                                                                                            </div>
+                                                                                                                            <div>
+                                                                                                                                <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
+                                                                                                                            </div>
+                                                                                                                        </div>
                                                                                                                     </div>
-                                                                                                                    <div style="font-size: 14px;font-weight: 900;">
-                                                                                                                        <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
+                                                                                                                    <div style="text-align: justify;">
+                                                                                                                        <hr>
+                                                                                                                        <div class="note note-gray-500 mb-0">
+                                                                                                                            <div class="note-content" style="text-align: justify;">
+                                                                                                                                <?= $row['description']; ?>
+                                                                                                                            </div>
+                                                                                                                        </div>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -580,19 +481,12 @@
                                                                                             </ul>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="note note-gray-500 mb-0">
-                                                                                            <div class="note-content" style="text-align: justify;">
-                                                                                                <?= $row['description']; ?>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
                                                                                 </div>
                                                                             </fieldset>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
-                                                                            <button type="submit" class="btn btn-danger" name="delete_khas_menu_"><i class="fas fa-check-circle"></i> Yes</button>
+                                                                            <button type="submit" class="btn btn-danger" name="delete_khas_menu_flat_"><i class="fas fa-check-circle"></i> Yes</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -620,7 +514,6 @@
                                                                                                     <div style="display: flex;justify-content: space-between;align-items: center;">
                                                                                                         <div>
                                                                                                             <a href="javascript:;" class="pull-left">
-                                                                                                                <img class="media-object rounded" src="assets/menu/khas/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
                                                                                                                 <input type="hidden" name="Price" id="Price" value="<?= $row['prices']; ?>" />
@@ -628,13 +521,26 @@
                                                                                                             </a>
                                                                                                         </div>
                                                                                                         <div class="media-body">
-                                                                                                            <div class="oke-icon">
-                                                                                                                <div style="margin-left: 10px;">
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-sm-12">
+                                                                                                                    <hr>
                                                                                                                     <div style="font-size: 14px;font-weight: 900;">
-                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
+                                                                                                                        <div style="display: flex;justify-content:space-between;">
+                                                                                                                            <div>
+                                                                                                                                <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
+                                                                                                                            </div>
+                                                                                                                            <div>
+                                                                                                                                <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
+                                                                                                                            </div>
+                                                                                                                        </div>
                                                                                                                     </div>
-                                                                                                                    <div style="font-size: 14px;font-weight: 900;">
-                                                                                                                        <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
+                                                                                                                    <div style="text-align: justify;">
+                                                                                                                        <hr>
+                                                                                                                        <div class="note note-gray-500 mb-0">
+                                                                                                                            <div class="note-content" style="text-align: justify;">
+                                                                                                                                <?= $row['description']; ?>
+                                                                                                                            </div>
+                                                                                                                        </div>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -644,19 +550,12 @@
                                                                                             </ul>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="note note-gray-500 mb-0">
-                                                                                            <div class="note-content" style="text-align: justify;">
-                                                                                                <?= $row['description']; ?>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
                                                                                 </div>
                                                                             </fieldset>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
-                                                                            <button type="submit" class="btn btn-enabled" name="enabled_khas_menu_"><i class="fas fa-check-circle"></i> Yes</button>
+                                                                            <button type="submit" class="btn btn-enabled" name="enabled_khas_menu_flat_"><i class="fas fa-check-circle"></i> Yes</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -683,7 +582,6 @@
                                                                                                     <div style="display: flex;justify-content: space-between;align-items: center;">
                                                                                                         <div>
                                                                                                             <a href="javascript:;" class="pull-left">
-                                                                                                                <img class="media-object rounded" src="assets/menu/khas/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
                                                                                                                 <input type="hidden" name="Price" id="Price" value="<?= $row['prices']; ?>" />
@@ -691,13 +589,26 @@
                                                                                                             </a>
                                                                                                         </div>
                                                                                                         <div class="media-body">
-                                                                                                            <div class="oke-icon">
-                                                                                                                <div style="margin-left: 10px;">
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-sm-12">
+                                                                                                                    <hr>
                                                                                                                     <div style="font-size: 14px;font-weight: 900;">
-                                                                                                                        <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
+                                                                                                                        <div style="display: flex;justify-content:space-between;">
+                                                                                                                            <div>
+                                                                                                                                <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['rorder']; ?> - <?= $row['title']; ?>
+                                                                                                                            </div>
+                                                                                                                            <div>
+                                                                                                                                <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
+                                                                                                                            </div>
+                                                                                                                        </div>
                                                                                                                     </div>
-                                                                                                                    <div style="font-size: 14px;font-weight: 900;">
-                                                                                                                        <i class="fa-solid fa-money-bill"></i> <?= hargaRupiah($row['prices']); ?>
+                                                                                                                    <div style="text-align: justify;">
+                                                                                                                        <hr>
+                                                                                                                        <div class="note note-gray-500 mb-0">
+                                                                                                                            <div class="note-content" style="text-align: justify;">
+                                                                                                                                <?= $row['description']; ?>
+                                                                                                                            </div>
+                                                                                                                        </div>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
@@ -707,75 +618,17 @@
                                                                                             </ul>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="note note-gray-500 mb-0">
-                                                                                            <div class="note-content" style="text-align: justify;">
-                                                                                                <?= $row['description']; ?>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
                                                                                 </div>
                                                                             </fieldset>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
-                                                                            <button type="submit" class="btn btn-disabled" name="disabled_khas_menu_"><i class="fas fa-check-circle"></i> Yes</button>
+                                                                            <button type="submit" class="btn btn-disabled" name="disabled_khas_menu_flat_"><i class="fas fa-check-circle"></i> Yes</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                        <!-- Update Data -->
-                                                        <div class="modal fade" id="updateData<?= $row['id'] ?>">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header for-update">
-                                                                        <h4 class="modal-title">Update Data</h4>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                    </div>
-                                                                    <form action="pages/content/action.php" method="POST">
-                                                                        <div class="modal-body">
-                                                                            <fieldset>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="form-group">
-                                                                                            <label for="IdTitle">Title </label>
-                                                                                            <input type="text" class="form-control" name="Title" id="IdTitle" placeholder="Title ..." value="<?= $row['title']; ?>" />
-                                                                                            <input type="hidden" name="ID" id="ID" value="<?= $row['id']; ?>" />
-                                                                                            <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-8">
-                                                                                        <div class="form-group">
-                                                                                            <label for="IdPrice">Price </label>
-                                                                                            <input type="text" class="form-control" name="Price" id="IdPrice" placeholder="Price ..." value="<?= $row['prices']; ?>" />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-4">
-                                                                                        <div class="form-group">
-                                                                                            <label for="IdSequence">Sequence </label>
-                                                                                            <input type="number" class="form-control" name="Sequence" id="IdSequence" placeholder="Sequence ..." value="<?= $row['rorder']; ?>" readonly />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="form-group">
-                                                                                            <label for="IdDescription">Description </label>
-                                                                                            <textarea type="text" class="ckeditor" id="editor2" name="Description" rows="20" placeholder="Description ..."><?= $row['description']; ?></textarea>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </fieldset>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                                            <button type="submit" name="update_khas_menu_" class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- End Update Data -->
                                                     <?php } ?>
                                                 <?php } else { ?>
                                                     <tr>

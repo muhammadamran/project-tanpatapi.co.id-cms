@@ -801,4 +801,171 @@ if (isset($_POST["disabled_khas_menu_"])) {
         echo "<script>alert('Disabled Unsuccessfully');location.href = '../../index.php?m=content&s=2-menu-1&n=" . $Page . "&DisabledFailed'</script>";
     }
 }
+
+// MENU 2
+// ADD
+if (isset($_POST["add_khas_menu_flat_"])) {
+    // RP
+    $Harga          = str_replace("Rp. ", "", $_POST['Price']);
+
+    $Title          = $_POST['Title'];
+    $Page           = $_POST['Page'];
+    $Description    = $_POST['Description'];
+    $Price          = str_replace(".", "", $Harga);
+    $Sequence       = $_POST['Sequence'];
+
+
+    // FOR LOG
+    $Log                  = $_POST['Title'] . '/' . $_POST['Price'];
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Add: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Add';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("INSERT INTO tb_khas_menu
+                            (id,title,description,prices,pictures,rorder,type,status)
+                            VALUES
+                            ('','" . $Title . "','" . $Description . "','" . $Price . "','-','" . $Sequence . "','2','1')
+                            ");
+    if ($query) {
+        echo "<script>alert('Add Successfully');location.href = '../../index.php?m=content&s=2-menu-2&n=" . $Page . "&AddSuccess'</script>";
+    } else {
+        echo "<script>alert('Add Unsuccessfully');location.href = '../../index.php?m=content&s=2-menu-2&n=" . $Page . "&AddFailed'</script>";
+    }
+}
+// UPDATE
+if (isset($_POST["update_khas_menu_flat_"])) {
+    // RP
+    $Harga          = str_replace("Rp. ", "", $_POST['Price']);
+
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Price          = str_replace(".", "", $Harga);
+    $Sequence       = $_POST['Sequence'];
+    $Description    = $_POST['Description'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Price'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Update Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Update';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_khas_menu SET title='$Title',
+                                                    prices='$Price',
+                                                    rorder='$Sequence',
+                                                    description='$Description'
+                                                    WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Update Successfully');location.href = '../../index.php?m=content&s=2-menu-2&n=" . $Page . "&UpdateSuccess'</script>";
+    } else {
+        echo "<script>alert('Update Unsuccessfully');location.href = '../../index.php?m=content&s=2-menu-2&n=" . $Page . "&UpdateFailed'</script>";
+    }
+}
+// DELETE
+if (isset($_POST["delete_khas_menu_flat_"])) {
+
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Price          = $_POST['Price'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Price'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Delete Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Delete';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("DELETE FROM tb_khas_menu WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Delete Successfully');location.href = '../../index.php?m=content&s=2-menu-2&n=" . $Page . "&DeleteSuccess'</script>";
+    } else {
+        echo "<script>alert('Delete Unsuccessfully');location.href = '../../index.php?m=content&s=2-menu-2&n=" . $Page . "&DeleteFailed'</script>";
+    }
+}
+// ENABLED
+if (isset($_POST["enabled_khas_menu_flat_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Price          = $_POST['Price'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Price'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Enabled Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Enabled';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_khas_menu SET status='1'
+                                                   WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Enabled Successfully');location.href = '../../index.php?m=content&s=2-menu-2&n=" . $Page . "&EnabledSuccess'</script>";
+    } else {
+        echo "<script>alert('Enabled Unsuccessfully');location.href = '../../index.php?m=content&s=2-menu-2&n=" . $Page . "&EnabledFailed'</script>";
+    }
+}
+// DISABLED
+if (isset($_POST["disabled_khas_menu_flat_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Price          = $_POST['Price'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Price'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Disabled Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Disabled';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_khas_menu SET status='2'
+                                                   WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Disabled Successfully');location.href = '../../index.php?m=content&s=2-menu-2&n=" . $Page . "&DisabledSuccess'</script>";
+    } else {
+        echo "<script>alert('Disabled Unsuccessfully');location.href = '../../index.php?m=content&s=2-menu-2&n=" . $Page . "&DisabledFailed'</script>";
+    }
+}
 // END KHAS
