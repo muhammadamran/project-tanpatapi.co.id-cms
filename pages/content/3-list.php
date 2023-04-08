@@ -14,7 +14,8 @@
                         <div style="font-size: 12px;display: flex;">
                             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="#">Content</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><?= $_GET['n']; ?></li>
+                            <li class="breadcrumb-item" aria-current="page"><?= $_GET['n']; ?></li>
+                            <li class="breadcrumb-item active" aria-current="page">List</li>
                         </div>
                     </ol>
                 </nav>
@@ -30,13 +31,13 @@
             <!-- begin nav-tabs -->
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=3&n=<?= $_GET['n']; ?>" class="nav-link active">
+                    <a href="index.php?m=content&s=3&n=<?= $_GET['n']; ?>" class="nav-link">
                         <span class="d-sm-none">Tab 1</span>
                         <span class="d-sm-block d-none"><?= $_GET['n']; ?></span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=3-list&n=<?= $_GET['n']; ?>" class="nav-link">
+                    <a href="index.php?m=content&s=3-list&n=<?= $_GET['n']; ?>" class="nav-link active">
                         <span class="d-sm-none">Tab 2</span>
                         <span class="d-sm-block d-none">List</span>
                     </a>

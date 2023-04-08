@@ -72,8 +72,11 @@
                                             $_GET['s'] == $R . '-' .  'menu-1' ||
                                             $_GET['s'] == $R . '-' .  'menu-1-u' ||
                                             $_GET['s'] == $R . '-' .  'menu-2' ||
-                                            $_GET['s'] == $R . '-' .  'menu-2-u'
+                                            $_GET['s'] == $R . '-' .  'menu-2-u' ||
                                             // 3
+                                            $_GET['s'] == $R . '-' .  'list' ||
+                                            $_GET['s'] == $R . '-' .  'menu'
+
                                             ? 'active' : '' ?>">
                                 <a href="index.php?m=content&s=<?= $R; ?>&n=<?= $rowMenu['menu']; ?>">
                                     <?= $rowMenu['menu']; ?>

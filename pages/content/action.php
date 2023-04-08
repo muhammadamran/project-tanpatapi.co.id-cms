@@ -969,3 +969,230 @@ if (isset($_POST["disabled_khas_menu_flat_"])) {
     }
 }
 // END KHAS
+
+// TUMPENG
+// ADD
+if (isset($_POST["add_tumpeng_"])) {
+    $Title          = $_POST['Title'];
+    $Subtitle       = $_POST['Subtitle'];
+    $Page           = $_POST['Page'];
+    $Description    = $_POST['Description'];
+    $fileUpload     = $_FILES['upload']['name'];
+
+    // Photo
+    $filename = 'Tumpeng' . date('d_F_Y') . '_' . date('H_i') . '_' . $fileUpload;
+
+    $tmpname = $_FILES['upload']['tmp_name'];
+    $sizename = $_FILES['upload']['size'];
+    $exp = explode('.', $filename);
+    $ext = end($exp);
+    $wdot = substr($filename, 0, -4);
+    $uniq_file =  $fileUpload;
+    $newname =  'Tumpeng' . date('d_F_Y') . '_' . date('H_i') . '_' . $fileUpload;
+    $config['upload_path'] = '../../assets/menu/tumpeng/';
+    $config['allowed_types'] = "PNG|JPG|JPEG";
+    $config['max_size'] = '2000000';
+    $config['file_name'] = $newname;
+
+    if ($ext == 'PNG' || $ext == 'JPG' || $ext == 'JPEG' || $ext == 'png' || $ext == 'jpg' || $ext == 'jpeg') {
+
+        move_uploaded_file($tmpname, "../../assets/menu/tumpeng/" . $newname);
+
+        // FOR LOG
+        $Log                  = $_POST['Title'] . '/' . $_POST['Subtitle'];
+        $InputUsername        = $_SESSION['username'];
+        $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+        $InputModul           = 'Content';
+        $InputDescription     = $InputName . " Add: " .  $Log . ", Save Data as Log Content";
+        $InputAction          = 'Add';
+        $InputDate            = date('Y-m-d h:m:i');
+
+        $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+        $query .= $db->query("INSERT INTO tb_tumpeng
+                            (id,title,subtitle,description,pictures,status)
+                            VALUES
+                            ('','" . $Title . "','" . $Subtitle . "','" . $Description . "','" . $newname . "','1')
+                            ");
+        if ($query) {
+            echo "<script>alert('Add Successfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&AddSuccess'</script>";
+        } else {
+            echo "<script>alert('Add Unsuccessfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&AddFailed'</script>";
+        }
+    } else {
+        echo "<script>alert('Check File Type!');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&Type'</script>";
+    }
+}
+// CHANGE PHOTO
+if (isset($_POST["upload_tumpeng_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $fileUpload     = $_FILES['upload']['name'];
+
+    // Photo
+    $filename = 'ReTumpeng' . date('d_F_Y') . '_' . date('H_i') . '_' . $fileUpload;
+
+    $tmpname = $_FILES['upload']['tmp_name'];
+    $sizename = $_FILES['upload']['size'];
+    $exp = explode('.', $filename);
+    $ext = end($exp);
+    $wdot = substr($filename, 0, -4);
+    $uniq_file =  $fileUpload;
+    $newname =  'ReTumpeng' . date('d_F_Y') . '_' . date('H_i') . '_' . $fileUpload;
+    $config['upload_path'] = '../../assets/menu/tumpeng/';
+    $config['allowed_types'] = "PNG|JPG|JPEG";
+    $config['max_size'] = '2000000';
+    $config['file_name'] = $newname;
+
+    if ($ext == 'PNG' || $ext == 'JPG' || $ext == 'JPEG' || $ext == 'png' || $ext == 'jpg' || $ext == 'jpeg') {
+
+        move_uploaded_file($tmpname, "../../assets/menu/tumpeng/" . $newname);
+
+        // FOR LOG
+        $Log                  = $_POST['Title'] . '/' . $_POST['Subtitle'];
+        $InputUsername        = $_SESSION['username'];
+        $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+        $InputModul           = 'Content';
+        $InputDescription     = $InputName . " Change Photo: " .  $Log . ", Save Data as Log Content";
+        $InputAction          = 'Change Photo';
+        $InputDate            = date('Y-m-d h:m:i');
+
+        $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+        $query .= $db->query("UPDATE tb_tumpeng SET pictures='$newname' WHERE id='$ID'");
+        if ($query) {
+            echo "<script>alert('Upload Successfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&UploadSuccess'</script>";
+        } else {
+            echo "<script>alert('Upload Unsuccessfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&UploadFailed'</script>";
+        }
+    } else {
+        echo "<script>alert('Check File Type!');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&Type'</script>";
+    }
+}
+// UPDATE
+if (isset($_POST["update_tumpeng_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Subtitle       = $_POST['Subtitle'];
+    $Description    = $_POST['Description'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Update Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Update';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_tumpeng SET title='$Title',
+                                                    subtitle='$Subtitle',
+                                                    description='$Description'
+                                                    WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Update Successfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&UpdateSuccess'</script>";
+    } else {
+        echo "<script>alert('Update Unsuccessfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&UpdateFailed'</script>";
+    }
+}
+// DELETE
+if (isset($_POST["delete_tumpeng_"])) {
+
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Delete Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Delete';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("DELETE FROM tb_tumpeng WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Delete Successfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&DeleteSuccess'</script>";
+    } else {
+        echo "<script>alert('Delete Unsuccessfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&DeleteFailed'</script>";
+    }
+}
+// ENABLED
+if (isset($_POST["enabled_tumpeng_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Enabled Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Enabled';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_tumpeng SET status='1'
+                                                   WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Enabled Successfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&EnabledSuccess'</script>";
+    } else {
+        echo "<script>alert('Enabled Unsuccessfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&EnabledFailed'</script>";
+    }
+}
+// DISABLED
+if (isset($_POST["disabled_tumpeng_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Disabled Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Disabled';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_tumpeng SET status='2'
+                                                   WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Disabled Successfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&DisabledSuccess'</script>";
+    } else {
+        echo "<script>alert('Disabled Unsuccessfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&DisabledFailed'</script>";
+    }
+}
+// END TUMPENG
