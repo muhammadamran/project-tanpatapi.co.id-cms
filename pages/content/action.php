@@ -1195,4 +1195,257 @@ if (isset($_POST["disabled_tumpeng_"])) {
         echo "<script>alert('Disabled Unsuccessfully');location.href = '../../index.php?m=content&s=3&n=" . $Page . "&DisabledFailed'</script>";
     }
 }
+
+// LIST
+// ADD
+if (isset($_POST["add_tumpeng_list_"])) {
+
+    $Title          = $_POST['Title'];
+    $Page           = $_POST['Page'];
+    $Description    = $_POST['Description'];
+    $Log            = $_POST['Title'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Add Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Add';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("INSERT INTO tb_tumpeng
+                        (id,title,description,type,status)
+                        VALUES
+                        ('','$Title','$Description','1','1')");
+
+    if ($query) {
+        echo "<script>alert('Add Successfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&AddSuccess'</script>";
+    } else {
+        echo "<script>alert('Add Unsuccessfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&AddFailed'</script>";
+    }
+}
+// UPDATE
+if (isset($_POST["update_tumpeng_list_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Description    = $_POST['Description'];
+    $Log            = $_POST['Title'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Update Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Update';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_tumpeng SET title='$Title',
+                                                description='$Description'
+                                                WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Update Successfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&UpdateSuccess'</script>";
+    } else {
+        echo "<script>alert('Update Unsuccessfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&UpdateFailed'</script>";
+    }
+}
+// DELETE
+if (isset($_POST["delete_tumpeng_list_"])) {
+
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Log            = $_POST['Title'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Delete Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Delete';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("DELETE FROM tb_tumpeng WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Delete Successfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&DeleteSuccess'</script>";
+    } else {
+        echo "<script>alert('Delete Unsuccessfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&DeleteFailed'</script>";
+    }
+}
+// ENABLED
+if (isset($_POST["enabled_tumpeng_list_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Log            = $_POST['Title'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Enabled Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Enabled';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_tumpeng SET status='1'
+                                                WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Enabled Successfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&EnabledSuccess'</script>";
+    } else {
+        echo "<script>alert('Enabled Unsuccessfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&EnabledFailed'</script>";
+    }
+}
+// DISABLED
+if (isset($_POST["disabled_tumpeng_list_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Log            = $_POST['Title'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Disabled Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Disabled';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_tumpeng SET status='2'
+                                                   WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Disabled Successfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&DisabledSuccess'</script>";
+    } else {
+        echo "<script>alert('Disabled Unsuccessfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&DisabledFailed'</script>";
+    }
+}
+
+// PAX
+// ADD
+if (isset($_POST["add_tumpeng_pax_"])) {
+    // RP
+    $Harga          = str_replace("Rp. ", "", $_POST['Price']);
+
+    $Pax            = $_POST['Pax'];
+    $Page           = $_POST['Page'];
+    $Price          = str_replace(".", "", $Harga);
+    $Log            = $_POST['Pax'] . '/' . $Price;
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Add Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Add';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("INSERT INTO tb_tumpeng_list
+                        (id,pax,prices,status)
+                        VALUES
+                        ('','$Pax','$Price','1')");
+
+    if ($query) {
+        echo "<script>alert('Add Successfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&AddSuccessPax'</script>";
+    } else {
+        echo "<script>alert('Add Unsuccessfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&AddFailedPax'</script>";
+    }
+}
+// UPDATE
+if (isset($_POST["update_tumpeng_pax_"])) {
+    // RP
+    $Harga          = str_replace("Rp. ", "", $_POST['Price']);
+
+    $ID             = $_POST['ID'];
+    $Pax            = $_POST['Pax'];
+    $Page           = $_POST['Page'];
+    $Price          = str_replace(".", "", $Harga);
+    $Log            = $_POST['Pax'] . '/' . $Price;
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Update Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Update';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_tumpeng_list SET pax='$Pax',
+                                                     prices='$Price'
+                                                 WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Update Successfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&UpdateSuccessPax'</script>";
+    } else {
+        echo "<script>alert('Update Unsuccessfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&UpdateFailedPax'</script>";
+    }
+}
+// DELETE
+if (isset($_POST["delete_tumpeng_pax_"])) {
+    $Harga          = str_replace("Rp. ", "", $_POST['Price']);
+
+    $ID             = $_POST['ID'];
+    $Pax            = $_POST['Pax'];
+    $Page           = $_POST['Page'];
+    $Price          = str_replace(".", "", $Harga);
+    $Log            = $_POST['Pax'] . '/' . $Price;
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content';
+    $InputDescription     = $InputName . " Delete Data: " .  $Log . ", Save Data as Log Content";
+    $InputAction          = 'Delete';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("DELETE FROM tb_tumpeng_list WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Delete Successfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&DeleteSuccessPax'</script>";
+    } else {
+        echo "<script>alert('Delete Unsuccessfully');location.href = '../../index.php?m=content&s=3-list&n=" . $Page . "&DeleteFailedPax'</script>";
+    }
+}
 // END TUMPENG

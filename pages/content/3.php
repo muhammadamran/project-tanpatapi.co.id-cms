@@ -283,7 +283,7 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $dataTable = $db->query("SELECT * FROM tb_tumpeng ORDER BY id DESC");
+                                                $dataTable = $db->query("SELECT * FROM tb_tumpeng WHERE type IS NULL ORDER BY id DESC");
                                                 if (mysqli_num_rows($dataTable) > 0) {
                                                     $no = 0;
                                                     while ($row = mysqli_fetch_array($dataTable)) {
@@ -381,8 +381,6 @@
                                                             </div>
                                                         </div>
                                                         <!-- End Description -->
-
-
 
                                                         <!-- Change Photo -->
                                                         <div class="modal fade" id="ChangePhoto<?= $row['id'] ?>">

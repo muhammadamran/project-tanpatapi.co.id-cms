@@ -60,6 +60,24 @@
             // iDisplayLength: -1
         });
     });
+    $(document).ready(function() {
+        $('#TableDefault_L2').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
+            ],
+            "order": [],
+            lengthMenu: [
+                [10, 25, 50, -1],
+                [10, 25, 50, 'All'],
+            ],
+            "columnDefs": [{
+                "targets": 'no-sort',
+                "orderable": false,
+            }],
+            // iDisplayLength: -1
+        });
+    });
     // TABLE DEFAULT
     $(document).ready(function() {
         $('#TableDefault').DataTable({
