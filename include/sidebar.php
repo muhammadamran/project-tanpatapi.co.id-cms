@@ -82,7 +82,10 @@
 
 
                                             ? 'active' : '' ?>">
-                                <a href="index.php?m=content&s=<?= $R; ?>&n=<?= $rowMenu['menu']; ?>">
+                                <?php
+                                $nameMenu = str_replace("&", ' ', $rowMenu['menu']);
+                                ?>
+                                <a href="index.php?m=content&s=<?= $R; ?>&n=<?= $nameMenu; ?>">
                                     <?= $rowMenu['menu']; ?>
                                 </a>
                             </li>

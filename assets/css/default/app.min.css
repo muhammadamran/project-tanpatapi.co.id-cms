@@ -26168,7 +26168,7 @@ body .introjs-bullets ul li a.active {
     float: left;
     margin-top: -5px;
     margin-right: 5px;
-    width: 35px;
+    /* width: 35px; */
     text-align: center;
     line-height: 20px;
     font-size: 14px;
@@ -26297,7 +26297,13 @@ body .introjs-bullets ul li a.active {
 }
 
 .sidebar .nav>li.active>a i {
-    color: #00acac
+    color: #00acac;
+    /* font-size: 18px; */
+}
+
+.sidebar .nav>li>a:hover i {
+    color: #00acac;
+    font-size: 18px;
 }
 
 .gradient-enabled .sidebar .nav>li.active>a i {

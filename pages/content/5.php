@@ -307,8 +307,8 @@
                                                             </td>
                                                             <td style="text-align:center">
                                                                 <div class="action-table">
-                                                                    <a href="#descModal<?= $row['id'] ?>" class="btn btn-secondary" data-toggle="modal" title="Boxttitle & Description"><i class="fas fa-comment"></i>
-                                                                        <font class="f-action"> Boxttitle & Description</font>
+                                                                    <a href="#descModal<?= $row['id'] ?>" class="btn btn-secondary" data-toggle="modal" title="Boxtitle & Description"><i class="fas fa-comment"></i>
+                                                                        <font class="f-action"> Boxtitle & Description</font>
                                                                     </a>
                                                                 </div>
                                                             </td>
