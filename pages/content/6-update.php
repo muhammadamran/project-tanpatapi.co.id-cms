@@ -552,7 +552,7 @@
                                                                                     <div class="col-md-4">
                                                                                         <div class="form-group">
                                                                                             <label for="IdSequence">Sequence </label>
-                                                                                            <input type="number" class="form-control" name="Sequence" id="IdSequence" placeholder="Sequence ..." value="<?= $row['rorder']; ?>" readonly />
+                                                                                            <input type="number" class="form-control" name="Sequence" id="IdSequence" placeholder="Sequence ..." value="<?= $row['rorder']; ?>" />
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-md-12">

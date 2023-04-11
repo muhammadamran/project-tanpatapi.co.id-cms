@@ -2958,6 +2958,233 @@ if (isset($_POST["disabled_update_"])) {
 // END PROMO & UPDATE
 
 // GALLERY
+// ADD
+if (isset($_POST["add_gallery_"])) {
+    $Title          = $_POST['Title'];
+    $Subtitle       = $_POST['Subtitle'];
+    $Page           = $_POST['Page'];
+    $Sequence       = $_POST['Sequence'];
+    $fileUpload     = $_FILES['upload']['name'];
+
+    // Photo
+    $filename = 'Gallery' . date('d_F_Y') . '_' . date('H_i') . '_' . $fileUpload;
+
+    $tmpname = $_FILES['upload']['tmp_name'];
+    $sizename = $_FILES['upload']['size'];
+    $exp = explode('.', $filename);
+    $ext = end($exp);
+    $wdot = substr($filename, 0, -4);
+    $uniq_file =  $fileUpload;
+    $newname =  'Gallery' . date('d_F_Y') . '_' . date('H_i') . '_' . $fileUpload;
+    $config['upload_path'] = '../../assets/gallery/';
+    $config['allowed_types'] = "PNG|JPG|JPEG";
+    $config['max_size'] = '2000000';
+    $config['file_name'] = $newname;
+
+    if ($ext == 'PNG' || $ext == 'JPG' || $ext == 'JPEG' || $ext == 'png' || $ext == 'jpg' || $ext == 'jpeg') {
+
+        move_uploaded_file($tmpname, "../../assets/gallery/" . $newname);
+
+        // FOR LOG
+        $Log                  = $_POST['Title'] . '/' . $_POST['Subtitle'];
+        $InputUsername        = $_SESSION['username'];
+        $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+        $InputModul           = 'Content Menu';
+        $InputDescription     = $InputName . " Add: " .  $Log . ", Save Data as Log Content Menu";
+        $InputAction          = 'Add';
+        $InputDate            = date('Y-m-d h:m:i');
+
+        $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+        $query .= $db->query("INSERT INTO tb_gallery
+                            (id,title,subtitle,pictures,rorder,status)
+                            VALUES
+                            ('','" . $Title . "','" . $Subtitle . "','" . $newname . "','" . $Sequence . "','1')
+                            ");
+        if ($query) {
+            echo "<script>alert('Add Successfully');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&AddSuccess'</script>";
+        } else {
+            echo "<script>alert('Add Unsuccessfully');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&AddFailed'</script>";
+        }
+    } else {
+        echo "<script>alert('Check File Type!');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&Type'</script>";
+    }
+}
+// CHANGE PHOTO
+if (isset($_POST["upload_gallery_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $fileUpload     = $_FILES['upload']['name'];
+
+    // Photo
+    $filename = 'ReGallery' . date('d_F_Y') . '_' . date('H_i') . '_' . $fileUpload;
+
+    $tmpname = $_FILES['upload']['tmp_name'];
+    $sizename = $_FILES['upload']['size'];
+    $exp = explode('.', $filename);
+    $ext = end($exp);
+    $wdot = substr($filename, 0, -4);
+    $uniq_file =  $fileUpload;
+    $newname =  'ReGallery' . date('d_F_Y') . '_' . date('H_i') . '_' . $fileUpload;
+    $config['upload_path'] = '../../assets/gallery/';
+    $config['allowed_types'] = "PNG|JPG|JPEG";
+    $config['max_size'] = '2000000';
+    $config['file_name'] = $newname;
+
+    if ($ext == 'PNG' || $ext == 'JPG' || $ext == 'JPEG' || $ext == 'png' || $ext == 'jpg' || $ext == 'jpeg') {
+
+        move_uploaded_file($tmpname, "../../assets/gallery/" . $newname);
+
+        // FOR LOG
+        $Log                  = $_POST['Title'] . '/' . $_POST['Subtitle'];
+        $InputUsername        = $_SESSION['username'];
+        $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+        $InputModul           = 'Content Menu';
+        $InputDescription     = $InputName . " Change Photo: " .  $Log . ", Save Data as Log Content Menu";
+        $InputAction          = 'Change Photo';
+        $InputDate            = date('Y-m-d h:m:i');
+
+        $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+        $query .= $db->query("UPDATE tb_gallery SET pictures='$newname' WHERE id='$ID'");
+        if ($query) {
+            echo "<script>alert('Upload Successfully');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&UploadSuccess'</script>";
+        } else {
+            echo "<script>alert('Upload Unsuccessfully');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&UploadFailed'</script>";
+        }
+    } else {
+        echo "<script>alert('Check File Type!');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&Type'</script>";
+    }
+}
+// UPDATE
+if (isset($_POST["update_gallery_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Subtitle       = $_POST['Subtitle'];
+    $Sequence       = $_POST['Sequence'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Update Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Update';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_gallery SET title='$Title',
+                                                    subtitle='$Subtitle',
+                                                    rorder='$Sequence'
+                                                    WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Update Successfully');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&UpdateSuccess'</script>";
+    } else {
+        echo "<script>alert('Update Unsuccessfully');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&UpdateFailed'</script>";
+    }
+}
+// DELETE
+if (isset($_POST["delete_gallery_"])) {
+
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Subtitle       = $_POST['Subtitle'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Delete Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Delete';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("DELETE FROM tb_gallery WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Delete Successfully');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&DeleteSuccess'</script>";
+    } else {
+        echo "<script>alert('Delete Unsuccessfully');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&DeleteFailed'</script>";
+    }
+}
+// ENABLED
+if (isset($_POST["enabled_gallery_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Subtitle       = $_POST['Subtitle'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Enabled Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Enabled';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_gallery SET status='1'
+                                                   WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Enabled Successfully');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&EnabledSuccess'</script>";
+    } else {
+        echo "<script>alert('Enabled Unsuccessfully');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&EnabledFailed'</script>";
+    }
+}
+// DISABLED
+if (isset($_POST["disabled_gallery_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Subtitle       = $_POST['Subtitle'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Subtitle'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Disabled Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Disabled';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_gallery SET status='2'
+                                                   WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Disabled Successfully');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&DisabledSuccess'</script>";
+    } else {
+        echo "<script>alert('Disabled Unsuccessfully');location.href = '../../index.php?m=content&s=7&n=" . $Page . "&DisabledFailed'</script>";
+    }
+}
 // END GALLERY
 
 // CONTACT
