@@ -78,8 +78,13 @@
                                             $_GET['s'] == $R . '-' .  'menu' ||
                                             // 4
                                             $_GET['s'] == $R . '-' .  'sweet' ||
-                                            $_GET['s'] == $R . '-' .  'savory'
-
+                                            $_GET['s'] == $R . '-' .  'savory' ||
+                                            // 5
+                                            // 6
+                                            $_GET['s'] == $R . '-' .  'promo' ||
+                                            $_GET['s'] == $R . '-' .  'update'
+                                            // 7
+                                            // 8
 
                                             ? 'active' : '' ?>">
                                 <?php

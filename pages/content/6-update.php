@@ -15,7 +15,7 @@
                             <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="#">Content</a></li>
                             <li class="breadcrumb-item" aria-current="page"><?= $_GET['n']; ?></li>
-                            <li class="breadcrumb-item active" aria-current="page">Promo</li>
+                            <li class="breadcrumb-item active" aria-current="page">Update</li>
                         </div>
                     </ol>
                 </nav>
@@ -37,13 +37,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=6-promo&n=<?= $_GET['n']; ?>" class="nav-link active">
+                    <a href="index.php?m=content&s=6-promo&n=<?= $_GET['n']; ?>" class="nav-link">
                         <span class="d-sm-none">Tab 2</span>
                         <span class="d-sm-block d-none">Promo</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?m=content&s=6-update&n=<?= $_GET['n']; ?>" class="nav-link">
+                    <a href="index.php?m=content&s=6-update&n=<?= $_GET['n']; ?>" class="nav-link active">
                         <span class="d-sm-none">Tab 2</span>
                         <span class="d-sm-block d-none">Update</span>
                     </a>
@@ -229,7 +229,7 @@
                                     <?php } ?>
 
                                     <?php
-                                    $fDucplicate = $db->query("SELECT rorder, COUNT(*) duplikat FROM tb_promo GROUP BY rorder HAVING COUNT(duplikat) > 1");
+                                    $fDucplicate = $db->query("SELECT rorder, COUNT(*) duplikat FROM tb_update GROUP BY rorder HAVING COUNT(duplikat) > 1");
                                     $rDucplicate = mysqli_fetch_array($fDucplicate);
                                     ?>
                                     <?php if ($rDucplicate['duplikat'] != NULL) { ?>
@@ -317,7 +317,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                            <button type="submit" name="add_promo_" class="btn btn-secondary"><i class="fas fa-save"></i> Add</button>
+                                                            <button type="submit" name="add_update_" class="btn btn-secondary"><i class="fas fa-save"></i> Add</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -339,7 +339,7 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $dataTable = $db->query("SELECT * FROM tb_promo ORDER BY rorder ASC");
+                                                $dataTable = $db->query("SELECT * FROM tb_update ORDER BY rorder ASC");
                                                 if (mysqli_num_rows($dataTable) > 0) {
                                                     $no = 0;
                                                     while ($row = mysqli_fetch_array($dataTable)) {
@@ -348,7 +348,7 @@
                                                         <tr class="odd gradeX">
                                                             <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
                                                             <td width="1%" class="with-img">
-                                                                <img src="assets/menu/promo/<?= $row['pictures'] ?>" class="img-rounded height-50" style="width: 65px;" />
+                                                                <img src="assets/menu/update/<?= $row['pictures'] ?>" class="img-rounded height-50" style="width: 65px;" />
                                                             </td>
                                                             <td>
                                                                 <div class="oke-icon">
@@ -461,7 +461,7 @@
                                                                                                     <div style="display: flex;justify-content: space-between;align-items: center;">
                                                                                                         <div>
                                                                                                             <a href="javascript:;" class="pull-left">
-                                                                                                                <img class="media-object rounded" src="assets/menu/promo/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
+                                                                                                                <img class="media-object rounded" src="assets/menu/update/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
                                                                                                             </a>
                                                                                                         </div>
                                                                                                         <div class="media-body">
@@ -519,7 +519,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                                            <button type="submit" name="upload_promo_" class="btn btn-lime"><i class="fas fa-image"></i> Change Photo</button>
+                                                                            <button type="submit" name="uploupdate_" class="btn btn-lime"><i class="fas fa-image"></i> Change Photo</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -566,7 +566,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                                            <button type="submit" name="update_promo_" class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
+                                                                            <button type="submit" name="updaupdate_" class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -594,7 +594,7 @@
                                                                                                     <div style="display: flex;justify-content: space-between;align-items: center;">
                                                                                                         <div>
                                                                                                             <a href="javascript:;" class="pull-left">
-                                                                                                                <img class="media-object rounded" src="assets/menu/promo/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
+                                                                                                                <img class="media-object rounded" src="assets/menu/update/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
                                                                                                                 <input type="hidden" name="Datein" id="Datein" value="<?= $row['datein']; ?>" />
@@ -630,7 +630,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
-                                                                            <button type="submit" class="btn btn-danger" name="delete_promo_"><i class="fas fa-check-circle"></i> Yes</button>
+                                                                            <button type="submit" class="btn btn-danger" name="deleupdate_"><i class="fas fa-check-circle"></i> Yes</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -658,7 +658,7 @@
                                                                                                     <div style="display: flex;justify-content: space-between;align-items: center;">
                                                                                                         <div>
                                                                                                             <a href="javascript:;" class="pull-left">
-                                                                                                                <img class="media-object rounded" src="assets/menu/promo/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
+                                                                                                                <img class="media-object rounded" src="assets/menu/update/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
                                                                                                                 <input type="hidden" name="Datein" id="Datein" value="<?= $row['datein']; ?>" />
@@ -694,7 +694,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
-                                                                            <button type="submit" class="btn btn-enabled" name="enabled_promo_"><i class="fas fa-check-circle"></i> Yes</button>
+                                                                            <button type="submit" class="btn btn-enabled" name="enabupdate_"><i class="fas fa-check-circle"></i> Yes</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -721,7 +721,7 @@
                                                                                                     <div style="display: flex;justify-content: space-between;align-items: center;">
                                                                                                         <div>
                                                                                                             <a href="javascript:;" class="pull-left">
-                                                                                                                <img class="media-object rounded" src="assets/menu/promo/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
+                                                                                                                <img class="media-object rounded" src="assets/menu/update/<?= $row['pictures'] ?>" alt="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Title" id="Title" value="<?= $row['title']; ?>" />
                                                                                                                 <input type="hidden" name="Page" id="page" value="<?= $_GET['n']; ?>" />
                                                                                                                 <input type="hidden" name="Datein" id="Datein" value="<?= $row['datein']; ?>" />
@@ -757,7 +757,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
-                                                                            <button type="submit" class="btn btn-disabled" name="disabled_promo_"><i class="fas fa-check-circle"></i> Yes</button>
+                                                                            <button type="submit" class="btn btn-disabled" name="disaupdate_"><i class="fas fa-check-circle"></i> Yes</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>

@@ -2499,7 +2499,7 @@ if (isset($_POST["add_promo_"])) {
     $Title          = $_POST['Title'];
     $Page           = $_POST['Page'];
     $Description    = $_POST['Description'];
-    $Datein         = $_POST['Datein'];
+    $Datein         = date('Y-m-d h:m:i');
     $Sequence       = $_POST['Sequence'];
     $fileUpload     = $_FILES['upload']['name'];
 
@@ -2523,7 +2523,7 @@ if (isset($_POST["add_promo_"])) {
         move_uploaded_file($tmpname, "../../assets/menu/promo/" . $newname);
 
         // FOR LOG
-        $Log                  = $_POST['Title'] . '/' . $_POST['Datein'];
+        $Log                  = $_POST['Title'] . '/' . $Datein;
         $InputUsername        = $_SESSION['username'];
         $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
         $InputModul           = 'Content Menu';
@@ -2576,7 +2576,7 @@ if (isset($_POST["upload_promo_"])) {
         move_uploaded_file($tmpname, "../../assets/menu/promo/" . $newname);
 
         // FOR LOG
-        $Log                  = $_POST['Title'] . '/' . $_POST['Datein'];
+        $Log                  = $_POST['Title'] . '/' . date('Y-m-d h:m:i');;
         $InputUsername        = $_SESSION['username'];
         $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
         $InputModul           = 'Content Menu';
@@ -2604,10 +2604,10 @@ if (isset($_POST["update_promo_"])) {
     $ID             = $_POST['ID'];
     $Page           = $_POST['Page'];
     $Title          = $_POST['Title'];
-    $Datein         = $_POST['Datein'];
+    $Datein         = date('Y-m-d h:m:i');;
     $Sequence       = $_POST['Sequence'];
     $Description    = $_POST['Description'];
-    $Log            = $_POST['Title'] . '/' . $_POST['Datein'];
+    $Log            = $_POST['Title'] . '/' . $Datein;
 
     // FOR LOG
     $InputUsername        = $_SESSION['username'];
@@ -2640,8 +2640,8 @@ if (isset($_POST["delete_promo_"])) {
     $ID             = $_POST['ID'];
     $Page           = $_POST['Page'];
     $Title          = $_POST['Title'];
-    $Datein         = $_POST['Datein'];
-    $Log            = $_POST['Title'] . '/' . $_POST['Datein'];
+    $Datein         = date('Y-m-d h:m:i');
+    $Log            = $_POST['Title'] . '/' . $Datein;
 
     // FOR LOG
     $InputUsername        = $_SESSION['username'];
@@ -2669,8 +2669,8 @@ if (isset($_POST["enabled_promo_"])) {
     $ID             = $_POST['ID'];
     $Page           = $_POST['Page'];
     $Title          = $_POST['Title'];
-    $Datein         = $_POST['Datein'];
-    $Log            = $_POST['Title'] . '/' . $_POST['Datein'];
+    $Datein         = date('Y-m-d h:m:i');
+    $Log            = $_POST['Title'] . '/' . $Datein;
 
     // FOR LOG
     $InputUsername        = $_SESSION['username'];
@@ -2699,8 +2699,8 @@ if (isset($_POST["disabled_promo_"])) {
     $ID             = $_POST['ID'];
     $Page           = $_POST['Page'];
     $Title          = $_POST['Title'];
-    $Datein         = $_POST['Datein'];
-    $Log            = $_POST['Title'] . '/' . $_POST['Datein'];
+    $Datein         = date('Y-m-d h:m:i');
+    $Log            = $_POST['Title'] . '/' . $Datein;
 
     // FOR LOG
     $InputUsername        = $_SESSION['username'];
@@ -2725,6 +2725,236 @@ if (isset($_POST["disabled_promo_"])) {
     }
 }
 // UPDATE
+// ADD
+if (isset($_POST["add_update_"])) {
+    $Title          = $_POST['Title'];
+    $Page           = $_POST['Page'];
+    $Description    = $_POST['Description'];
+    $Datein         = date('Y-m-d h:m:i');
+    $Sequence       = $_POST['Sequence'];
+    $fileUpload     = $_FILES['upload']['name'];
+
+    // Photo
+    $filename = 'Update' . date('d_F_Y') . '_' . date('H_i') . '_' . $fileUpload;
+
+    $tmpname = $_FILES['upload']['tmp_name'];
+    $sizename = $_FILES['upload']['size'];
+    $exp = explode('.', $filename);
+    $ext = end($exp);
+    $wdot = substr($filename, 0, -4);
+    $uniq_file =  $fileUpload;
+    $newname =  'Update' . date('d_F_Y') . '_' . date('H_i') . '_' . $fileUpload;
+    $config['upload_path'] = '../../assets/menu/update/';
+    $config['allowed_types'] = "PNG|JPG|JPEG";
+    $config['max_size'] = '2000000';
+    $config['file_name'] = $newname;
+
+    if ($ext == 'PNG' || $ext == 'JPG' || $ext == 'JPEG' || $ext == 'png' || $ext == 'jpg' || $ext == 'jpeg') {
+
+        move_uploaded_file($tmpname, "../../assets/menu/update/" . $newname);
+
+        // FOR LOG
+        $Log                  = $_POST['Title'] . '/' . $Datein;
+        $InputUsername        = $_SESSION['username'];
+        $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+        $InputModul           = 'Content Menu';
+        $InputDescription     = $InputName . " Add: " .  $Log . ", Save Data as Log Content Menu";
+        $InputAction          = 'Add';
+        $InputDate            = date('Y-m-d h:m:i');
+
+        $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+        $query .= $db->query("INSERT INTO tb_update
+                            (id,title,description,datein,pictures,rorder,status)
+                            VALUES
+                            ('','" . $Title . "','" . $Description . "','" . $Datein . "','" . $newname . "','" . $Sequence . "','1')
+                            ");
+        if ($query) {
+            echo "<script>alert('Add Successfully');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&AddSuccess'</script>";
+        } else {
+            echo "<script>alert('Add Unsuccessfully');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&AddFailed'</script>";
+        }
+    } else {
+        echo "<script>alert('Check File Type!');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&Type'</script>";
+    }
+}
+// CHANGE PHOTO
+if (isset($_POST["upload_update_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $fileUpload     = $_FILES['upload']['name'];
+
+    // Photo
+    $filename = 'ReUpdate' . date('d_F_Y') . '_' . date('H_i') . '_' . $fileUpload;
+
+    $tmpname = $_FILES['upload']['tmp_name'];
+    $sizename = $_FILES['upload']['size'];
+    $exp = explode('.', $filename);
+    $ext = end($exp);
+    $wdot = substr($filename, 0, -4);
+    $uniq_file =  $fileUpload;
+    $newname =  'ReUpdate' . date('d_F_Y') . '_' . date('H_i') . '_' . $fileUpload;
+    $config['upload_path'] = '../../assets/menu/update/';
+    $config['allowed_types'] = "PNG|JPG|JPEG";
+    $config['max_size'] = '2000000';
+    $config['file_name'] = $newname;
+
+    if ($ext == 'PNG' || $ext == 'JPG' || $ext == 'JPEG' || $ext == 'png' || $ext == 'jpg' || $ext == 'jpeg') {
+
+        move_uploaded_file($tmpname, "../../assets/menu/update/" . $newname);
+
+        // FOR LOG
+        $Log                  = $_POST['Title'] . '/' . date('Y-m-d h:m:i');;
+        $InputUsername        = $_SESSION['username'];
+        $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+        $InputModul           = 'Content Menu';
+        $InputDescription     = $InputName . " Change Photo: " .  $Log . ", Save Data as Log Content Menu";
+        $InputAction          = 'Change Photo';
+        $InputDate            = date('Y-m-d h:m:i');
+
+        $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+        $query .= $db->query("UPDATE tb_update SET pictures='$newname' WHERE id='$ID'");
+        if ($query) {
+            echo "<script>alert('Upload Successfully');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&UploadSuccess'</script>";
+        } else {
+            echo "<script>alert('Upload Unsuccessfully');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&UploadFailed'</script>";
+        }
+    } else {
+        echo "<script>alert('Check File Type!');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&Type'</script>";
+    }
+}
+// UPDATE
+if (isset($_POST["update_update_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Datein         = date('Y-m-d h:m:i');;
+    $Sequence       = $_POST['Sequence'];
+    $Description    = $_POST['Description'];
+    $Log            = $_POST['Title'] . '/' . $Datein;
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Update Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Update';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_update SET title='$Title',
+                                                    datein='$Datein',
+                                                    rorder='$Sequence',
+                                                    description='$Description'
+                                                    WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Update Successfully');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&UpdateSuccess'</script>";
+    } else {
+        echo "<script>alert('Update Unsuccessfully');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&UpdateFailed'</script>";
+    }
+}
+// DELETE
+if (isset($_POST["delete_update_"])) {
+
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Datein         = date('Y-m-d h:m:i');
+    $Log            = $_POST['Title'] . '/' . $Datein;
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Delete Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Delete';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("DELETE FROM tb_update WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Delete Successfully');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&DeleteSuccess'</script>";
+    } else {
+        echo "<script>alert('Delete Unsuccessfully');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&DeleteFailed'</script>";
+    }
+}
+// ENABLED
+if (isset($_POST["enabled_update_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Datein         = date('Y-m-d h:m:i');
+    $Log            = $_POST['Title'] . '/' . $Datein;
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Enabled Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Enabled';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_update SET status='1'
+                                                   WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Enabled Successfully');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&EnabledSuccess'</script>";
+    } else {
+        echo "<script>alert('Enabled Unsuccessfully');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&EnabledFailed'</script>";
+    }
+}
+// DISABLED
+if (isset($_POST["disabled_update_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Datein         = date('Y-m-d h:m:i');
+    $Log            = $_POST['Title'] . '/' . $Datein;
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Menu';
+    $InputDescription     = $InputName . " Disabled Data: " .  $Log . ", Save Data as Log Content Menu";
+    $InputAction          = 'Disabled';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_update SET status='2'
+                                                   WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Disabled Successfully');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&DisabledSuccess'</script>";
+    } else {
+        echo "<script>alert('Disabled Unsuccessfully');location.href = '../../index.php?m=content&s=6-update&n=" . $Page . "&DisabledFailed'</script>";
+    }
+}
 // END PROMO & UPDATE
 
 // GALLERY
