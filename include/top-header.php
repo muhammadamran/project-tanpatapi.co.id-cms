@@ -6,10 +6,10 @@
         <a href="index.php" class="navbar-brand"><span class="navbar-logo"></span>
             <div>
                 <div style="margin-top: 5px;">
-                    <b><?= $logoOne; ?></b>
+                    <b><?= $app_name; ?></b>
                 </div>
                 <div style="font-size: 9px;font-weight: 100;margin-top: -15px;">
-                    <?= $logoTwo; ?>
+                    <?= $company; ?>
                 </div>
             </div>
         </a>
@@ -95,7 +95,7 @@
         </li> -->
         <li>
             <div style="margin-top: 8px;margin-left:10px">
-                <button type="button" onClick="showHideRA('divRA')" class="btn btn-dark-custom" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Local Time +07:00">
+                <button type="button" class="btn btn-dark-custom" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Local Time +07:00">
                     <i class="far fa-clock"></i>
                     <font id="todaysDate"></font>
                 </button>
@@ -104,7 +104,7 @@
         <li>
             <div style="margin-top: 8px;margin-left:10px">
                 <button type="button" onClick="showHideRA('divRA')" class="btn btn-dark-custom" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="bottom" data-content="Activity">
-                    <i class="far fa-question-circle"></i>
+                    <i class="fa-solid fa-calendar"></i>
                     Activity
                 </button>
             </div>
@@ -126,9 +126,6 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="javascript:;" class="dropdown-item">Edit Profile</a>
-                <a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a>
-                <a href="javascript:;" class="dropdown-item">Calendar</a>
-                <a href="javascript:;" class="dropdown-item">Setting</a>
                 <div class="dropdown-divider"></div>
                 <a href="logout.php" class="dropdown-item">Log Out</a>
             </div>

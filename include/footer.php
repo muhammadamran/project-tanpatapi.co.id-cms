@@ -13,6 +13,24 @@
 <script src="assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
 <script src="assets/js/demo/dashboard-v3.js"></script>
 <!-- <script src="assets/plugins/jquery.maskedinput/src/jquery.maskedinput.js"></script> -->
+<!-- inputs-ext -->
+<script src="assets/plugins/jquery-migrate/dist/jquery-migrate.min.js"></script>
+<script src="assets/plugins/x-editable-bs4/dist/bootstrap4-editable/js/bootstrap-editable.min.js"></script>
+<script src="assets/plugins/x-editable-bs4/dist/inputs-ext/address/address.js"></script>
+<script src="assets/plugins/x-editable-bs4/dist/inputs-ext/typeaheadjs/lib/typeahead.js"></script>
+<script src="assets/plugins/x-editable-bs4/dist/inputs-ext/typeaheadjs/typeaheadjs.js"></script>
+<script src="assets/plugins/x-editable-bs4/dist/inputs-ext/wysihtml5/wysihtml5.js"></script>
+<script src="assets/plugins/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="assets/plugins/select2/dist/js/select2.full.min.js"></script>
+<script src="assets/plugins/jquery-mockjax/dist/jquery.mockjax.min.js"></script>
+<script src="assets/plugins/moment/moment.js"></script>
+<script src="assets/js/demo/form-editable.demo.js"></script>
+<!-- dropzone -->
+<script src="assets/plugins/dropzone/dist/min/dropzone.min.js"></script>
+<script src="assets/plugins/highlight.js/highlight.min.js"></script>
+<script src="assets/js/demo/render.highlight.js"></script>
 <script type="text/javascript">
     // Time
     function doDate() {
@@ -189,19 +207,15 @@
 
     var rupiah = document.getElementById('rupiah');
     rupiah.addEventListener('keyup', function(e) {
-        // tambahkan 'Rp.' pada saat ketik nominal di form kolom input
-        // gunakan fungsi formatRupiah() untuk mengubah nominal angka yang di ketik menjadi format angka
         rupiah.value = formatRupiah(this.value, 'Rp. ');
     });
-    /* Fungsi formatRupiah */
+
     function formatRupiah(angka, prefix) {
         var number_string = angka.replace(/[^,\d]/g, '').toString(),
             split = number_string.split(','),
             sisa = split[0].length % 3,
             rupiah = split[0].substr(0, sisa),
             ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-        // tambahkan titik jika yang di input sudah menjadi angka satuan ribuan
         if (ribuan) {
             separator = sisa ? '.' : '';
             rupiah += separator + ribuan.join('.');

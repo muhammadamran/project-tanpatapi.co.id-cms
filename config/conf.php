@@ -13,56 +13,27 @@ if ($db->connect_error) {
 date_default_timezone_set("Asia/Jakarta");
 
 // LOAD SETTING
-$QloadConfig    = $db->query("SELECT * FROM tb_setting WHERE status='Active'");
+$QloadConfig    = $db->query("SELECT * FROM tb_setting WHERE id='1'");
 $loadConfig     = mysqli_fetch_array($QloadConfig);
 
-if ($loadConfig == NULL) {
-    $id = '0';
-    $icon = 'icon.svg';
-    $logoOne = 'APP';
-    $logoTwo = 'CMS';
-    $loader = 'aa';
-    $title = ' | Content Managemen System';
-    $app_name = '-';
-    $company = 'Hellos<sup>ID</sup>';
-    $telp = '+62';
-    $email = 'info@hellosid.com';
-    $seodesc = 'Apps,CMS, Content Managemen System';
-    $address = 'Address';
-    $facebook = '';
-    $twitter = '';
-    $instagram = '';
-    $youtube = '';
-    $url = '';
-    $created_by = '';
-    $created_date = '';
-    $status = '';
-    $btnColor = '#050D28';
-    $btnColorHover = '#213475';
-} else {
-    $id = $loadConfig['id'];
-    $icon = $loadConfig['icon'];
-    $logoOne = $loadConfig['logoOne'];
-    $logoTwo = $loadConfig['logoTwo'];
-    $loader = $loadConfig['loader'];
-    $title = $loadConfig['title'];
-    $app_name = $loadConfig['app_name'];
-    $company = $loadConfig['company'];
-    $telp = $loadConfig['telp'];
-    $email = $loadConfig['email'];
-    $seodesc = $loadConfig['seodesc'];
-    $address = $loadConfig['address'];
-    $facebook = $loadConfig['facebook'];
-    $twitter = $loadConfig['twitter'];
-    $instagram = $loadConfig['instagram'];
-    $youtube = $loadConfig['youtube'];
-    $url = $loadConfig['url'];
-    $created_by = $loadConfig['created_by'];
-    $created_date = $loadConfig['created_date'];
-    $status = $loadConfig['status'];
-    $btnColor = $loadConfig['btnColor'];
-    $btnColorHover = $loadConfig['btnColorHover'];
-}
+$id = $loadConfig['id'] != NULL ? $loadConfig['id'] : '0';
+$icon = $loadConfig['icon'] != NULL ? $loadConfig['icon'] : 'icon.svg';
+$logo = $loadConfig['logo'] != NULL ? $loadConfig['logo'] : 'logo.png';
+$loader = $loadConfig['loader'] != NULL ? $loadConfig['loader'] : 'loader.svg';
+$title = $loadConfig['title'] != NULL ? $loadConfig['title'] : ' | Content Managemen System';
+$app_name = $loadConfig['app_name'] != NULL ? $loadConfig['app_name'] : 'CMS HELLOS<sup>ID</sup>';
+$company = $loadConfig['company'] != NULL ? $loadConfig['company'] : 'www.hellos-id.com';
+$seodesc = $loadConfig['seodesc'] != NULL ? $loadConfig['seodesc'] : 'Apps,CMS, Content Managemen System';
+$tag = $loadConfig['tag'] != NULL ? $loadConfig['tag'] : 'Apps,CMS, Content Managemen System';
+$url = $loadConfig['url'] != NULL ? $loadConfig['url'] : '';
+$status = $loadConfig['status'] != NULL ? $loadConfig['status'] : 'Active';
+$btnColor = $loadConfig['btnColor'] != NULL ? $loadConfig['btnColor'] : '#050D28';
+$btnColorHover = $loadConfig['btnColorHover'] != NULL ? $loadConfig['btnColorHover'] : '#213475';
+$bg_login = $loadConfig['bg_login'] != NULL ? $loadConfig['bg_login'] : 'login-bg.svg';
+$bg_header = $loadConfig['bg_header'] != NULL ? $loadConfig['bg_header'] : 'header-bg.svg';
+$bg_page = $loadConfig['bg_page'] != NULL ? $loadConfig['bg_page'] : 'background.svg';
+$bg_footer_top = $loadConfig['bg_footer_top'] != NULL ? $loadConfig['bg_footer_top'] : 'footer-bg.svg';
+$bg_footer = $loadConfig['bg_footer'] != NULL ? $loadConfig['bg_footer'] : 'footer-top-bg.svg';
 // END LOAD SETTING
 
 class helpers

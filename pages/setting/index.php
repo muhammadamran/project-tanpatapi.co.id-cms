@@ -1,29 +1,42 @@
-<title>Menu <?= $title; ?></title>
+<title>Setting <?= $title; ?></title>
+<link href="assets/plugins/x-editable-bs4/dist/bootstrap4-editable/css/bootstrap-editable.css" rel="stylesheet" />
+<link href="assets/plugins/x-editable-bs4/dist/inputs-ext/address/address.css" rel="stylesheet" />
+<link href="assets/plugins/x-editable-bs4/dist/inputs-ext/typeaheadjs/lib/typeahead.js-bootstrap.css" rel="stylesheet" />
+<link href="assets/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<link href="assets/plugins/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.min.css" rel="stylesheet" />
+<link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+<link href="assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
 <!-- begin #content -->
 <div id="content" class="content">
-    <!-- begin breadcrumb -->
-    <ol class="breadcrumb float-xl-right">
-        <li class="breadcrumb-item active">Menu</li>
-    </ol>
-    <!-- end breadcrumb -->
-    <!-- begin page-header -->
-    <h1 class="page-header mb-3">
-        <div class="page-header-c">
-            <div class="page-header-icon">
-                <i class="fa-solid fa-folder-plus"></i>
-            </div>
-            <div class="page-header-text">
-                Menu
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h4>Setting</h4>
+                </div>
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb">
+                        <div style="font-size: 12px;display: flex;">
+                            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Setting</li>
+                            <li class="breadcrumb-item active" aria-current="page">Set Company Webiste</li>
+                        </div>
+                    </ol>
+                </nav>
             </div>
         </div>
-    </h1>
+    </div>
     <!-- end page-header -->
-    <div class="line-page"></div>
+
+    <!-- begin row -->
     <div class="row">
         <div class="col-sm-12">
-            <div class="panel panel-inverse" data-sortable-id="index-6">
+            <!-- begin panel -->
+            <div class="panel panel-inverse">
                 <div class="panel-heading">
-                    <h4 class="panel-title">Analytics Details</h4>
+                    <h4 class="panel-title"><i class="fa-solid fa-building"></i> Set Company Website</h4>
                     <div class="panel-heading-btn">
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
@@ -31,238 +44,106 @@
                         <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
                     </div>
                 </div>
-                <div class="panel-body">
-                    <!-- Alert -->
-                    <?php if (isset($_GET["UpdateSuccess"])) { ?>
-                        <!-- Update Success -->
-                        <div class="note note-success m-b-15">
-                            <div class="note-icon">
-                                <i class="fa-solid fa-circle-check fa-fade"></i>
-                            </div>
-                            <div class="note-content">
-                                <h4><b>Update Success!</b></h4>
-                                <p>
-                                    Data has been updated! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
-                                </p>
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <?php if (isset($_GET["UpdateFailed"])) { ?>
-                        <!-- Update Failed -->
-                        <div class="note note-danger m-b-15">
-                            <div class="note-icon">
-                                <i class="fa-solid fa-circle-xmark fa-fade"></i>
-                            </div>
-                            <div class="note-content">
-                                <h4><b>Update Failed!</b></h4>
-                                <p>
-                                    Data can't update! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
-                                </p>
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <?php if (isset($_GET["DeleteSuccess"])) { ?>
-                        <!-- Delete Success -->
-                        <div class="note note-success m-b-15">
-                            <div class="note-icon">
-                                <i class="fa-solid fa-circle-check fa-fade"></i>
-                            </div>
-                            <div class="note-content">
-                                <h4><b>Delete Success!</b></h4>
-                                <p>
-                                    Data has been deleted! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
-                                </p>
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <?php if (isset($_GET["DeleteFailed"])) { ?>
-                        <!-- Delete Failed -->
-                        <div class="note note-danger m-b-15">
-                            <div class="note-icon">
-                                <i class="fa-solid fa-circle-xmark fa-fade"></i>
-                            </div>
-                            <div class="note-content">
-                                <h4><b>Delete Failed!</b></h4>
-                                <p>
-                                    Data can't delete! Record Time: <?= date('d F Y'); ?> <?= date('H:i A'); ?>
-                                </p>
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <!-- End -->
-                    <div class="table-responsive">
-                        <table id="TableDefault_L" class="table table-striped table-bordered table-td-valign-middle">
-                            <thead>
-                                <tr style="text-transform: uppercase;text-align:center">
-                                    <th width="1%" data-orderable="false"></th>
-                                    <!-- <th width="1%" data-orderable="false"></th> -->
-                                    <th class="text-nowrap">Kode Menu</th>
-                                    <th class="text-nowrap">Order</th>
-                                    <th class="text-nowrap">Menu</th>
-                                    <th class="text-nowrap">Desc</th>
-                                    <th class="text-nowrap">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $dataTable = $db->query("SELECT * FROM tb_menu ORDER BY id ASC");
-                                if (mysqli_num_rows($dataTable) > 0) {
-                                    $no = 0;
-                                    while ($row = mysqli_fetch_array($dataTable)) {
-                                        $no++;
-                                ?>
-                                        <tr class="odd gradeX">
-                                            <td width="1%" class="f-s-600 text-inverse"><?= $no ?>.</td>
-                                            <td><?= $row['kdmenu']; ?></td>
-                                            <td style="text-align:center">
-                                                <button class="btn btn-dark-custom">
-                                                    <i class="fa-solid fa-arrow-up-wide-short"></i> <?= $row['sorder']; ?>
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-dark-custom">
-                                                    <i class="fa-solid fa-star"></i> <?= $row['menu']; ?>
-                                                </button>
-                                            </td>
-                                            <td><?= $row['description'] != NULL ? $row['description'] : '<center><i style="color:red">NULL</i></center>' ?></td>
-                                            <td style="text-align:center">
-                                                <div class="action-table">
-                                                    <div style="margin-left: 5px;">
-                                                        <a href="#updateData<?= $row['id'] ?>" class="btn btn-success" data-toggle="modal" title="Update Data"><i class="fas fa-edit"></i>
-                                                            <font class="f-action">Update</font>
-                                                        </a>
-                                                    </div>
-                                                    <div style="margin-left: 5px;">
-                                                        <a href="#deleteData<?= $row['id'] ?>" class="btn btn-danger" data-toggle="modal" title="Delete Data"><i class="fas fa-trash"></i>
-                                                            <font class="f-action">Delete</font>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <!-- Update Data -->
-                                        <div class="modal fade" id="updateData<?= $row['id'] ?>">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header for-update">
-                                                        <h4 class="modal-title">Update Data</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    </div>
-                                                    <form action="pages/menu/action.php" method="POST">
-                                                        <div class="modal-body">
-                                                            <fieldset>
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <label for="IdKodeMenu">Kode Menu</label>
-                                                                            <input type="text" class="form-control" name="KodeMenu" id="IdKodeMenu" placeholder="Kode Menu ..." value="<?= $row['kdmenu'] ?>" readonly />
-                                                                            <input type="hidden" name="IDUNIQ" value="<?= $row['id'] ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <div class="form-group">
-                                                                            <label for="IdOrder">Order</label>
-                                                                            <input type="text" class="form-control" name="Order" id="IdOrder" placeholder="Order ..." value="<?= $row['sorder'] ?>" readonly />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-9">
-                                                                        <div class="form-group">
-                                                                            <label for="IdMenu">Menu</label>
-                                                                            <input type="text" class="form-control" name="Menu" id="IdMenu" placeholder="Menu ..." value="<?= $row['menu'] ?>" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group">
-                                                                            <label for="IdDescription">Description </label>
-                                                                            <textarea type="text" class="form-control" name="Description" id="IdDescription" placeholder="Description ..."><?= $row['description'] ?></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </fieldset>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a href="javascript:;" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</a>
-                                                            <button type="submit" name="update_" class="btn btn-success"><i class="fas fa-edit"></i> Update</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Update Data -->
-
-                                        <!-- Delete Data -->
-                                        <div class="modal fade" id="deleteData<?= $row['id'] ?>">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header for-delete">
-                                                        <h4 class="modal-title">Detele Data</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                    </div>
-                                                    <form action="pages/menu/action.php" method="POST">
-                                                        <div class="modal-body">
-                                                            <h5 class="card-title">Are you sure you want to delete this data?</h5>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label for="IdKodeMenu">Kode Menu</label>
-                                                                        <input type="text" class="form-control" name="KodeMenu" id="IdKodeMenu" placeholder="Kode Menu ..." value="<?= $row['kdmenu'] ?>" />
-                                                                        <input type="hidden" name="IDUNIQ" value="<?= $row['id'] ?>">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label for="IdOrder">Order</label>
-                                                                        <input type="text" class="form-control" name="Order" id="IdOrder" placeholder="Order ..." value="<?= $row['sorder'] ?>" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                    <div class="form-group">
-                                                                        <label for="IdMenu">Menu</label>
-                                                                        <input type="text" class="form-control" name="Menu" id="IdMenu" placeholder="Menu ..." value="<?= $row['menu'] ?>" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <div class="form-group">
-                                                                        <label for="IdDescription">Description </label>
-                                                                        <textarea type="text" class="form-control" name="Description" id="IdDescription" placeholder="Description ..."><?= $row['description'] ?></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-white" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
-                                                            <button type="submit" class="btn btn-danger" name="delete_"><i class="fas fa-check-circle"></i> Yes</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Delete Data -->
-                                    <?php } ?>
-                                <?php } else { ?>
-                                    <tr>
-                                        <td colspan="8">
-                                            <div class="page-table-not-found">
-                                                <div>
-                                                    <img src="assets/apps/svg/search-animate.svg" style="width:300px" alt="">
-                                                </div>
-                                                <div>
-                                                    <center>
-                                                        <!-- <p class="font-not-found">Ups!... no results found</p> -->
-                                                        <p class="font-not-found">No data available in table</p>
-                                                    </center>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
+                <!-- begin table-responsive -->
+                <div class="table-responsive">
+                    <table id="user" class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th width="20%">Field Name</th>
+                                <th>Field Value</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="bg-light">Title Tab</td>
+                                <td><a href="javascript:;" id="Title Tab" data-type="text" data-pk="1" data-title="Enter Title Tab">superuser </a></td>
+                                <td><span class="text-black-lighter">Simple text field </span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Firstname</td>
+                                <td><a href="javascript:;" id="firstname" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your Firstname"></a></td>
+                                <td><span class="text-black-lighter">Required text field, originally empty </span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Sex</td>
+                                <td><a href="javascript:;" id="sex" data-type="select" data-pk="1" data-value="" data-title="Select sex"></a></td>
+                                <td><span class="text-black-lighter">Select, loaded from js array. Custom display</span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Group</td>
+                                <td><a href="javascript:;" id="group" data-type="select" data-pk="1" data-value="5" data-source="/groups" data-title="Select group">Admin</a></td>
+                                <td><span class="text-black-lighter">Select, loaded from server. <strong>No buttons</strong> mode </span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Error While Loading</td>
+                                <td><a href="javascript:;" id="status" data-type="select" data-pk="1" data-value="0" data-source="/status" data-title="Select status">Active </a></td>
+                                <td><span class="text-black-lighter">Error when loading list items</span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Plan vacation?</td>
+                                <td><a href="javascript:;" id="vacation" data-type="date" data-viewformat="dd.mm.yyyy" data-pk="1" data-placement="right" data-title="When you want vacation to start?">25.02.2013</a></td>
+                                <td><span class="text-black-lighter">Datepicker </span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Date of birth</td>
+                                <td><a href="javascript:;" id="dob" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth"></a></td>
+                                <td><span class="text-black-lighter">Date field (combodate) </span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Setup event</td>
+                                <td><a href="javascript:;" id="event" data-type="combodate" data-template="D MMM YYYY HH:mm" data-format="YYYY-MM-DD HH:mm" data-viewformat="MMM D, YYYY, HH:mm" data-pk="1" data-title="Setup event date and time"></a></td>
+                                <td><span class="text-black-lighter">Datetime field (combodate)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Meeting start</td>
+                                <td><a href="javascript:;" id="meeting_start" data-type="datetime" data-pk="1" data-url="/post" data-placement="right" data-title="Set date & time">15/03/2013 12:45</a></td>
+                                <td><span class="text-black-lighter">Bootstrap datetime</span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Comments</td>
+                                <td>
+                                    <a href="javascript:;" id="comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-original-title="Enter comments">awesome<br />user!</a>
+                                </td>
+                                <td>
+                                    <span class="text-black-lighter">
+                                        Textarea. Buttons below. Submit by <i>ctrl+enter</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Type State</td>
+                                <td><a href="javascript:;" id="state" data-type="typeaheadjs" data-pk="1" data-placement="right" data-title="Start typing State.."></a></td>
+                                <td><span class="text-black-lighter">Twitter typeahead.js</span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Fresh fruits</td>
+                                <td><a href="javascript:;" id="fruits" data-type="checklist" data-value="1,2" data-title="Select fruits"></a></td>
+                                <td><span class="text-black-lighter">Checklist</span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Tags</td>
+                                <td><a href="javascript:;" id="tags" data-type="select2" data-pk="1" data-title="Enter tags">html, javascript </a></td>
+                                <td><span class="text-black-lighter">Select2 (tags mode) </span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Country</td>
+                                <td><a href="javascript:;" id="country" data-type="select2" data-pk="1" data-value="BS" data-title="Select country"></a></td>
+                                <td><span class="text-black-lighter">Select2 (dropdown mode)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="bg-light">Address</td>
+                                <td><a href="javascript:;" id="address" data-type="address" data-pk="1" data-title="Please, fill address"></a></td>
+                                <td><span class="text-black-lighter">Your custom input, several fields</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+                <!-- end table-responsive -->
             </div>
+            <!-- end panel -->
         </div>
     </div>
+    <!-- end row -->
 </div>
 <!-- end #content -->

@@ -104,12 +104,26 @@
                     <?php } ?>
                 </ul>
             </li>
-            <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'setting' ? 'active' : '' ?>">
+            <!-- <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'setting' ? 'active' : '' ?>">
                 <a href="index.php?m=setting&s=index">
-                    <!-- <i class="fa-solid fa-gears fa-beat-fade icon-page-sidebar"></i> -->
                     <i class="fa-solid fa-gears icon-page-sidebar"></i>
                     <span>Setting</span>
                 </a>
+            </li> -->
+            <li class="has-sub <?= !empty($_GET['m']) && $_GET['m'] == 'setting' ? 'active' : '' ?>">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa-solid fa-gears icon-page-sidebar"></i>
+                    <span>Setting</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="has-sub <?= !empty($_GET['s']) && $_GET['s'] == 'index' ? 'active' : '' ?>">
+                        <a href="index.php?m=setting&s=index">Set Company Webiste</a>
+                    </li>
+                    <li class="has-sub <?= !empty($_GET['s']) && $_GET['s'] == 'images' ? 'active' : '' ?>">
+                        <a href="index.php?m=setting&s=images">Set Images</a>
+                    </li>
+                </ul>
             </li>
             <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'users' ? 'active' : '' ?>">
                 <a href="index.php?m=users&s=index">
@@ -118,11 +132,29 @@
                 </a>
             </li>
             <li class="nav-header">Point of Sale</li>
-            <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'pos' ? 'active' : '' ?>">
+            <!-- <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'pos' ? 'active' : '' ?>">
                 <a href="index.php?m=pos&s=index">
                     <i class="fa-solid fa-cash-register icon-page-sidebar"></i>
-                    <span>Pos</span>
+                    <span>Pos System</span>
                 </a>
+            </li> -->
+            <li class="has-sub">
+                <a href="javascript:;">
+                    <b class="caret"></b>
+                    <i class="fa-solid fa-cash-register icon-page-sidebar"></i>
+                    <span>Pos System
+                        <span class="label label-theme">
+                            Lock
+                        </span>
+                    </span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="#">Customer Order</a></li>
+                    <li><a href="#">Kitchen Order</a></li>
+                    <li><a href="#">Counter Checkout</a></li>
+                    <li><a href="#">Table Booking</a></li>
+                    <li><a href="#">Menu Stock</a></li>
+                </ul>
             </li>
             <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
         </ul>

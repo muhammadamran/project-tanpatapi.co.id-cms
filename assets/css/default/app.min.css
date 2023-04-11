@@ -26324,8 +26324,9 @@ body .introjs-bullets ul li a.active {
     padding: 15px 20px 3px;
     line-height: 20px;
     font-size: 11px;
-    color: rgba(255, 255, 255, .45);
-    font-weight: 600
+    color: rgb(255 255 255);
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .sidebar .nav>li.nav-header a {

@@ -3188,4 +3188,45 @@ if (isset($_POST["disabled_gallery_"])) {
 // END GALLERY
 
 // CONTACT
+// UPDATE
+if (isset($_POST["update_contact_"])) {
+    $ID             = $_POST['ID'];
+    $Page           = $_POST['Page'];
+    $Title          = $_POST['Title'];
+    $Description    = $_POST['Description'];
+    $Telephone      = $_POST['Telephone'];
+    $Whatsapp       = $_POST['Whatsapp'];
+    $Instagram      = $_POST['Instagram'];
+    $Email          = $_POST['Email'];
+    $Address        = $_POST['Address'];
+    $Log            = $_POST['Title'] . '/' . $_POST['Whatsapp'];
+
+    // FOR LOG
+    $InputUsername        = $_SESSION['username'];
+    $InputName            = $_SESSION['first'] . ' ' . $_SESSION['last'];
+    $InputModul           = 'Content Contact';
+    $InputDescription     = $InputName . " Update Data: " .  $Log . ", Save Data as Log Content Contact";
+    $InputAction          = 'Update';
+    $InputDate            = date('Y-m-d h:m:i');
+
+    $query = $db->query("INSERT INTO tb_log
+                        (id,username,date_log,module,activity,crud)
+                        VALUES
+                        ('','$InputUsername','$InputDate','$InputModul','$InputDescription','$InputAction')");
+
+    $query .= $db->query("UPDATE tb_contact SET title='$Title',
+                                                description='$Description',
+                                                telephone='$Telephone',
+                                                whatsapp='$Whatsapp',
+                                                instagram='$Instagram',
+                                                email='$Email',
+                                                address='$Address'
+                                            WHERE id='$ID'");
+
+    if ($query) {
+        echo "<script>alert('Update Successfully');location.href = '../../index.php?m=content&s=8&n=" . $Page . "&UpdateSuccess'</script>";
+    } else {
+        echo "<script>alert('Update Unsuccessfully');location.href = '../../index.php?m=content&s=8&n=" . $Page . "&UpdateFailed'</script>";
+    }
+}
 // END CONTACT

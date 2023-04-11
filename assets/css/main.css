@@ -100,11 +100,40 @@ dl, ol, ul {
     align-items: center;
 }
 
+.form-control-upload {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 14px+ 2px);
+    padding: 7px 0.75rem;
+    font-size: 12px;
+    font-weight: 400;
+    /* line-height: 12px; */
+    color: #fff;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d5dbe0;
+    border-radius: 4px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    background: #6c757d;
+}
+
 .elemen-bg {
     background: #6c757d;
     padding: 10px;
     border-radius: 5px;
     color: #fff;
+}
+
+.elemen-bg-icon {
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    /* border-style: solid; */
+    /* border-color: #6c757d; */
+    border: 1px solid #6c757d91;
 }
 
 /* ENABLED */

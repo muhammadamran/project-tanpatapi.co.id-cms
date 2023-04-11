@@ -69,22 +69,31 @@
         </div>
         <div class="line-page-RA"></div>
         <div class="row m-t-10">
-            <div class="col-md-12">
-                <div style="display: flex;justify-content: flex-start;align-content: center;align-items: center;margin-bottom: 10px;">
-                    <div style="margin-top: 6px;">
-                        <i class="far fa-clock" style="font-size: 20px;font-weight:400"></i>
-                    </div>
-                    <div style="margin-left: 5px;">
-                        <div style="font-size: 10px;">
-                            <?= $rowRA['description']; ?>
+
+            <!-- For Activiy -->
+            <?php
+            $QActivity = $db->query("SELECT * FROM tb_log WHERE username='" . $_SESSION['username'] . "'");
+            $no = 0;
+            while ($RActivity = mysqli_fetch_array($QActivity)) {
+                $no++;
+            ?>
+                <div class="col-md-12">
+                    <div style="display: flex;justify-content: flex-start;align-content: center;align-items: center;margin-bottom: 10px;">
+                        <div style="margin-top: 6px;">
+                            <i class="far fa-clock" style="font-size: 20px;font-weight:400"></i>
                         </div>
-                        <div style="font-size: 10px;">
-                            <!-- <i class="far fa-calendar"></i> <?= $tgl ?> - <?= $time ?> -->
+                        <div style="margin-left: 5px;">
+                            <div style="font-size: 10px;font-weight: 900;">
+                                <?= $RActivity['activity']; ?>
+                            </div>
+                            <div style="font-size: 10px;">
+                                <i class="far fa-calendar"></i> <?= $RActivity['module']; ?> | <?= $RActivity['crud']; ?> - <?= $RActivity['date_log']; ?>
+                            </div>
                         </div>
                     </div>
+                    <hr>
                 </div>
-                <hr>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </div>
