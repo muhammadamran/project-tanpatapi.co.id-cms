@@ -380,6 +380,7 @@
                                         <div class="row">
                                             <form action="pages/setting/action.php" method="POST" style="width: 100%;" enctype="multipart/form-data">
                                                 <br><br>
+                                                <br><br>
                                                 <div class="col-sm-12">
                                                     <div style="display: flex;justify-content:center;">
                                                         <div class="lingkaran">
@@ -387,6 +388,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br><br>
                                                 <br><br>
                                                 <div class="col-sm-12">
                                                     <hr>
@@ -729,13 +731,15 @@
                                 <!-- End -->
                                 <div class="row">
                                     <form action="pages/setting/action.php" method="POST" style="width: 100%;" enctype="multipart/form-data">
+                                        <br><br>
                                         <div class="col-sm-12">
                                             <div style="display: flex;justify-content:center;">
-                                                <div class="lingkaran-bg">
-                                                    <img src="assets/apps/loader/<?= $loader; ?>" style="background-position-x: center;background-repeat: no-repeat;background-size: cover;height: 280px;width: -webkit-fill-available;" height="100px" width=auto alt="Logo">
+                                                <div class="lingkaran">
+                                                    <img src="assets/apps/loader/<?= $loader; ?>" style="background-position-x: center;background-repeat: no-repeat;background-size: cover;height: 100px;width: -webkit-fill-available;" height="100px" width=auto alt="Logo">
                                                 </div>
                                             </div>
                                         </div>
+                                        <br><br>
                                         <div class="col-sm-12">
                                             <hr>
                                         </div>
