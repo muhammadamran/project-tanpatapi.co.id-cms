@@ -85,11 +85,11 @@ if ($role == 'admin') {
         'jk' => $jk,
     ];
 
-    $loginArea = login($data);
+    $loginarea = login($data);
 
-    if ($loginArea == 2) {
+    if ($loginarea == 2) {
         echo '<script>alert("Hai, ' . $first . ' ' . $last . '. you have successfully logged in");location.href = "index.php"</script>';
-    } else if ($loginArea == 1) {
+    } else if ($loginarea == 1) {
         echo '<script>alert("Failed Login");window.history.go(-1);</script>';
     }
 } else {

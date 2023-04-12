@@ -131,6 +131,12 @@
                     <span>Users</span>
                 </a>
             </li>
+            <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'message' ? 'active' : '' ?>">
+                <a href="index.php?m=message&s=index">
+                    <i class="fa-solid fa-envelope-open-text icon-page-sidebar"></i>
+                    <span>Message</span>
+                </a>
+            </li>
             <li class="nav-header">Point of Sale</li>
             <!-- <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'pos' ? 'active' : '' ?>">
                 <a href="index.php?m=pos&s=index">
