@@ -29,7 +29,7 @@
         <ul class="nav">
             <li class="nav-header">Main</li>
             <li>
-                <a href="" target="_blank">
+                <a href="<?= $urlWeb; ?>" target="_blank">
                     <i class="fa-solid fa-globe icon-page-sidebar"></i>
                     <span>Website</span>
                 </a>
@@ -120,9 +120,9 @@
                     <li class="has-sub <?= !empty($_GET['s']) && $_GET['s'] == 'index' ? 'active' : '' ?>">
                         <a href="index.php?m=setting&s=index">Set Company Webiste</a>
                     </li>
-                    <li class="has-sub <?= !empty($_GET['s']) && $_GET['s'] == 'images' ? 'active' : '' ?>">
+                    <!-- <li class="has-sub <?= !empty($_GET['s']) && $_GET['s'] == 'images' ? 'active' : '' ?>">
                         <a href="index.php?m=setting&s=images">Set Images</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
             <li class="<?= !empty($_GET['m']) && $_GET['m'] == 'users' ? 'active' : '' ?>">

@@ -25,15 +25,15 @@ $app_name = $loadConfig['app_name'] != NULL ? $loadConfig['app_name'] : 'CMS HEL
 $company = $loadConfig['company'] != NULL ? $loadConfig['company'] : 'www.hellos-id.com';
 $seodesc = $loadConfig['seodesc'] != NULL ? $loadConfig['seodesc'] : 'Apps,CMS, Content Managemen System';
 $tag = $loadConfig['tag'] != NULL ? $loadConfig['tag'] : 'Apps,CMS, Content Managemen System';
-$url = $loadConfig['url'] != NULL ? $loadConfig['url'] : '';
+$urlWeb = $loadConfig['url'] != NULL ? $loadConfig['url'] : 'https://';
 $status = $loadConfig['status'] != NULL ? $loadConfig['status'] : 'Active';
 $btnColor = $loadConfig['btnColor'] != NULL ? $loadConfig['btnColor'] : '#050D28';
 $btnColorHover = $loadConfig['btnColorHover'] != NULL ? $loadConfig['btnColorHover'] : '#213475';
 $bg_login = $loadConfig['bg_login'] != NULL ? $loadConfig['bg_login'] : 'login-bg.svg';
 $bg_header = $loadConfig['bg_header'] != NULL ? $loadConfig['bg_header'] : 'header-bg.svg';
 $bg_page = $loadConfig['bg_page'] != NULL ? $loadConfig['bg_page'] : 'background.svg';
-$bg_footer_top = $loadConfig['bg_footer_top'] != NULL ? $loadConfig['bg_footer_top'] : 'footer-bg.svg';
-$bg_footer = $loadConfig['bg_footer'] != NULL ? $loadConfig['bg_footer'] : 'footer-top-bg.svg';
+$bg_footer_top = $loadConfig['bg_footer_top'] != NULL ? $loadConfig['bg_footer_top'] : 'footer-top-bg.svg';
+$bg_footer = $loadConfig['bg_footer'] != NULL ? $loadConfig['bg_footer'] : 'footer-bg.svg';
 // END LOAD SETTING
 
 class helpers
