@@ -256,9 +256,9 @@
                                     <!-- End -->
                                     <div style="margin-bottom: 15px;">
                                         <!-- Add -->
-                                        <a href="#AddData" class="btn btn-secondary" data-toggle="modal" title="Add Data"><i class="fa-solid fa-circle-plus"></i>
+                                        <!-- <a href="#AddData" class="btn btn-secondary" data-toggle="modal" title="Add Data"><i class="fa-solid fa-circle-plus"></i>
                                             <font class="f-action">Add Data</font>
-                                        </a>
+                                        </a> -->
                                         <div class="modal fade" id="AddData">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -374,12 +374,12 @@
                                                                             <font class="f-action">Update</font>
                                                                         </a>
                                                                     </div>
-                                                                    <div style="margin-left: 5px;">
+                                                                    <!-- <div style="margin-left: 5px;">
                                                                         <a href="#deleteData<?= $row['id'] ?>" class="btn btn-danger" data-toggle="modal" title="Delete Data"><i class="fas fa-trash"></i>
                                                                             <font class="f-action">Delete</font>
                                                                         </a>
-                                                                    </div>
-                                                                    <?php if ($row['status'] == '1') { ?>
+                                                                    </div> -->
+                                                                    <!-- <?php if ($row['status'] == '1') { ?>
                                                                         <div style="margin-left: 5px;">
                                                                             <a href="#DisabledData<?= $row['id'] ?>" class="btn btn-enabled" data-toggle="modal" title="Enabled"><i class="fa-solid fa-toggle-on"></i>
                                                                                 <font class="f-action"> Enabled</font>
@@ -391,7 +391,7 @@
                                                                                 <font class="f-action"> Disabled</font>
                                                                             </a>
                                                                         </div>
-                                                                    <?php } ?>
+                                                                    <?php } ?> -->
                                                                 </div>
                                                             </td>
                                                         </tr>
